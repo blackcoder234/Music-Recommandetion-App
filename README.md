@@ -402,7 +402,6 @@ See the [`LICENSE`](./LICENSE) file in this repository for the full text.
 For questions, suggestions, or collaboration, feel free to reach out:
 
 - 👥 **Team:** Snippet.co
-- 🧑‍💼 **Maintainer:** Amarnath Bera
 - 📧 **Email:** beraamarnath5@gmail.com
 - 🧑‍💻 **GitHub:** https://github.com/blackcoder234/Music-Recommandetion-App.git
 
