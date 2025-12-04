@@ -1,0 +1,35 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+/*  */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* Akshar   font-family: "Akshar", serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&display=swap'); 
+
+/* amaranth-regular-> font-family: "Amaranth", serif;  amaranth-bold->font-family: "Amaranth", serif; amaranth-regular-italic->font-family: "Amaranth", serif; amaranth-bold-italic->font-family: "Amaranth", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/*  font-family: "Amarante", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
+/*  font-family: "Gabriela", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&display=swap');
+/*   font-family: "Bevan", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap');
+/*  font-family: "Inter", sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+@import "tailwindcss";
+
+
+@layer base{
+    
+    html{
+        font-family: "Inter", sans-serif;
+    }
+}
+
+
+  
