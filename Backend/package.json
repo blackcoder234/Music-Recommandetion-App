@@ -1,0 +1,26 @@
+{
+  "name": "app-backend",
+  "version": "1.0.0",
+  "description": "This iss the backend of Music recommendation system",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Music",
+    "Recommendation",
+    "System"
+  ],
+  "author": "Amarnath Bera",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.0"
+  }
+}
