@@ -1,25 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>404-error!</title>
-      
-       <link rel="stylesheet" href="./css/style.css">
-       
-    
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Page Not Found · Music Recommendation App</title>
+
+        <!-- Tailwind CSS via CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: {
+                                DEFAULT: '#22c55e',
+                                dark: '#16a34a',
+                            },
+                            surface: '#020617',
+                        },
+                    },
+                },
+            };
+        </script>
     </head>
-<body class="bg-[#ebf1f5]">
-    
-<div class="container  ">
-    <div class="text-content mx-auto bg-white w-[400px] h-56y p-8 space-y-2">
-        <p class="text-[#ff1616bf] text-xl font-semibold">404</p>
-        <p class="text-[#747474] text-2xl">Page Not Found</p>
-        <p class=" text-gray-800 text-[15px]">The specified file was not found on this website. Please check the URL for mistakes and try again.</p>
-        <a class="block text-[12px] underline text-end mt-5" href="/">Go to Home</a>
-    </div>
-</div>
 
+    <body
+        class="min-h-screen bg-slate-950 text-slate-100 antialiased flex items-center justify-center px-4"
+    >
+        <div
+            class="relative w-full max-w-3xl overflow-hidden rounded-3xl border border-slate-800/80 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-8 shadow-[0_0_80px_rgba(16,185,129,0.35)] md:p-10"
+        >
+            <!-- Floating vinyl / visual accent -->
+            <div
+                class="pointer-events-none absolute -right-10 -top-10 hidden h-56 w-56 rounded-full border border-emerald-500/40 bg-gradient-to-tr from-emerald-400/40 via-cyan-400/20 to-slate-900/0 blur-sm md:block"
+            ></div>
 
-</body>
+            <div class="flex flex-col items-start gap-8 md:flex-row md:items-center">
+                <!-- Left: status + message -->
+                <div class="relative z-10 flex-1 space-y-5">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-medium text-slate-300 ring-1 ring-slate-700/80">
+                        <span class="inline-flex h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+                        <span>404 · Track not found</span>
+                    </div>
+
+                    <h1 class="text-3xl font-semibold tracking-tight md:text-4xl">
+                        This page is
+                        <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                            >off‑beat</span
+                        >.
+                    </h1>
+
+                    <p class="max-w-xl text-sm text-slate-300 md:text-base">
+                        The URL you tried to hit doesn&apos;t match any route in the
+                        <span class="font-semibold text-emerald-300">Music Recommendation App</span>.
+                        It&apos;s like queuing a song that doesn&apos;t exist.
+                    </p>
+
+                    <div class="space-y-3 text-xs text-slate-400">
+                        <p class="font-medium text-slate-300">You can try:</p>
+                        <ul class="grid gap-2 md:grid-cols-2">
+                            <li class="flex items-center gap-2 rounded-xl bg-slate-900/70 px-3 py-2">
+                                <span class="text-emerald-300">⌂</span>
+                                <span>Going back to the home dashboard.</span>
+                            </li>
+                            <li class="flex items-center gap-2 rounded-xl bg-slate-900/70 px-3 py-2">
+                                <span class="text-cyan-300">🔍</span>
+                                <span>Searching for songs, artists, or playlists.</span>
+                            </li>
+                            <li class="flex items-center gap-2 rounded-xl bg-slate-900/70 px-3 py-2">
+                                <span class="text-amber-300">🎧</span>
+                                <span>Resuming your listening queue.</span>
+                            </li>
+                            <li class="flex items-center gap-2 rounded-xl bg-slate-900/70 px-3 py-2">
+                                <span class="text-rose-300">↩</span>
+                                <span>Checking the URL or navigation link again.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a
+                            href="/"
+                            class="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-primary-dark"
+                        >
+                            <span>Back to Home</span>
+                            <span class="text-base">↩</span>
+                        </a>
+
+                        <a
+                            href="/"
+                            class="inline-flex items-center gap-2 rounded-full border border-slate-700/80 px-4 py-2 text-xs font-medium text-slate-200 transition hover:border-slate-500 hover:bg-slate-900/70"
+                        >
+                            <span>Open player</span>
+                            <span>▶</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: mini player illustration -->
+                <div class="relative z-10 w-full max-w-xs md:w-80">
+                    <div class="rounded-3xl bg-slate-950/90 p-4 ring-1 ring-slate-800/80">
+                        <div class="mb-3 flex items-center justify-between text-[10px] text-slate-400">
+                            <span class="inline-flex items-center gap-1">
+                                <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                                Ghost Track
+                            </span>
+                            <span>00:00</span>
+                        </div>
+
+                        <div class="mb-4 flex items-center gap-3">
+                            <div
+                                class="h-16 w-16 flex-shrink-0 rounded-2xl bg-gradient-to-tr from-slate-700 via-slate-900 to-slate-950 ring-2 ring-slate-700/80"
+                            ></div>
+                            <div class="space-y-1 text-xs">
+                                <p class="font-semibold text-slate-100">Unknown Route</p>
+                                <p class="text-[11px] text-slate-400">404 · Not in library</p>
+                                <div class="flex gap-1">
+                                    <span class="h-1 w-6 rounded-full bg-slate-700"></span>
+                                    <span class="h-1 w-10 rounded-full bg-slate-800"></span>
+                                    <span class="h-1 w-8 rounded-full bg-slate-800"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 flex items-center gap-2">
+                            <div class="h-1.5 flex-1 rounded-full bg-slate-800">
+                                <div class="h-1.5 w-1/4 rounded-full bg-gradient-to-r from-emerald-400/60 to-cyan-400/60"></div>
+                            </div>
+                            <span class="text-[10px] text-slate-500">--:--</span>
+                        </div>
+
+                        <div class="flex items-center justify-center gap-4 text-slate-100">
+                            <button class="text-xs text-slate-500 hover:text-slate-100">⏮</button>
+                            <button
+                                class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-[11px] text-slate-100 ring-1 ring-slate-700/80"
+                                title="Nothing to play here"
+                            >
+                                ⏹
+                            </button>
+                            <button class="text-xs text-slate-500 hover:text-slate-100">⏭</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subtle footer note -->
+            <p class="mt-8 text-center text-[11px] text-slate-500">
+                You&apos;ve reached the end of this route. Let&apos;s get you back to the
+                <span class="text-emerald-300">music</span>.
+            </p>
+        </div>
+    </body>
 </html>
