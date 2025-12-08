@@ -23,17 +23,61 @@ const userSchema = new Schema(
         },
         fullName: {
             type: String,
-            required: true,
             trim: true,
             index: true
+        },
+        phoneNumber: {
+            type: String,
+            trim: true
         },
         password: {
             type: String,
             required: [true, "Password is required"]
         },
+        avatar: {
+            type: String, // cloudinary url
+            default: ""
+        },
+        preference: {
+            favoriteGenres: {
+                type: [String],      // e.g. ["pop", "rock"]
+                default: [],
+            },
+            favoriteArtists: {
+                type: [{
+                    type: Schema.Types.ObjectId,
+                    ref: "Artist"
+                }],
+                default: [],
+            },
+            preferredLanguages: {
+                type: [String],      // e.g. ["en", "hi"]
+                default: [],
+            },
+            moodPreferences: {
+                type: [String],      // e.g. ["chill", "study"]
+                default: [],
+            },
+        },
+
+        likedTracks: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Track",
+                default: []
+            }
+        ],
+        likedPlaylistIds: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Playlist",
+                default: []
+
+            }
+        ],
         refreshToken: {
             type: String
-        }
+        },
     },
 
     { timestamps: true }
