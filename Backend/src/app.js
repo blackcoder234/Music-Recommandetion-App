@@ -22,13 +22,13 @@ app.use(cookieParser())
 
 import staticRoutes from "./routes/static.routes.js"
 import landingPageStaticRoutes from "./routes/landing_page.static.routes.js"
-// import userRoutes from "./routes/user.routes.js"
+import userRoutes from "./routes/user.routes.js"
 
 
 
 //Routes Declaration
 app.use("/snippet.co", landingPageStaticRoutes)
-// app.use("/api/v1/users", userRoutes)
+app.use("/api/v1/users", userRoutes)
 app.use("/", staticRoutes)
 
 //Error Handler

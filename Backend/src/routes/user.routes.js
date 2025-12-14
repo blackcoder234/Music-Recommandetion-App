@@ -11,7 +11,8 @@ import {
     resetPassword,
     getUserProfile,
     getFiles,
-    deleteFile
+    deleteFile,
+    googleAuth
   
 } from "../controllers/user.controller.js"
 import { saveUserInfo } from "../controllers/track-visitor.controller.js"
@@ -23,6 +24,7 @@ const router = Router()
 
 router.route("/register").post(registerUser)
 router.route("/login").post(loginUser)
+router.route("/google").post(googleAuth)
 
 //secured routes 
 router.route("/logout").post(verifyJWT, logoutUser)

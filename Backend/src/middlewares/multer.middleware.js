@@ -23,9 +23,9 @@ const upload = multer({
 ])
 
 
-const uploadMultiple = multer({
-    storage,
-    limits: { fileSize: fileSizeLimit }, 
-}).array("images", 10)
+// const uploadMultiple = multer({
+//     storage,
+//     limits: { fileSize: fileSizeLimit }, 
+// }).array("images", 10)
 
-export { upload, uploadMultiple }
+export { upload}

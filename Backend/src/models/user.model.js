@@ -16,7 +16,7 @@ const userSchema = new Schema(
         },
         email: {
             type: String,
-            required: true,
+            required: [true, "Email is required"],
             unique: true,
             lowercase: true,
             trim: true,
@@ -24,19 +24,25 @@ const userSchema = new Schema(
         fullName: {
             type: String,
             trim: true,
-            index: true
-        },
-        phoneNumber: {
-            type: String,
-            trim: true
         },
         password: {
             type: String,
-            required: [true, "Password is required"]
+            required: function () {
+                return this.authProvider === "email"
+            },
         },
         avatar: {
             type: String, // cloudinary url
             default: ""
+        },
+        authProvider: {
+            type: String,
+            enum: ["email", "google"],
+            default: "email",
+        },
+        isEmailVerified: {
+            type: Boolean,
+            default: false,
         },
         preference: {
             favoriteGenres: {

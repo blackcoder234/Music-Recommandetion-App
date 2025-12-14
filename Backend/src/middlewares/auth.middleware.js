@@ -8,10 +8,10 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
         const token =
             req.cookies?.accessToken ||
             req.header("Authorization")?.replace("Bearer ", "")
-        // console.log("🔑 Token:", token);
+        // console.log("Token:", token);
         
         if (!token) {
-            console.log("❌ No token found!")
+            console.log("No token found!")
             throw new ApiError(401, "Unauthorized request")
         }
 
@@ -20,7 +20,7 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
             "-password -refreshToken"
         )
         if (!user) {
-            console.log("❌ User not found in DB!")
+            console.log(" User not found in DB!")
             throw new ApiError(401, "Invalid Access Token")
         }
         req.user = user
