@@ -22,6 +22,7 @@ router.route("/")
                 res.status(500).send("Error loading index.html")
             }
         })
+        console.log(req.url)
     })
 
 
