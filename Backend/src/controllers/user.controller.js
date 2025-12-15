@@ -86,6 +86,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!createdUser) {
         throw new ApiError(500, "Internal server error: registering the user")
     }
+    console.log(createdUser)
 
     const options = {
         httpOnly: true,

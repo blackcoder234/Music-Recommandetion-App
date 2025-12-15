@@ -19,7 +19,6 @@ app.use(cookieParser())
 
 
 //Routes
-
 import staticRoutes from "./routes/static.routes.js"
 import landingPageStaticRoutes from "./routes/landing_page.static.routes.js"
 import userRoutes from "./routes/user.routes.js"
