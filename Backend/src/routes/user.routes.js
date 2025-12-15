@@ -1,24 +1,23 @@
 import { Router } from "express"
 import {
-    loginUser,
-    logoutUser,
     registerUser,
+    loginUser,
+    googleAuth,
+    logoutUser,
     refreshAccessToken,
     changeCurrentPassword,
     updateAccountDetails,
-    uploadFiles,
     forgotPassword,
     resetPassword,
-    getUserProfile,
-    getFiles,
-    deleteFile,
-    googleAuth
-  
+    getCurrentUser,
+    updateUserAvatar,
+    deleteAccount,
+
 } from "../controllers/user.controller.js"
 import { saveUserInfo } from "../controllers/track-visitor.controller.js"
-import { upload, uploadMultiple } from "../middlewares/multer.middleware.js"
+import { upload } from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js"
-import { getArticles,getFeaturedArticles, getArticleBySlug } from "../controllers/article.controller.js"
+
 
 const router = Router()
 
@@ -30,20 +29,15 @@ router.route("/google").post(googleAuth)
 router.route("/logout").post(verifyJWT, logoutUser)
 router.route("/refresh-token").post(refreshAccessToken)
 router.route("/change-password").post(verifyJWT, changeCurrentPassword)
-router.route("/update-account").patch(verifyJWT, upload, updateAccountDetails)
-router.route("/get-profile/:id").get(verifyJWT, getUserProfile)
-router.route("/upload-files").post(verifyJWT,  uploadMultiple, uploadFiles)
-router.route("/get-file/:id").get(verifyJWT, getFiles)
-router.route("/delete-file").delete(verifyJWT, deleteFile)
+router.route("/current-user").get(verifyJWT, getCurrentUser)
+router.route("/update-account").patch(verifyJWT, updateAccountDetails)
+router.route("/update-avatar").patch(verifyJWT, upload, updateUserAvatar)
+router.route("/delete-account").delete(verifyJWT, deleteAccount)
 
 
 router.post("/forgot-password", forgotPassword)
 router.post("/reset-password/:token", resetPassword)
 
-// Article routes
-router.route("/get-articles").get( getArticles)
-router.route("/articles/slug/:slug").get( getArticleBySlug)
-router.route("/get-featured-articles").get( getFeaturedArticles)
 
 // get user info
 router.route("/save-userInfo").post(saveUserInfo)

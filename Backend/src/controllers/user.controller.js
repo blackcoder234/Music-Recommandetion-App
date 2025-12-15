@@ -1,13 +1,12 @@
 import { asyncHandler } from "../utils/asyncHandler.js"
 import ApiError from "../utils/ApiError.js"
 import User from "../models/user.model.js"
-import UserProfile from "../models/user_details.model.js"
-import File from "../models/files.model.js"
-import { uploadOnCloudinary, deleteOnCloudinary } from "../utils/cloudinary.js"
+import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import ApiResponse from "../utils/ApiResponse.js"
 import jwt from "jsonwebtoken"
 import sendEmail from "../utils/sendMail.js"
 import { OAuth2Client } from "google-auth-library"
+
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 
@@ -101,7 +100,6 @@ const registerUser = asyncHandler(async (req, res) => {
             new ApiResponse(201, {
                 user: createdUser,
                 accessToken,
-                refreshToken,
             }, "User successfully registered and logged in!"),
         )
 })
@@ -185,8 +183,7 @@ const googleAuth = asyncHandler(async (req, res) => {
             isEmailVerified: true,
         })
     } else if (user.authProvider === "email") {
-        // Optional: mark that this user can now also sign in with Google
-        user.authProvider = "google"
+        // Email-based account: allow Google login but keep authProvider as "email"
         if (!user.avatar && avatarUrl) {
             user.avatar = avatarUrl
         }
@@ -211,7 +208,6 @@ const googleAuth = asyncHandler(async (req, res) => {
             new ApiResponse(200, {
                 user: loggedInUser,
                 accessToken,
-                refreshToken,
             }, "User authenticated with Google successfully"),
         )
 })
@@ -237,7 +233,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 
     return res
         .status(200)
-        .clearCookie("accessToken", {...options, maxAge:0})
+        .clearCookie("accessToken", { ...options, maxAge: 0 })
         .clearCookie("refreshToken", options)
         .json(new ApiResponse(200, {}, "Logged out successfully!"))
 })
@@ -272,16 +268,16 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         )
 
         return res
-        .status(200)
-        .cookie("accessToken", accessToken, {...options, maxAge: 2 * 24 * 60 * 60 * 1000} )
-        .cookie("refreshToken", refreshToken, {...options, maxAge: 10 * 24 * 60 * 60 * 1000} )
-        .json(
-            new ApiResponse(200, {
-                accessToken,
-                refreshToken,
-                expiresAt: Date.now() + 2 * 24 * 60 * 60 * 1000
-            }, "Token refreshed successfully")
-        )
+            .status(200)
+            .cookie("accessToken", accessToken, { ...options, maxAge: 2 * 24 * 60 * 60 * 1000 })
+            .cookie("refreshToken", refreshToken, { ...options, maxAge: 10 * 24 * 60 * 60 * 1000 })
+            .json(
+                new ApiResponse(200, {
+                    accessToken,
+                    refreshToken,
+                    expiresAt: Date.now() + 2 * 24 * 60 * 60 * 1000
+                }, "Token refreshed successfully")
+            )
     } catch (error) {
         throw new ApiError(401, error?.message, "Invalid Refresh token")
 
@@ -291,117 +287,25 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 const changeCurrentPassword = asyncHandler(async (req, res) => {
     const { oldPassword, newPassword } = req.body
     const user = await User.findById(req.user?._id)
+    if (!user) {
+        throw new ApiError(404, "User not found")
+    }
+
+    if (user.authProvider !== "email") {
+        throw new ApiError(400, "Password change is not available for Google login accounts")
+    }
+
     const isPasswordCorrect = await user.isPasswordCorrect(oldPassword)
     if (!isPasswordCorrect) {
-        throw new ApiError(400, "Invalid Password! Please enter correct password and try again")
+        throw new ApiError(400, "Invalid Password")
     }
     user.password = newPassword
     await user.save({ validateBeforeSave: false })
     return res.status(200).json(
         new ApiResponse(
-            200, {}, "Password is changed successfully"
+            200, {}, "Password change successfully"
         )
     )
-})
-
-const updateAccountDetails = asyncHandler(async (req, res) => {
-    const { fullName, phoneNumber, bio, country, state, district, village, pincode, streetAddress } = req.body;
-
-
-    if (!fullName) throw new ApiError(400, "Full name is required");
-
-    if (phoneNumber && !/^[0-9]{10}$/.test(phoneNumber)) {
-        throw new ApiError(400, "Invalid phone number format");
-    }
-    if (bio && bio.length > 250) {
-        throw new ApiError(400, "Bio cannot exceed 250 characters");
-    }
-
-    const address = { country, state, district, village, pincode, streetAddress };
-
-
-    let userProfiles = await UserProfile.findOne({ user: req.user._id });
-
-    if (!userProfiles) {
-
-        userProfiles = new UserProfile({ user: req.user._id });
-    }
-
-
-    userProfiles.fullName = fullName;
-    userProfiles.phoneNumber = phoneNumber;
-    userProfiles.bio = bio;
-    userProfiles.address = address;
-
-
-    if (req.files) {
-        if (req.files["avatar"]) {
-            const avatar = await uploadOnCloudinary(req.files["avatar"][0].path);
-            if (!avatar) throw new ApiError(400, "Failed to upload avatar");
-            userProfiles.avatar = avatar.secure_url;
-        }
-
-        if (req.files["coverImage"]) {
-            const coverImage = await uploadOnCloudinary(req.files["coverImage"][0].path);
-            if (!coverImage) throw new ApiError(400, "Failed to upload cover image");
-            userProfiles.coverImage = coverImage.secure_url;
-        }
-    }
-
-
-    await userProfiles.save()
-
-    const userProfile = await UserProfile.findOne({ user: req.user._id })
-
-    return res.status(200).json(new ApiResponse(200, userProfile, "Profile updated successfully"));
-})
-
-const uploadFiles = asyncHandler(async (req, res) => {
-
-    // console.log("Received files:", req.files);
-
-    if (!req.files || req.files.length === 0) {
-        throw new ApiError(400, "No files uploaded.");
-    }
-
-    const images = [];
-
-    for (const file of req.files) {
-        const localFilePath = file.path;
-
-        try {
-            const uploadedFile = await uploadOnCloudinary(localFilePath);
-            if (!uploadedFile) {
-                throw new ApiError(500, "Error uploading file to Cloudinary.");
-            }
-
-            images.push({
-                url: uploadedFile.url,
-                publicId: uploadedFile.public_id
-            });
-
-        } catch (error) {
-            console.error("Cloudinary Upload Error:", error);
-            throw new ApiError(500, "File upload failed.");
-        }
-    }
-
-
-    let fileRecord = await File.findOne({ user: req.user._id });
-
-    if (fileRecord) {
-
-        fileRecord.images.push(...images);
-        await fileRecord.save();
-    } else {
-
-        fileRecord = await File.create({
-            user: req.user._id,
-            images: images
-        });
-    }
-
-    return res.status(200).json(new ApiResponse(200, fileRecord, "Files uploaded successfully"));
 })
 
 const forgotPassword = asyncHandler(async (req, res) => {
@@ -411,6 +315,10 @@ const forgotPassword = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email })
     if (!user) {
         throw new ApiError(400, "User not found")
+    }
+
+    if (user.authProvider !== "email") {
+        throw new ApiError(400, "This account uses Google login. Password reset is not available.")
     }
 
     const resetToken = jwt.sign({ userId: user._id }, process.env.RESET_PASSWORD_SECRET, { expiresIn: "5m" })
@@ -441,9 +349,12 @@ const resetPassword = asyncHandler(async (req, res) => {
     if (!user) {
         throw new ApiError(400, "Invalid or expired token")
     }
+
+    if (user.authProvider !== "email") {
+        throw new ApiError(400, "This account uses Google login. Password reset is not available.")
+    }
+
     user.password = newPassword
-    user.resetPasswordToken = undefined
-    user.resetPasswordExpires = undefined
     await user.save({ validateBeforeSave: false })
 
 
@@ -451,65 +362,114 @@ const resetPassword = asyncHandler(async (req, res) => {
 
 })
 
-const getUserProfile = asyncHandler(async (req, res) => {
+const getCurrentUser = asyncHandler(async (req, res) => {
+    return res
+        .status(200)
+        .json(new ApiResponse(200, req.user, "current user fetched successfully"))
+})
 
+const updateAccountDetails = asyncHandler(async (req, res) => {
+    const { fullName, username } = req.body
 
-    const userProfile = await UserProfile.findOne({ user: req.user._id });
-
-    if (!userProfile) {
-        throw new ApiError(404, "User profile not found");
+    if (!fullName && !username) {
+        throw new ApiError(400, "At least one field (fullName or username) is required")
     }
+
+    const updates = {}
+
+    if (fullName) {
+        updates.fullName = fullName
+    }
+
+    if (username) {
+        const normalizedUsername = username.toLowerCase()
+        // Check uniqueness only if username is being changed
+        const existingWithUsername = await User.findOne({
+            username: normalizedUsername,
+            _id: { $ne: req.user?._id },
+        })
+        if (existingWithUsername) {
+            throw new ApiError(409, "Username is already taken")
+        }
+        updates.username = normalizedUsername
+    }
+
+    const user = await User.findByIdAndUpdate(
+        req.user?._id,
+        {
+            $set: updates,
+        },
+        { new: true }
+
+    ).select("-password -refreshToken")
 
     return res
         .status(200)
-        .json(new ApiResponse(200, userProfile, "User profile fetched successfully!"));
+        .json(new ApiResponse(200, user, "Account details updated successfully"))
 })
 
-const getFiles = asyncHandler(async (req, res) => {
-    const files = await File.findOne({ user: req.user._id });
-
-    if (!files || !files.images?.length) {
-        return res.status(200).json(new ApiResponse(200, [], "No files found for this user"));
+const updateUserAvatar = asyncHandler(async (req, res) => {
+    const avatarLocalPath = req.file?.path
+    if (!avatarLocalPath) {
+        throw new ApiError(400, "Avatar file is missing")
+    }
+    const avatar = await uploadOnCloudinary(avatarLocalPath)
+    if (!avatar.url) {
+        throw new ApiError(400, "Error while uploading the avatar")
     }
 
-    return res.status(200).json(new ApiResponse(200, files, "Files fetched successfully!"));
+    const user = await User.findByIdAndUpdate(
+        req.user?._id,
+        {
+            $set: {
+                avatar: avatar.url
+            }
+        }, { new: true }
+    ).select("-password -refreshToken")
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, user, "Avatar is Updated Successfully"))
+
 })
 
-const deleteFile = asyncHandler(async (req, res) => {
-    const { publicId } = req.body;
+const deleteAccount = asyncHandler(async (req, res) => {
+    const userId = req.user?._id
 
-    if (!publicId) throw new ApiError(400, "Public ID is required.");
-    const result = await deleteOnCloudinary(publicId)
-
-    if (result.result !== "ok") {
-        throw new ApiError(500, "Failed to delete image from storage.");
+    if (!userId) {
+        throw new ApiError(401, "Unauthorized")
     }
+    await User.findByIdAndDelete(userId)
+    const options = {
+        httpOnly: true,
+        secure: true,
+        sameSite: "Strict",
+    }
+    return res
+        .status(200)
+        .clearCookie("accessToken", { ...options, maxAge: 0 })
+        .clearCookie("refreshToken", options)
+        .json(new ApiResponse(200, {}, "Account deleted successfully"))
+})
 
-    await File.findOneAndUpdate(
-        { user: req.user._id },
-        { $pull: { images: { publicId } } },
-        { new: true }
-    );
 
-    res.status(200).json(new ApiResponse(200, null, "Image deleted successfully."));
-});
 
 
 
 export {
     registerUser,
     loginUser,
+    googleAuth,
     logoutUser,
     refreshAccessToken,
     changeCurrentPassword,
     updateAccountDetails,
-    uploadFiles,
     forgotPassword,
     resetPassword,
-    getUserProfile,
-    getFiles,
-    deleteFile,
-    googleAuth
+    getCurrentUser,
+    updateUserAvatar,
+    deleteAccount,
+
 
 
 }
