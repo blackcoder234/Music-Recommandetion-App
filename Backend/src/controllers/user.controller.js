@@ -464,8 +464,6 @@ const deleteAccount = asyncHandler(async (req, res) => {
 
 
 
-
-
 export {
     registerUser,
     loginUser,
