@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import errorHandler from "./middlewares/errorHandler.middleware.js"
-
+import 'dotenv/config'
 
 const app = express()
 
@@ -11,8 +11,8 @@ app.use(cors({
     credentials: true
 }))
 
-app.use(express.json({limit:"1mb"}))
-app.use(express.urlencoded({extended:true, limit:"100kb"}))
+app.use(express.json({limit:"10mb"}))
+app.use(express.urlencoded({extended:true, limit:"10mb"}))
 app.use(express.static("public"))
 app.use(express.static("dist"))
 app.use(cookieParser())
@@ -22,7 +22,6 @@ app.use(cookieParser())
 import staticRoutes from "./routes/static.routes.js"
 import landingPageStaticRoutes from "./routes/landing_page.static.routes.js"
 import userRoutes from "./routes/user.routes.js"
-
 
 
 //Routes Declaration

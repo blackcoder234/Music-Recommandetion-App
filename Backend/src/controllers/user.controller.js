@@ -66,16 +66,25 @@ const registerUser = asyncHandler(async (req, res) => {
             throw new ApiError(409, "Username is already taken")
         }
     }
+    console.log("FILES:", req.files)
+    console.log("BODY:", req.body)
+
 
     const avatarLocalPath = req.files?.avatar?.[0]?.path
-    const avatarUpload = avatarLocalPath ? await uploadOnCloudinary(avatarLocalPath) : null
+    let avatarUrl = ""
+
+    if (avatarLocalPath) {
+        console.log("Avatar uploaded at:", avatarLocalPath)
+        const avatarUpload = await uploadOnCloudinary(avatarLocalPath)
+        avatarUrl = avatarUpload?.url || ""
+    }
 
     const user = await User.create({
         username: finalUsername,
         email,
         fullName,
         password,
-        avatar: avatarUpload?.secure_url || "",
+        avatar: avatarUrl,
         authProvider: "email",
         isEmailVerified: false,
     })

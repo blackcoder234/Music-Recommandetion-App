@@ -90,12 +90,14 @@ const userSchema = new Schema(
 )
 
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
+    // In promise-based middleware (async), Mongoose does not
+    // use the `next` callback. Just return/throw from the
+    // function and Mongoose will handle flow control.
     if (!this.isModified("password")) {
-        return next()
+        return
     }
     this.password = await bcrypt.hash(this.password, 10)
-    next()
 })
 
 userSchema.methods.isPasswordCorrect = async function (password) {

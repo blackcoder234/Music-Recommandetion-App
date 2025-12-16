@@ -4,7 +4,7 @@ import path from "path"
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "./public/temp"); 
+        cb(null, "./public/temp");
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -16,7 +16,7 @@ const fileSizeLimit = 5 * 1024 * 1024 // 5MB
 
 const upload = multer({
     storage,
-    limits: { fileSize: fileSizeLimit }, 
+    limits: { fileSize: fileSizeLimit },
 }).fields([
     { name: "avatar", maxCount: 1 },
     { name: "coverImage", maxCount: 1 },
@@ -28,4 +28,4 @@ const upload = multer({
 //     limits: { fileSize: fileSizeLimit }, 
 // }).array("images", 10)
 
-export { upload}
+export { upload }
