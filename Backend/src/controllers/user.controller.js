@@ -66,15 +66,16 @@ const registerUser = asyncHandler(async (req, res) => {
             throw new ApiError(409, "Username is already taken")
         }
     }
-    console.log("FILES:", req.files)
-    console.log("BODY:", req.body)
+    // Debugging logs
+    // console.log("FILES:", req.files)
+    // console.log("BODY:", req.body)
 
 
     const avatarLocalPath = req.files?.avatar?.[0]?.path
     let avatarUrl = ""
 
     if (avatarLocalPath) {
-        console.log("Avatar uploaded at:", avatarLocalPath)
+        // console.log("Avatar uploaded at:", avatarLocalPath)
         const avatarUpload = await uploadOnCloudinary(avatarLocalPath)
         avatarUrl = avatarUpload?.url || ""
     }
@@ -95,7 +96,8 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!createdUser) {
         throw new ApiError(500, "Internal server error: registering the user")
     }
-    console.log(createdUser)
+
+    // console.log(createdUser)
 
     const options = {
         httpOnly: true,

@@ -21,7 +21,7 @@ import { verifyJWT } from "../middlewares/auth.middleware.js"
 
 const router = Router()
 
-router.route("/register").post(registerUser)
+router.route("/register").post(upload,registerUser)
 router.route("/login").post(loginUser)
 router.route("/google").post(googleAuth)
 
