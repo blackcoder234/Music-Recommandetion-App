@@ -15,7 +15,7 @@ const artistSchema = new Schema(
         },
         artistImage: {
             type: String,
-            required: true,
+            default: "",
         },
         genres: {
             type: [String], // like ["pop", "rock"]
