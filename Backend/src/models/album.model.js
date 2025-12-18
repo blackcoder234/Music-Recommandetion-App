@@ -20,7 +20,8 @@ const albumSchema = new Schema(
         },
         coverImage: {
             type: String,
-            required: true,
+            default: "",
+            // required: true,
         },
         releaseDate: {
             type: Date,
