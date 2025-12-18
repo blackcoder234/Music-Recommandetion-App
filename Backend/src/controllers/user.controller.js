@@ -75,9 +75,11 @@ const registerUser = asyncHandler(async (req, res) => {
     let avatarUrl = ""
 
     if (avatarLocalPath) {
-        // console.log("Avatar uploaded at:", avatarLocalPath)
-        const avatarUpload = await uploadOnCloudinary(avatarLocalPath)
-        avatarUrl = avatarUpload?.url || ""
+        const avatarUpload = await uploadOnCloudinary(
+            avatarLocalPath,
+            "music_app/User_avatar",
+        )
+        avatarUrl = avatarUpload?.secure_url || avatarUpload?.url || ""
     }
 
     const user = await User.create({
@@ -425,8 +427,11 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is missing")
     }
-    const avatar = await uploadOnCloudinary(avatarLocalPath)
-    if (!avatar.url) {
+    const avatar = await uploadOnCloudinary(
+        avatarLocalPath,
+        "music_app/User_avatar",
+    )
+    if (!avatar?.secure_url && !avatar?.url) {
         throw new ApiError(400, "Error while uploading the avatar")
     }
 
@@ -434,7 +439,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
         req.user?._id,
         {
             $set: {
-                avatar: avatar.url
+                avatar: avatar.secure_url || avatar.url
             }
         }, { new: true }
     ).select("-password -refreshToken")

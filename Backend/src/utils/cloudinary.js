@@ -9,7 +9,7 @@ import 'dotenv/config'
     api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-const uploadOnCloudinary = async (localFilePath) => {
+const uploadOnCloudinary = async (localFilePath, folder = "music_app/uploads") => {
     try {
         
         // console.log("localPath from user controller.js:", localFilePath)
@@ -18,7 +18,7 @@ const uploadOnCloudinary = async (localFilePath) => {
         //upload the file in the cloud
         const response = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "auto",
-            folder: "croponer-website"
+            folder,
         })
         //if file has been uploaded successfully
         // console.log("File has been successfully Uploaded to Cloudinary !!", response.url)

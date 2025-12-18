@@ -7,6 +7,10 @@ const trackSchema = new Schema(
             type: String, // Cloudinary Url
             required: true,
         },
+        cloudinaryPublicId: {
+            type: String, // Cloudinary public_id
+            default: "",
+        },
         title: {
             type: String,
             required: true,
