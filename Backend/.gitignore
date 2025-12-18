@@ -146,3 +146,5 @@ dist
 .drawio
 .vscode
 public/temp
+music_dataset
+scripts
