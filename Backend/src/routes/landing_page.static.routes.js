@@ -23,10 +23,78 @@ router.route("/")
                 res.status(500).send("Error loading index.html")
             }
         })
-        console.log(req.url)
+        // console.log(req.url)
     })
 
+router.route("/team")
+    .get((req, res) => {
+        res.sendFile(path.join(staticPath, "team.html"), (err) => {
+            if (err) {
+                res.status(500).send("Error loading team.html")
+            }
+        })
+        // console.log(req.url)
+    })
 
+router.route("/contact")
+    .get((req, res) => {
+        res.sendFile(path.join(staticPath, "contact.html"), (err) => {
+            if (err) {
+                res.status(500).send("Error loading contact.html")
+            }
+        })
+        // console.log(req.url)
+    })
+
+router.route("/support")
+    .get((req, res) => {
+        res.sendFile(path.join(staticPath, "support.html"), (err) => {
+            if (err) {
+                res.status(500).send("Error loading support.html")
+            }
+        })
+        // console.log(req.url)
+    })
+
+router.route("/policy")
+    .get((req, res) => {
+        res.sendFile(path.join(staticPath, "policy.html"), (err) => {
+            if (err) {
+                res.status(500).send("Error loading policy.html")
+            }
+        })
+        // console.log(req.url)
+    })
+
+router.route("/terms")
+    .get((req, res) => {
+        res.sendFile(path.join(staticPath, "terms.html"), (err) => {
+            if (err) {
+                res.status(500).send("Error loading terms.html")
+            }
+        })
+        // console.log(req.url)
+    })
+
+router.route("/cookies")
+    .get((req, res) => {
+        res.sendFile(path.join(staticPath, "cookies.html"), (err) => {
+            if (err) {
+                res.status(500).send("Error loading cookies.html")
+            }
+        })
+        // console.log(req.url)
+    })
+
+router.route("/license")
+    .get((req, res) => {
+        res.sendFile(path.join(staticPath, "license.html"), (err) => {
+            if (err) {
+                res.status(500).send("Error loading license.html")
+            }
+        })
+        // console.log(req.url)
+    })
 
 router.use((req, res, next) => {
     res.status(404).sendFile(path.join(staticPath, "404.html"), (err) => {
@@ -34,7 +102,7 @@ router.use((req, res, next) => {
             res.status(500).send("Error loading 404.html");
         }
     });
-    console.log(req.url)
+    // console.log(req.url)
 });
 
 
