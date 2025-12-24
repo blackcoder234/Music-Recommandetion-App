@@ -3,212 +3,386 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Snippet.co - Smart Music Recommendations</title>
+    <title>SoundWave - Music Streaming Platform</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="#" class="logo">
-          <span class="logo-icon">♪</span>
-          <span class="logo-text">Snippet.co</span>
-        </a>
-        <ul class="nav-links">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-        </ul>
-        <div class="nav-buttons">
-          <a href="#" class="btn btn-ghost">Log In</a>
-          <a href="#" class="btn btn-primary">Get Started</a>
-        </div>
-        <button class="mobile-menu-btn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <!-- Logo -->
+          <div class="logo">
+            <div class="logo-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+            </div>
+            <span class="logo-text">Snippet.co</span>
+          </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-      <ul class="mobile-nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#" class="btn btn-ghost">Log In</a></li>
-        <li><a href="#" class="btn btn-primary">Get Started</a></li>
-      </ul>
-    </div>
+          <!-- Desktop Navigation -->
+          <nav class="nav-desktop">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contribute">Contribute</a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <svg
+              class="menu-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg
+              class="close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="mobileMenu">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contribute">Contributr</a>
+        </nav>
+      </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
       </div>
-      <div class="hero-container">
-        <div class="hero-content">
-          <span class="hero-badge">🎵 AI-Powered Music Discovery</span>
-          <h1 class="hero-title">
-            Discover Music That
-            <span class="gradient-text">Moves You</span>
-          </h1>
-          <p class="hero-description">
-            Experience personalized music recommendations powered by AI. We
-            learn your taste and curate the perfect playlist for every moment.
-          </p>
-          <div class="hero-buttons">
-            <a href="/" class="btn btn-primary btn-large">
-              <span>Start Listening Free</span>
+
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Content -->
+          <div class="hero-left">
+            <div class="badge">
               <svg
-                width="20"
-                height="20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path d="M5 12h14M12 5l7 7-7 7" />
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
               </svg>
-            </a>
-            <a href="#how-it-works" class="btn btn-outline btn-large">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
-              </svg>
-              <span>See How It Works</span>
-            </a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-number">50K+</span>
-              <span class="stat-label">Active Users</span>
+              <span>AI-Powered Music Discovery</span>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <span class="stat-number">1M+</span>
-              <span class="stat-label">Songs Discovered</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <span class="stat-number">98%</span>
-              <span class="stat-label">Satisfaction Rate</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="player-mockup">
-            <div class="player-header">
-              <div class="player-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <span class="player-title">Now Playing</span>
-            </div>
-            <div class="player-album">
-              <div class="album-art">
-                <div class="album-gradient"></div>
-                <span class="album-icon">♪</span>
-              </div>
-            </div>
-            <div class="player-info">
-              <h3 class="song-title">Midnight Dreams</h3>
-              <p class="song-artist">Luna Wave</p>
-            </div>
-            <div class="player-progress">
-              <div class="progress-bar">
-                <div class="progress-fill"></div>
-              </div>
-              <div class="progress-time">
-                <span>1:24</span>
-                <span>3:45</span>
-              </div>
-            </div>
-            <div class="player-controls">
-              <button class="control-btn">
+
+            <h1 class="hero-title">
+              Your Music,<br />
+              <span class="gradient-text">Reimagined by AI</span>
+            </h1>
+            <p class="hero-description">
+              Discover music that truly understands you. Our AI-powered engine
+              curates playlists, predicts your mood, and delivers crystal-clear
+              sound—anytime, anywhere.
+            </p>
+
+            <div class="hero-buttons">
+              <button class="btn-hero-primary">
+                Start Listening Free
                 <svg
+                  xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
                   viewBox="0 0 24 24"
-                  fill="currentColor"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 >
-                  <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                  <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
               </button>
-              <button class="control-btn play-btn">
+              <button class="btn-hero-secondary">
                 <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </button>
-              <button class="control-btn">
-                <svg
+                  xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
                   viewBox="0 0 24 24"
-                  fill="currentColor"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 >
-                  <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
+                Watch Demo
               </button>
             </div>
-            <div class="player-recommendations">
-              <span class="rec-label">Up Next (AI Picked)</span>
-              <div class="rec-item">
-                <div class="rec-art"></div>
-                <div class="rec-info">
-                  <span class="rec-title">Electric Sunset</span>
-                  <span class="rec-artist">Neon Pulse</span>
+
+            <!-- Stats -->
+            <div class="stats">
+              <div class="stat">
+                <div class="stat-value">100M+</div>
+                <div class="stat-label">Songs Available</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">50M+</div>
+                <div class="stat-label">Active Users</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">1M+</div>
+                <div class="stat-label">Artists</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">4.8/5</div>
+                <div class="stat-label">User Rating</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Content - Phone Mockup -->
+          <div class="hero-right">
+            <div class="phone-wrapper">
+              <div class="phone-glow"></div>
+              <div class="phone">
+                <div class="phone-screen">
+                  <!-- Status Bar -->
+                  <div class="status-bar">
+                    <span>9:41</span>
+                    <div class="status-icons">
+                      <div class="status-icon"></div>
+                      <div class="status-icon"></div>
+                      <div class="status-icon"></div>
+                    </div>
+                  </div>
+
+                  <!-- App Content -->
+                  <div class="app-content">
+                    <!-- Now Playing Card -->
+                    <div class="now-playing">
+                      <div class="album-art">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="64"
+                          height="64"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M9 18V5l12-2v13"></path>
+                          <circle cx="6" cy="18" r="3"></circle>
+                          <circle cx="18" cy="16" r="3"></circle>
+                        </svg>
+                      </div>
+                      <div class="song-info">
+                        <div class="song-title"></div>
+                        <div class="song-artist"></div>
+                      </div>
+
+                      <!-- Progress Bar -->
+                      <div class="progress-container">
+                        <div class="progress-bar">
+                          <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-time">
+                          <span>1:23</span>
+                          <span>3:45</span>
+                        </div>
+                      </div>
+
+                      <!-- Controls -->
+                      <div class="controls">
+                        <div class="control-btn">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <polygon points="6 6 8 6 8 18 6 18"></polygon>
+                            <polygon points="9.5 12 18 6 18 18"></polygon>
+                          </svg>
+                        </div>
+                        <div class="control-btn-play">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="black"
+                          >
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                          </svg>
+                        </div>
+                        <div class="control-btn">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <polygon points="16 18 18 18 18 6 16 6"></polygon>
+                            <polygon points="12.5 12 4 18 4 6"></polygon>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Playlist Items -->
+                    <div class="playlist">
+                      <div class="playlist-item">
+                        <div class="playlist-thumb"></div>
+                        <div class="playlist-info">
+                          <div class="playlist-title"></div>
+                          <div class="playlist-artist"></div>
+                        </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      </div>
+                      <div class="playlist-item">
+                        <div class="playlist-thumb"></div>
+                        <div class="playlist-info">
+                          <div class="playlist-title"></div>
+                          <div class="playlist-artist"></div>
+                        </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      </div>
+                      <div class="playlist-item">
+                        <div class="playlist-thumb"></div>
+                        <div class="playlist-info">
+                          <div class="playlist-title"></div>
+                          <div class="playlist-artist"></div>
+                        </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="floating-card card-1">
-            <span class="card-icon">🎧</span>
-            <span class="card-text">Personalized for you</span>
-          </div>
-          <div class="floating-card card-2">
-            <span class="card-icon">⚡</span>
-            <span class="card-text">AI-powered</span>
-          </div>
         </div>
+      </div>
+    </section>
+    <section id="about" class="about">
+      <div class="container text-center">
+        <h2 class="section-title">
+          About <span class="gradient-text">Snippet.co</span>
+        </h2>
+
+        <p class="section-description">
+          Snippet.co is redefining the way you experience music. Built with
+          powerful AI intelligence, our platform understands your taste, your
+          mood, and your moments—delivering perfectly curated songs every time
+          you press play.
+          <br /><br />
+          From discovering hidden gems to enjoying crystal-clear, high-quality
+          audio, Snippet.co brings you a smarter, deeper, and more personal
+          music journey. It’s not just streaming music — it’s music that truly
+          understands you.
+        </p>
       </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
-      <div class="section-container">
+
+    <section id="features" class="features">
+      <div class="container">
         <div class="section-header">
-          <span class="section-badge">Features</span>
-          <h2 class="section-title">Why Choose Snippet.co?</h2>
+          <h2 class="section-title">
+            Powerful Features for<br />
+            <span class="gradient-text">Music Lovers</span>
+          </h2>
           <p class="section-description">
-            Powered by cutting-edge AI, we deliver a music experience tailored
-            just for you.
+            Everything you need for the ultimate music streaming experience
           </p>
         </div>
+
         <div class="features-grid">
+          <!-- Feature 1 -->
           <div class="feature-card">
             <div class="feature-icon">
               <svg
+                xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
                 viewBox="0 0 24 24"
@@ -216,267 +390,140 @@
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
-                <path d="M12 6v6l4 2" />
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
               </svg>
             </div>
-            <h3 class="feature-title">Smart Recommendations</h3>
+            <h3 class="feature-title">100M+ Songs</h3>
             <p class="feature-description">
-              Our AI learns your listening habits and suggests songs you'll love
-              before you even search.
+              Access unlimited music across all genres, from the latest hits to
+              timeless classics.
             </p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M9 18V5l12-2v13" />
-                <circle cx="6" cy="18" r="3" />
-                <circle cx="18" cy="16" r="3" />
-              </svg>
-            </div>
-            <h3 class="feature-title">Mood-Based Playlists</h3>
-            <p class="feature-description">
-              Whether you're working out, relaxing, or focusing—we've got the
-              perfect playlist ready.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-            </div>
-            <h3 class="feature-title">Multi-Device Sync</h3>
-            <p class="feature-description">
-              Start on your phone, continue on your laptop. Your music follows
-              you everywhere.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-            </div>
-            <h3 class="feature-title">Offline Ready</h3>
-            <p class="feature-description">
-              Download your favorite playlists and enjoy music even without
-              internet connection.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <h3 class="feature-title">Social Discovery</h3>
-            <p class="feature-description">
-              See what your friends are listening to and discover new music
-              through shared tastes.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-            </div>
-            <h3 class="feature-title">Privacy First</h3>
-            <p class="feature-description">
-              Your listening data stays private. We use it only to improve your
-              recommendations.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-badge">How It Works</span>
-          <h2 class="section-title">Start in 3 Simple Steps</h2>
-          <p class="section-description">
-            Getting personalized music has never been easier.
-          </p>
-        </div>
-        <div class="steps-container">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3 class="step-title">Create Your Account</h3>
-              <p class="step-description">
-                Sign up in seconds with your email or social accounts. No credit
-                card required.
-              </p>
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path
+                  d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+                ></path>
+              </svg>
             </div>
-            <div class="step-visual">
-              <div class="step-icon-box">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-              </div>
-            </div>
+            <h3 class="feature-title">High Quality Audio</h3>
+            <p class="feature-description">
+              Experience crystal-clear sound with lossless audio streaming up to
+              24-bit/192kHz.
+            </p>
           </div>
-          <div class="step-connector"></div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3 class="step-title">Tell Us Your Taste</h3>
-              <p class="step-description">
-                Pick your favorite genres, artists, or moods. The more you
-                share, the better we get.
-              </p>
-            </div>
-            <div class="step-visual">
-              <div class="step-icon-box">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="step-connector"></div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3 class="step-title">Enjoy Your Music</h3>
-              <p class="step-description">
-                Hit play and let our AI serve you the perfect soundtrack for
-                every moment.
-              </p>
-            </div>
-            <div class="step-visual">
-              <div class="step-icon-box">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-badge">Testimonials</span>
-          <h2 class="section-title">Loved by Music Fans</h2>
-          <p class="section-description">
-            See what our users are saying about their experience.
-          </p>
-        </div>
-        <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">
-              "Snippet.co knows my music taste better than I do! Every
-              recommendation is spot on. I've discovered so many new artists."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">S</div>
-              <div class="author-info">
-                <span class="author-name">Sarah Mitchell</span>
-                <span class="author-role">Music Enthusiast</span>
-              </div>
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
             </div>
+            <h3 class="feature-title">Personalized Playlists</h3>
+            <p class="feature-description">
+              AI-powered recommendations that learn your taste and discover new
+              music you'll love.
+            </p>
           </div>
-          <div class="testimonial-card featured">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">
-              "As a DJ, I need fresh tracks constantly. This app has become my
-              secret weapon for finding hidden gems before they blow up."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">M</div>
-              <div class="author-info">
-                <span class="author-name">Marcus Chen</span>
-                <span class="author-role">Professional DJ</span>
-              </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
             </div>
+            <h3 class="feature-title">Offline Listening</h3>
+            <p class="feature-description">
+              Download your favorite tracks and enjoy them anywhere, even
+              without internet.
+            </p>
           </div>
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">
-              "The mood-based playlists are incredible. Perfect focus music for
-              work, and amazing vibes for my evening runs."
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar">E</div>
-              <div class="author-info">
-                <span class="author-name">Emily Rodriguez</span>
-                <span class="author-role">Fitness Coach</span>
-              </div>
+
+          <!-- Feature 5 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="2"></circle>
+                <path
+                  d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"
+                ></path>
+              </svg>
             </div>
+            <h3 class="feature-title">Live Radio</h3>
+            <p class="feature-description">
+              Tune into live radio stations from around the world, 24/7
+              streaming.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Cross-Platform Sync</h3>
+            <p class="feature-description">
+              Seamlessly switch between devices with real-time sync across all
+              platforms.
+            </p>
           </div>
         </div>
       </div>
@@ -484,125 +531,145 @@
 
     <!-- CTA Section -->
     <section class="cta">
-      <div class="cta-container">
-        <div class="cta-bg">
-          <div class="cta-orb orb-1"></div>
-          <div class="cta-orb orb-2"></div>
-        </div>
-        <div class="cta-content">
-          <h2 class="cta-title">Ready to Discover Your Sound?</h2>
-          <p class="cta-description">
-            Join thousands of music lovers and start your personalized journey
-            today. It's free!
-          </p>
-          <div class="cta-buttons">
-            <a href="/" class="btn btn-white btn-large">
-              Start Listening Now
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-bg">
+            <div class="cta-glow cta-glow-1"></div>
+            <div class="cta-glow cta-glow-2"></div>
+            <div class="cta-glow cta-glow-3"></div>
           </div>
-          <p class="cta-note">
-            No credit card required • Free forever plan available
+
+          <div class="cta-content">
+            <h2 class="cta-title">
+              Ready to Start<br />
+              <span class="gradient-text">Your Music Journey?</span>
+            </h2>
+            <p class="cta-description">
+              Join millions of music lovers worldwide. Start your free trial
+              today.
+            </p>
+            <div class="cta-buttons">
+              <button class="btn-cta-primary">Get Started Free</button>
+              <button class="btn-cta-secondary">Learn More</button>
+            </div>
+            <p class="cta-note">No credit card required • Cancel anytime</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- pricing section -->
+    <section id="pricing" class="pricing">
+      <div class="container pricing-grid">
+        <!-- LEFT CONTENT -->
+        <div class="pricing-left">
+          <h2 class="pricing-title">
+            Simple <span class="gradient-text">Pricing</span>
+          </h2>
+
+          <p class="pricing-subtitle">
+            Start your music journey with AI-powered recommendations,
+            crystal-clear audio, and zero interruptions.
           </p>
+
+          <a href="#" class="btn-hero-primary pricing-btn">
+            Start Free Trial
+          </a>
+        </div>
+
+        <!-- RIGHT CARD -->
+        <div class="pricing-card">
+          <h3 class="pricing-price">$9.99 <span>/ month</span></h3>
+
+          <ul class="pricing-features">
+            <li>✔ Play any track</li>
+            <li>✔ AI-powered song discovery</li>
+            <li>✔ High-quality audio</li>
+            <li>✔ Offline listening</li>
+            <li>✔ Unlimited skips</li>
+            <li>✔ No ads</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Brand -->
           <div class="footer-brand">
-            <a href="#" class="logo">
-              <span class="logo-icon">♪</span>
-              <span class="logo-text">Snippet.co</span>
-            </a>
-            <p class="footer-tagline">
-              AI-powered music recommendations that understand you.
-            </p>
-            <div class="social-links">
-              <a href="#" class="social-link" aria-label="Twitter">
+            <div class="footer-logo">
+              <div class="footer-logo-icon">
                 <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-                  />
-                </svg>
-              </a>
-              <a href="#" class="social-link" aria-label="Instagram">
-                <svg
-                  width="20"
-                  height="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
                 >
-                  <rect x="2" y="2" width="20" height="20" rx="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  <path d="M9 18V5l12-2v13"></path>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <circle cx="18" cy="16" r="3"></circle>
                 </svg>
-              </a>
-              <a href="#" class="social-link" aria-label="GitHub">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-              </a>
+              </div>
+              <span>Snippet.co</span>
             </div>
+            <p>The world's most powerful music streaming platform.</p>
           </div>
-          <div class="footer-links">
-            <div class="footer-column">
-              <h4>Product</h4>
-              <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Mobile App</a></li>
-                <li><a href="#">API</a></li>
-              </ul>
-            </div>
-            <div class="footer-column">
-              <h4>Company</h4>
-              <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Press</a></li>
-              </ul>
-            </div>
-            <div class="footer-column">
-              <h4>Support</h4>
-              <ul>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Terms</a></li>
-              </ul>
-            </div>
+
+          <!-- Product -->
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Download</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Cookies</a></li>
+              <li><a href="#">Licenses</a></li>
+            </ul>
           </div>
         </div>
+        <!-- Download -->
+        <div class="footer-column footer-download">
+          <h4>Download</h4>
+          <div class="download-links">
+            <a href="#" class="download-btn"> <span></span> App Store </a>
+            <a href="#" class="download-btn"> ▶ Play Store </a>
+            <a href="#" class="download-btn"> 💻 Desktop </a>
+          </div>
+        </div>
+
         <div class="footer-bottom">
-          <p>&copy; 2025 Snippet.co. All rights reserved.</p>
-          <p>Made with ♥ for music lovers</p>
+          <p>© 2025 Snippet.co All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+          </div>
         </div>
       </div>
     </footer>
