@@ -86,11 +86,11 @@ router.route("/cookies")
         // console.log(req.url)
     })
 
-router.route("/license")
+router.route("/licenses")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "license.html"), (err) => {
+        res.sendFile(path.join(staticPath, "licenses.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading license.html")
+                res.status(500).send("Error loading licenses.html")
             }
         })
         // console.log(req.url)

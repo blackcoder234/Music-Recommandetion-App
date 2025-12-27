@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service - Beatify by Snippet.co</title>
+    <meta
+      name="description"
+      content="Read the Terms of Service for Beatify. Understand the rules, responsibilities, and legal agreements for using our music streaming platform."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://snippet.co/terms" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Terms Page Specific Styles */
+      .terms-hero {
+        padding: 140px 0 60px;
+        text-align: center;
+        background: radial-gradient(
+            circle at 50% 0%,
+            rgba(132, 204, 22, 0.08),
+            transparent 60%
+          ),
+          #0a0a0a;
+      }
+
+      .terms-hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .terms-hero-description {
+        font-size: 18px;
+        color: #9ca3af;
+        max-width: 700px;
+        margin: 0 auto 24px;
+        line-height: 1.7;
+      }
+
+      .terms-meta {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: #6b7280;
+      }
+
+      .terms-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .terms-meta-item svg {
+        color: #a3e635;
+      }
+
+      .terms-content-wrapper {
+        padding: 80px 0;
+        background: #0a0a0a;
+      }
+
+      .terms-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 48px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .terms-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+      }
+
+      .terms-toc {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
+      .terms-toc-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #a3e635;
+        margin-bottom: 16px;
+      }
+
+      .terms-toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .terms-toc-list a {
+        display: block;
+        padding: 8px 12px;
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .terms-toc-list a:hover,
+      .terms-toc-list a.active {
+        color: #ffffff;
+        background: rgba(132, 204, 22, 0.1);
+      }
+
+      .terms-main {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 24px;
+        padding: 48px;
+      }
+
+      .terms-section {
+        margin-bottom: 48px;
+        scroll-margin-top: 100px;
+      }
+
+      .terms-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .terms-section-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        background: linear-gradient(90deg, #a3e635, #22c55e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .terms-section-subtitle {
+        font-size: 20px;
+        font-weight: 600;
+        color: #e5e7eb;
+        margin-top: 32px;
+        margin-bottom: 12px;
+      }
+
+      .terms-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #d1d5db;
+        margin-bottom: 16px;
+      }
+
+      .terms-section ul,
+      .terms-section ol {
+        margin: 16px 0;
+        padding-left: 24px;
+        color: #d1d5db;
+      }
+
+      .terms-section li {
+        margin-bottom: 12px;
+        line-height: 1.8;
+      }
+
+      .terms-highlight {
+        background: rgba(132, 204, 22, 0.1);
+        border-left: 3px solid #a3e635;
+        padding: 16px 20px;
+        margin: 24px 0;
+        border-radius: 8px;
+      }
+
+      .terms-highlight p {
+        margin-bottom: 0;
+        color: #e5e7eb;
+      }
+
+      .terms-warning {
+        background: rgba(239, 68, 68, 0.1);
+        border-left: 3px solid #ef4444;
+        padding: 16px 20px;
+        margin: 24px 0;
+        border-radius: 8px;
+      }
+
+      .terms-warning p {
+        margin-bottom: 0;
+        color: #fca5a5;
+      }
+
+      .terms-contact-card {
+        background: linear-gradient(
+          145deg,
+          rgba(15, 23, 42, 0.95),
+          rgba(0, 0, 0, 0.9)
+        );
+        border: 1px solid rgba(132, 204, 22, 0.4);
+        border-radius: 20px;
+        padding: 32px;
+        margin-top: 48px;
+        text-align: center;
+      }
+
+      .terms-contact-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #ffffff;
+      }
+
+      .terms-contact-card p {
+        margin-bottom: 20px;
+        color: #9ca3af;
+      }
+
+      .terms-contact-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        background: linear-gradient(90deg, #84cc16, #22c55e, #10b981);
+        color: #000;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(132, 204, 22, 0.4);
+      }
+
+      .terms-contact-btn:hover {
+        background: linear-gradient(90deg, #a3e635, #4ade80, #34d399);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 1024px) {
+        .terms-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .terms-sidebar {
+          position: static;
+        }
+
+        .terms-toc {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .terms-hero-title {
+          font-size: 36px;
+        }
+
+        .terms-hero {
+          padding: 120px 0 40px;
+        }
+
+        .terms-main {
+          padding: 32px 24px;
+        }
+
+        .terms-section-title {
+          font-size: 24px;
+        }
+
+        .terms-section-subtitle {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <!-- Logo -->
+          <div class="logo" onclick="window.location.href='index.html'">
+            <span class="logo-text">Snippet.co</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="nav-desktop">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#contribute">Contribute</a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <svg
+              class="menu-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg
+              class="close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="mobileMenu">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#contribute">Contribute</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Terms Hero -->
+    <section class="terms-hero">
+      <div class="container">
+        <h1 class="terms-hero-title">
+          <span class="gradient-text">Terms of Service</span>
+        </h1>
+        <p class="terms-hero-description">
+          Welcome to Beatify by Snippet.co. By using our service, you agree to
+          these terms. Please read them carefully before creating an account or
+          using our platform.
+        </p>
+        <div class="terms-meta">
+          <div class="terms-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Last Updated: December 27, 2025</span>
+          </div>
+          <div class="terms-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Effective: January 1, 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="terms-content-wrapper">
+      <div class="container">
+        <div class="terms-layout">
+          <!-- Sidebar TOC -->
+          <aside class="terms-sidebar">
+            <nav class="terms-toc">
+              <h3 class="terms-toc-title">Table of Contents</h3>
+              <ul class="terms-toc-list">
+                <li><a href="#section-1">Acceptance of Terms</a></li>
+                <li><a href="#section-2">Service Description</a></li>
+                <li><a href="#section-3">Account Registration</a></li>
+                <li><a href="#section-4">Subscription & Payment</a></li>
+                <li><a href="#section-5">User Conduct</a></li>
+                <li><a href="#section-6">Intellectual Property</a></li>
+                <li><a href="#section-7">Content & Licensing</a></li>
+                <li><a href="#section-8">Termination</a></li>
+                <li><a href="#section-9">Disclaimers</a></li>
+                <li><a href="#section-10">Limitation of Liability</a></li>
+                <li><a href="#section-11">Dispute Resolution</a></li>
+                <li><a href="#section-12">General Provisions</a></li>
+              </ul>
+            </nav>
+          </aside>
+
+          <!-- Main Content -->
+          <main class="terms-main">
+            <!-- Section 1 -->
+            <section id="section-1" class="terms-section">
+              <h2 class="terms-section-title">1. Acceptance of Terms</h2>
+              <p>
+                These Terms of Service ("Terms") constitute a legally binding
+                agreement between you and Snippet.co ("we," "us," "our")
+                regarding your use of the Beatify music streaming service
+                ("Service").
+              </p>
+              <p>
+                By accessing or using Beatify, you acknowledge that you have
+                read, understood, and agree to be bound by these Terms and our
+                <a
+                  href="policy.html"
+                  style="color: #a3e635; text-decoration: none"
+                  >Privacy Policy</a
+                >. If you do not agree to these Terms, you may not use the
+                Service.
+              </p>
+
+              <div class="terms-highlight">
+                <p>
+                  <strong>Important:</strong> These Terms include a mandatory
+                  arbitration clause (Section 11) that affects your rights. You
+                  agree to resolve disputes through binding arbitration rather
+                  than court proceedings, except in limited circumstances.
+                </p>
+              </div>
+
+              <p>
+                We reserve the right to modify these Terms at any time. Changes
+                will be effective immediately upon posting. Your continued use
+                of the Service after changes are posted constitutes acceptance
+                of the modified Terms.
+              </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section-2" class="terms-section">
+              <h2 class="terms-section-title">2. Service Description</h2>
+              <p>
+                Beatify is an AI-powered music streaming platform that provides
+                access to millions of songs, curated playlists, personalized
+                recommendations, and related features.
+              </p>
+
+              <h3 class="terms-section-subtitle">2.1 Service Tiers</h3>
+              <p>We offer two service tiers:</p>
+              <ul>
+                <li>
+                  <strong>Beatify Free:</strong> Ad-supported access with
+                  limited features, including shuffle play and limited skips
+                </li>
+                <li>
+                  <strong>Beatify Premium:</strong> Subscription-based, ad-free
+                  access with full features, including offline downloads,
+                  unlimited skips, and high-quality audio
+                </li>
+              </ul>
+
+              <h3 class="terms-section-subtitle">2.2 Service Availability</h3>
+              <p>
+                While we strive to provide uninterrupted service, we do not
+                guarantee that the Service will be available at all times. The
+                Service may be subject to limitations, delays, and other
+                problems inherent in the use of the internet and electronic
+                communications.
+              </p>
+
+              <h3 class="terms-section-subtitle">2.3 Regional Restrictions</h3>
+              <p>
+                Certain features, content, and pricing may vary by geographic
+                location due to licensing agreements and local laws. Not all
+                content is available in all regions.
+              </p>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="section-3" class="terms-section">
+              <h2 class="terms-section-title">3. Account Registration</h2>
+
+              <h3 class="terms-section-subtitle">3.1 Eligibility</h3>
+              <p>
+                You must be at least 13 years old to use Beatify. Users under 18
+                may require parental consent in certain jurisdictions. By
+                creating an account, you represent that you meet these age
+                requirements.
+              </p>
+
+              <h3 class="terms-section-subtitle">3.2 Account Creation</h3>
+              <p>To use Beatify, you must create an account by providing:</p>
+              <ul>
+                <li>A valid email address</li>
+                <li>A secure password</li>
+                <li>Basic profile information (name, date of birth)</li>
+              </ul>
+              <p>
+                You may also register using third-party authentication services
+                (Google, Apple, Facebook).
+              </p>
+
+              <h3 class="terms-section-subtitle">3.3 Account Security</h3>
+              <p>You are responsible for:</p>
+              <ul>
+                <li>
+                  Maintaining the confidentiality of your account credentials
+                </li>
+                <li>
+                  All activities that occur under your account, including
+                  unauthorized access
+                </li>
+                <li>
+                  Notifying us immediately of any unauthorized use or security
+                  breach
+                </li>
+              </ul>
+
+              <div class="terms-warning">
+                <p>
+                  <strong>Security Warning:</strong> Never share your password
+                  with others. We will never ask for your password via email or
+                  phone. Account sharing violates these Terms and may result in
+                  suspension or termination.
+                </p>
+              </div>
+
+              <h3 class="terms-section-subtitle">
+                3.4 Account Information Accuracy
+              </h3>
+              <p>
+                You agree to provide accurate, current, and complete information
+                during registration and to update such information as needed to
+                maintain its accuracy.
+              </p>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="section-4" class="terms-section">
+              <h2 class="terms-section-title">4. Subscription & Payment</h2>
+
+              <h3 class="terms-section-subtitle">4.1 Premium Subscription</h3>
+              <p>
+                Beatify Premium is a paid subscription service billed on a
+                recurring monthly basis at the rate displayed at the time of
+                purchase (currently $9.99/month, subject to change).
+              </p>
+
+              <h3 class="terms-section-subtitle">4.2 Billing & Renewal</h3>
+              <ul>
+                <li>
+                  Subscriptions automatically renew each billing period unless
+                  canceled
+                </li>
+                <li>
+                  You will be charged at the beginning of each billing cycle
+                </li>
+                <li>Payment is due immediately upon subscription activation</li>
+                <li>
+                  We accept credit cards, debit cards, and other payment methods
+                  as displayed
+                </li>
+              </ul>
+
+              <h3 class="terms-section-subtitle">4.3 Free Trial</h3>
+              <p>
+                New users may be eligible for a free trial period. Trial terms
+                will be clearly stated at signup. If you do not cancel before
+                the trial ends, you will be automatically charged for a paid
+                subscription.
+              </p>
+
+              <h3 class="terms-section-subtitle">4.4 Cancellation</h3>
+              <p>
+                You may cancel your subscription at any time through your
+                account settings. Cancellation takes effect at the end of your
+                current billing period. No refunds will be issued for partial
+                months or unused portions of your subscription.
+              </p>
+
+              <h3 class="terms-section-subtitle">4.5 Price Changes</h3>
+              <p>
+                We reserve the right to change subscription prices with at least
+                30 days' notice. Continued use after price changes constitutes
+                acceptance of the new pricing.
+              </p>
+
+              <h3 class="terms-section-subtitle">4.6 Refunds</h3>
+              <p>
+                All payments are non-refundable except as required by law.
+                Refunds may be granted at our sole discretion in exceptional
+                circumstances.
+              </p>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="section-5" class="terms-section">
+              <h2 class="terms-section-title">5. User Conduct</h2>
+              <p>
+                You agree to use Beatify only for lawful purposes and in
+                accordance with these Terms. You agree NOT to:
+              </p>
+
+              <h3 class="terms-section-subtitle">5.1 Prohibited Activities</h3>
+              <ul>
+                <li>
+                  <strong>Piracy & Infringement:</strong> Download, copy,
+                  redistribute, or share content from Beatify using unauthorized
+                  methods or tools
+                </li>
+                <li>
+                  <strong>Circumvention:</strong> Bypass, disable, or interfere
+                  with security features, DRM, geographic restrictions, or usage
+                  limits
+                </li>
+                <li>
+                  <strong>Automation:</strong> Use bots, scripts, or automated
+                  tools to access the Service or manipulate streams, plays, or
+                  engagement metrics
+                </li>
+                <li>
+                  <strong>Reverse Engineering:</strong> Decompile, disassemble,
+                  or reverse engineer any part of the Service
+                </li>
+                <li>
+                  <strong>Account Sharing:</strong> Share your account
+                  credentials with others or allow multiple users to access a
+                  single account simultaneously
+                </li>
+                <li>
+                  <strong>Abuse & Harassment:</strong> Harass, threaten, or
+                  abuse other users, artists, or our staff
+                </li>
+                <li>
+                  <strong>Illegal Content:</strong> Upload, share, or promote
+                  illegal, harmful, or infringing content
+                </li>
+                <li>
+                  <strong>System Interference:</strong> Introduce viruses,
+                  malware, or attempt to gain unauthorized access to our systems
+                </li>
+              </ul>
+
+              <h3 class="terms-section-subtitle">5.2 Enforcement</h3>
+              <p>
+                Violation of these rules may result in account suspension,
+                termination, legal action, or referral to law enforcement, at
+                our sole discretion.
+              </p>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="section-6" class="terms-section">
+              <h2 class="terms-section-title">6. Intellectual Property</h2>
+
+              <h3 class="terms-section-subtitle">6.1 Ownership</h3>
+              <p>
+                The Beatify Service, including its software, design, text,
+                graphics, logos, icons, audio, and other content (excluding
+                user-generated content and licensed music), is owned by
+                Snippet.co and protected by copyright, trademark, and other
+                intellectual property laws.
+              </p>
+
+              <h3 class="terms-section-subtitle">6.2 Trademarks</h3>
+              <p>
+                "Beatify," "Snippet.co," and associated logos are trademarks of
+                Snippet.co. You may not use these trademarks without our prior
+                written permission.
+              </p>
+
+              <h3 class="terms-section-subtitle">6.3 Limited License</h3>
+              <p>
+                Subject to your compliance with these Terms, we grant you a
+                limited, non-exclusive, non-transferable, revocable license to
+                access and use the Service for personal, non-commercial use
+                only.
+              </p>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="section-7" class="terms-section">
+              <h2 class="terms-section-title">7. Content & Licensing</h2>
+
+              <h3 class="terms-section-subtitle">7.1 Music Licensing</h3>
+              <p>
+                All music available on Beatify is licensed from record labels,
+                distributors, and rights holders. We do not claim ownership of
+                any music content. Your right to stream music is subject to
+                these licenses and may be revoked if content is removed from our
+                catalog.
+              </p>
+
+              <h3 class="terms-section-subtitle">7.2 Offline Downloads</h3>
+              <p>
+                Premium users may download music for offline listening within
+                the Beatify app. Downloaded files:
+              </p>
+              <ul>
+                <li>Are encrypted and cannot be transferred or shared</li>
+                <li>Expire if your subscription is canceled</li>
+                <li>
+                  Must be refreshed periodically to verify your subscription
+                </li>
+                <li>
+                  Are limited to a maximum number of devices (typically 5)
+                </li>
+              </ul>
+
+              <h3 class="terms-section-subtitle">7.3 User-Generated Content</h3>
+              <p>
+                If you create playlists, comments, or other content on Beatify,
+                you grant us a worldwide, non-exclusive, royalty-free license to
+                use, reproduce, and display that content in connection with the
+                Service.
+              </p>
+
+              <h3 class="terms-section-subtitle">7.4 Content Removal</h3>
+              <p>
+                We reserve the right to remove any content from the Service at
+                any time without notice, including due to licensing changes,
+                copyright claims, or violations of our policies.
+              </p>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="section-8" class="terms-section">
+              <h2 class="terms-section-title">8. Termination</h2>
+
+              <h3 class="terms-section-subtitle">8.1 Termination by You</h3>
+              <p>
+                You may terminate your account at any time through account
+                settings or by contacting support. Upon termination, your access
+                to Premium features (if applicable) will continue until the end
+                of your billing period.
+              </p>
+
+              <h3 class="terms-section-subtitle">8.2 Termination by Us</h3>
+              <p>
+                We may suspend or terminate your account immediately, without
+                notice or liability, for any reason, including:
+              </p>
+              <ul>
+                <li>Violation of these Terms</li>
+                <li>Suspected fraudulent activity</li>
+                <li>Non-payment of subscription fees</li>
+                <li>Extended periods of inactivity</li>
+                <li>At our sole discretion</li>
+              </ul>
+
+              <h3 class="terms-section-subtitle">8.3 Effect of Termination</h3>
+              <p>Upon termination:</p>
+              <ul>
+                <li>Your right to access the Service immediately ceases</li>
+                <li>All licenses granted to you terminate</li>
+                <li>Downloaded content becomes inaccessible</li>
+                <li>Your playlists and preferences may be deleted</li>
+                <li>You remain liable for any outstanding charges</li>
+              </ul>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="section-9" class="terms-section">
+              <h2 class="terms-section-title">9. Disclaimers</h2>
+
+              <div class="terms-warning">
+                <p>
+                  <strong>DISCLAIMER:</strong> THE SERVICE IS PROVIDED "AS IS"
+                  AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER
+                  EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY,
+                  FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
+                </p>
+              </div>
+
+              <p>We do not warrant that:</p>
+              <ul>
+                <li>
+                  The Service will be uninterrupted, secure, or error-free
+                </li>
+                <li>
+                  Defects will be corrected or that the Service is free of
+                  viruses or harmful components
+                </li>
+                <li>
+                  Results obtained from using the Service will be accurate or
+                  reliable
+                </li>
+                <li>
+                  Any content will meet your expectations or remain available
+                </li>
+              </ul>
+
+              <p>
+                Your use of the Service is at your own risk. We are not
+                responsible for interruptions caused by your internet
+                connection, device issues, or third-party services.
+              </p>
+            </section>
+
+            <!-- Section 10 -->
+            <section id="section-10" class="terms-section">
+              <h2 class="terms-section-title">10. Limitation of Liability</h2>
+
+              <div class="terms-warning">
+                <p>
+                  <strong>IMPORTANT:</strong> TO THE FULLEST EXTENT PERMITTED BY
+                  LAW, SNIPPET.CO SHALL NOT BE LIABLE FOR ANY INDIRECT,
+                  INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR
+                  ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR
+                  INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL, OR OTHER
+                  INTANGIBLE LOSSES.
+                </p>
+              </div>
+
+              <p>
+                Our total liability to you for all claims arising from or
+                relating to the Service shall not exceed the amount you paid us
+                in the 12 months preceding the claim, or $100, whichever is
+                greater.
+              </p>
+
+              <p>
+                Some jurisdictions do not allow certain limitations of
+                liability, so the above limitations may not apply to you in
+                their entirety.
+              </p>
+            </section>
+
+            <!-- Section 11 -->
+            <section id="section-11" class="terms-section">
+              <h2 class="terms-section-title">11. Dispute Resolution</h2>
+
+              <h3 class="terms-section-subtitle">11.1 Informal Resolution</h3>
+              <p>
+                If you have a dispute, please contact us first at
+                legal@snippet.co. We'll work with you to resolve issues
+                informally within 30 days.
+              </p>
+
+              <h3 class="terms-section-subtitle">11.2 Binding Arbitration</h3>
+              <div class="terms-highlight">
+                <p>
+                  <strong>Arbitration Agreement:</strong> You and Snippet.co
+                  agree to resolve disputes through binding arbitration rather
+                  than in court, except for small claims court actions and
+                  intellectual property disputes.
+                </p>
+              </div>
+
+              <p>
+                Arbitration will be conducted by the American Arbitration
+                Association (AAA) under its Commercial Arbitration Rules. The
+                arbitrator's decision is final and binding, and judgment may be
+                entered in any court of competent jurisdiction.
+              </p>
+
+              <h3 class="terms-section-subtitle">11.3 Class Action Waiver</h3>
+              <p>
+                <strong
+                  >You and Snippet.co agree that disputes will be resolved on an
+                  individual basis.</strong
+                >
+                You waive the right to participate in class actions, class
+                arbitrations, or representative proceedings.
+              </p>
+
+              <h3 class="terms-section-subtitle">11.4 Governing Law</h3>
+              <p>
+                These Terms are governed by the laws of the State of California,
+                USA, without regard to conflict of law principles. Exclusive
+                venue for any non-arbitrable disputes is San Francisco County,
+                California.
+              </p>
+            </section>
+
+            <!-- Section 12 -->
+            <section id="section-12" class="terms-section">
+              <h2 class="terms-section-title">12. General Provisions</h2>
+
+              <h3 class="terms-section-subtitle">12.1 Entire Agreement</h3>
+              <p>
+                These Terms, together with our Privacy Policy, constitute the
+                entire agreement between you and Snippet.co regarding the
+                Service.
+              </p>
+
+              <h3 class="terms-section-subtitle">12.2 Severability</h3>
+              <p>
+                If any provision of these Terms is found to be unenforceable,
+                the remaining provisions will continue in full force and effect.
+              </p>
+
+              <h3 class="terms-section-subtitle">12.3 Waiver</h3>
+              <p>
+                Our failure to enforce any right or provision of these Terms
+                does not constitute a waiver of that right or provision.
+              </p>
+
+              <h3 class="terms-section-subtitle">12.4 Assignment</h3>
+              <p>
+                You may not assign or transfer these Terms or your account
+                without our prior written consent. We may assign these Terms at
+                any time without notice.
+              </p>
+
+              <h3 class="terms-section-subtitle">12.5 Third-Party Services</h3>
+              <p>
+                Beatify may integrate with third-party services (payment
+                processors, analytics, social media). Your use of such services
+                is subject to their own terms and privacy policies.
+              </p>
+
+              <h3 class="terms-section-subtitle">12.6 Export Compliance</h3>
+              <p>
+                You agree to comply with all applicable export laws and
+                restrictions. You may not use the Service if you are located in
+                a country subject to U.S. embargo or if you are on a U.S.
+                government restricted parties list.
+              </p>
+
+              <h3 class="terms-section-subtitle">12.7 Contact Information</h3>
+              <p>For questions about these Terms, contact us at:</p>
+              <ul>
+                <li>
+                  <strong>Email:</strong>
+                  <a
+                    href="mailto:legal@snippet.co"
+                    style="color: #a3e635; text-decoration: none"
+                    >legal@snippet.co</a
+                  >
+                </li>
+                <li>
+                  <strong>Support:</strong>
+                  <a
+                    href="support.html"
+                    style="color: #a3e635; text-decoration: none"
+                    >Visit Support Center</a
+                  >
+                </li>
+                <li>
+                  <strong>Address:</strong> Snippet.co, San Francisco, CA 94103,
+                  USA
+                </li>
+              </ul>
+            </section>
+
+            <!-- Contact Card -->
+            <div class="terms-contact-card">
+              <h3>Questions About These Terms?</h3>
+              <p>
+                Our legal team is available to clarify any terms or answer your
+                questions about your rights and obligations.
+              </p>
+              <a href="support.html" class="terms-contact-btn">
+                Contact Support
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-brand">
+            <a href="/" class="footer-logo">
+              <span class="footer-logo-text">Snippet.co</span>
+            </a>
+            <p class="footer-tagline">
+              Powered by AI. Built for music lovers. Designed for you.
+            </p>
+          </div>
+
+          <!-- Product -->
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#pricing">Pricing</a></li>
+              <li><a href="/support">Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div class="footer-column">
+            <h4>Company</h4>
+             <ul>
+              <li><a href="/team">About us</a></li>
+              <li><a href="/contact">contribute</a></li>
+              <li><a href="/blog">blog</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/policy">Privacy &amp; Policy</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/cookies">Cookies</a></li>
+              <li><a href="/licenses">Licenses</a></li>
+            </ul>
+          </div>
+
+          <!-- Download -->
+          <div class="footer-column footer-download">
+            <h4>Download</h4>
+            <div class="download-links">
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/play-store.png"
+                  alt="Download Beatify on Google Play"
+                />
+              </a>
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/app-store.png"
+                  alt="Download Beatify on the App Store"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 Snippet.co. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Visit Snippet.co on Twitter">
+              <span class="social-icon"><i class="fab fa-x-twitter"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Instagram">
+              <span class="social-icon"><i class="fab fa-instagram"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Facebook">
+              <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+      // Smooth scroll for TOC links
+      document.querySelectorAll(".terms-toc-list a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Active section highlighting in TOC
+      const observerOptions = {
+        root: null,
+        rootMargin: "-100px 0px -80% 0px",
+        threshold: 0,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll(".terms-toc-list a").forEach((link) => {
+              link.classList.remove("active");
+            });
+            const activeLink = document.querySelector(
+              `.terms-toc-list a[href="#${entry.target.id}"]`
+            );
+            if (activeLink) {
+              activeLink.classList.add("active");
+            }
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".terms-section").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>

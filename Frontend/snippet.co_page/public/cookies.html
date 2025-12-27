@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Policy - Beatify by Snippet.co</title>
+    <meta
+      name="description"
+      content="Learn about how Beatify uses cookies and similar tracking technologies to improve your experience and personalize our service."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://snippet.co/cookies" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Cookie Page Specific Styles */
+      .cookie-hero {
+        padding: 140px 0 60px;
+        text-align: center;
+        background: radial-gradient(
+            circle at 50% 0%,
+            rgba(34, 197, 94, 0.08),
+            transparent 60%
+          ),
+          #0a0a0a;
+      }
+
+      .cookie-hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .cookie-hero-description {
+        font-size: 18px;
+        color: #9ca3af;
+        max-width: 700px;
+        margin: 0 auto 24px;
+        line-height: 1.7;
+      }
+
+      .cookie-meta {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: #6b7280;
+      }
+
+      .cookie-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .cookie-meta-item svg {
+        color: #a3e635;
+      }
+
+      .cookie-content-wrapper {
+        padding: 80px 0;
+        background: #0a0a0a;
+      }
+
+      .cookie-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 48px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .cookie-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+      }
+
+      .cookie-toc {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
+      .cookie-toc-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #a3e635;
+        margin-bottom: 16px;
+      }
+
+      .cookie-toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .cookie-toc-list a {
+        display: block;
+        padding: 8px 12px;
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .cookie-toc-list a:hover,
+      .cookie-toc-list a.active {
+        color: #ffffff;
+        background: rgba(132, 204, 22, 0.1);
+      }
+
+      .cookie-main {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 24px;
+        padding: 48px;
+      }
+
+      .cookie-section {
+        margin-bottom: 48px;
+        scroll-margin-top: 100px;
+      }
+
+      .cookie-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .cookie-section-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        background: linear-gradient(90deg, #a3e635, #22c55e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .cookie-section-subtitle {
+        font-size: 20px;
+        font-weight: 600;
+        color: #e5e7eb;
+        margin-top: 32px;
+        margin-bottom: 12px;
+      }
+
+      .cookie-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #d1d5db;
+        margin-bottom: 16px;
+      }
+
+      .cookie-section ul,
+      .cookie-section ol {
+        margin: 16px 0;
+        padding-left: 24px;
+        color: #d1d5db;
+      }
+
+      .cookie-section li {
+        margin-bottom: 12px;
+        line-height: 1.8;
+      }
+
+      .cookie-highlight {
+        background: rgba(132, 204, 22, 0.1);
+        border-left: 3px solid #a3e635;
+        padding: 16px 20px;
+        margin: 24px 0;
+        border-radius: 8px;
+      }
+
+      .cookie-highlight p {
+        margin-bottom: 0;
+        color: #e5e7eb;
+      }
+
+      .cookie-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        background: rgba(10, 10, 10, 0.5);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .cookie-table th,
+      .cookie-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .cookie-table th {
+        background: rgba(132, 204, 22, 0.1);
+        color: #a3e635;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .cookie-table td {
+        color: #d1d5db;
+        font-size: 14px;
+      }
+
+      .cookie-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .cookie-settings-card {
+        background: linear-gradient(
+          145deg,
+          rgba(15, 23, 42, 0.95),
+          rgba(0, 0, 0, 0.9)
+        );
+        border: 1px solid rgba(132, 204, 22, 0.4);
+        border-radius: 20px;
+        padding: 32px;
+        margin-top: 48px;
+      }
+
+      .cookie-settings-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #ffffff;
+      }
+
+      .cookie-settings-card p {
+        margin-bottom: 20px;
+        color: #9ca3af;
+      }
+
+      .cookie-control-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+        background: rgba(10, 10, 10, 0.5);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .cookie-control-info h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #e5e7eb;
+        margin-bottom: 4px;
+      }
+
+      .cookie-control-info p {
+        font-size: 14px;
+        color: #9ca3af;
+        margin: 0;
+      }
+
+      .cookie-toggle {
+        position: relative;
+        width: 50px;
+        height: 26px;
+        background: rgba(148, 163, 184, 0.3);
+        border-radius: 13px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .cookie-toggle.active {
+        background: linear-gradient(90deg, #84cc16, #22c55e);
+      }
+
+      .cookie-toggle.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .cookie-toggle::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        background: #ffffff;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+      }
+
+      .cookie-toggle.active::after {
+        transform: translateX(24px);
+      }
+
+      .cookie-save-btn {
+        width: 100%;
+        padding: 14px 32px;
+        background: linear-gradient(90deg, #84cc16, #22c55e, #10b981);
+        color: #000;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(132, 204, 22, 0.4);
+        margin-top: 8px;
+      }
+
+      .cookie-save-btn:hover {
+        background: linear-gradient(90deg, #a3e635, #4ade80, #34d399);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 1024px) {
+        .cookie-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .cookie-sidebar {
+          position: static;
+        }
+
+        .cookie-toc {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .cookie-hero-title {
+          font-size: 36px;
+        }
+
+        .cookie-hero {
+          padding: 120px 0 40px;
+        }
+
+        .cookie-main {
+          padding: 32px 24px;
+        }
+
+        .cookie-section-title {
+          font-size: 24px;
+        }
+
+        .cookie-section-subtitle {
+          font-size: 18px;
+        }
+
+        .cookie-control-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <!-- Logo -->
+          <div class="logo" onclick="window.location.href='index.html'">
+            <span class="logo-text">Snippet.co</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="nav-desktop">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#contribute">Contribute</a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <svg
+              class="menu-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg
+              class="close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="mobileMenu">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#contribute">Contribute</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Cookie Hero -->
+    <section class="cookie-hero">
+      <div class="container">
+        <h1 class="cookie-hero-title">
+          <span class="gradient-text">Cookie Policy</span>
+        </h1>
+        <p class="cookie-hero-description">
+          Learn how Beatify uses cookies and similar technologies to enhance
+          your experience, personalize content, and improve our service.
+        </p>
+        <div class="cookie-meta">
+          <div class="cookie-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Last Updated: December 27, 2025</span>
+          </div>
+          <div class="cookie-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Effective: January 1, 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cookie Content -->
+    <section class="cookie-content-wrapper">
+      <div class="container">
+        <div class="cookie-layout">
+          <!-- Sidebar TOC -->
+          <aside class="cookie-sidebar">
+            <nav class="cookie-toc">
+              <h3 class="cookie-toc-title">Table of Contents</h3>
+              <ul class="cookie-toc-list">
+                <li><a href="#section-1">What Are Cookies?</a></li>
+                <li><a href="#section-2">How We Use Cookies</a></li>
+                <li><a href="#section-3">Types of Cookies</a></li>
+                <li><a href="#section-4">Third-Party Cookies</a></li>
+                <li><a href="#section-5">Managing Cookies</a></li>
+                <li><a href="#section-6">Cookie Consent</a></li>
+                <li><a href="#section-7">Updates to Policy</a></li>
+                <li><a href="#section-8">Contact Us</a></li>
+              </ul>
+            </nav>
+          </aside>
+
+          <!-- Main Content -->
+          <main class="cookie-main">
+            <!-- Section 1 -->
+            <section id="section-1" class="cookie-section">
+              <h2 class="cookie-section-title">1. What Are Cookies?</h2>
+              <p>
+                Cookies are small text files that are placed on your device
+                (computer, smartphone, tablet) when you visit a website. They
+                are widely used to make websites work more efficiently, provide
+                a better user experience, and deliver information to website
+                owners.
+              </p>
+
+              <h3 class="cookie-section-subtitle">1.1 How Cookies Work</h3>
+              <p>
+                When you visit Beatify, we may place cookies on your device.
+                These cookies help us:
+              </p>
+              <ul>
+                <li>Remember your login status and preferences</li>
+                <li>Understand how you use our service</li>
+                <li>Personalize your music recommendations</li>
+                <li>Deliver relevant content and features</li>
+                <li>Analyze site performance and usage patterns</li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">
+                1.2 Cookies vs. Similar Technologies
+              </h3>
+              <p>
+                In addition to cookies, we may use similar technologies such as:
+              </p>
+              <ul>
+                <li>
+                  <strong>Web Beacons (Pixels):</strong> Tiny graphics embedded
+                  in emails or web pages to track activity
+                </li>
+                <li>
+                  <strong>Local Storage:</strong> Data stored directly in your
+                  browser for offline functionality
+                </li>
+                <li>
+                  <strong>Session Storage:</strong> Temporary data that expires
+                  when you close your browser
+                </li>
+                <li>
+                  <strong>Device Fingerprinting:</strong> Collecting device
+                  characteristics for identification
+                </li>
+              </ul>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section-2" class="cookie-section">
+              <h2 class="cookie-section-title">2. How We Use Cookies</h2>
+              <p>We use cookies for the following purposes:</p>
+
+              <h3 class="cookie-section-subtitle">2.1 Essential Functions</h3>
+              <ul>
+                <li>
+                  <strong>Authentication:</strong> Keep you logged in across
+                  browsing sessions
+                </li>
+                <li>
+                  <strong>Security:</strong> Detect and prevent fraudulent
+                  activity
+                </li>
+                <li>
+                  <strong>Session Management:</strong> Maintain your playback
+                  state and queue
+                </li>
+                <li>
+                  <strong>Load Balancing:</strong> Distribute traffic across our
+                  servers
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">2.2 Personalization</h3>
+              <ul>
+                <li>
+                  <strong>Recommendations:</strong> Analyze your listening
+                  history to suggest music
+                </li>
+                <li>
+                  <strong>Preferences:</strong> Remember your audio quality,
+                  language, and theme settings
+                </li>
+                <li>
+                  <strong>Playlists:</strong> Store your recently played tracks
+                  and custom playlists
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">
+                2.3 Analytics & Performance
+              </h3>
+              <ul>
+                <li>
+                  <strong>Usage Analytics:</strong> Understand which features
+                  are most popular
+                </li>
+                <li>
+                  <strong>Error Tracking:</strong> Identify and fix technical
+                  issues
+                </li>
+                <li>
+                  <strong>A/B Testing:</strong> Test new features with select
+                  users
+                </li>
+                <li>
+                  <strong>Performance Monitoring:</strong> Measure load times
+                  and optimize speed
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">
+                2.4 Advertising (Free Tier)
+              </h3>
+              <p>
+                For users on the free tier, we use cookies to deliver relevant
+                advertisements:
+              </p>
+              <ul>
+                <li>Show ads based on your interests and listening habits</li>
+                <li>Limit the number of times you see the same ad</li>
+                <li>Measure ad effectiveness and campaign performance</li>
+              </ul>
+              <p>
+                <em
+                  >Note: Premium subscribers do not receive ads and are not
+                  subject to advertising cookies.</em
+                >
+              </p>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="section-3" class="cookie-section">
+              <h2 class="cookie-section-title">3. Types of Cookies We Use</h2>
+
+              <table class="cookie-table">
+                <thead>
+                  <tr>
+                    <th>Cookie Type</th>
+                    <th>Purpose</th>
+                    <th>Duration</th>
+                    <th>Required?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Strictly Necessary</td>
+                    <td>
+                      Enable core functionality like login, security, and
+                      playback
+                    </td>
+                    <td>Session / 1 year</td>
+                    <td>Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Functional</td>
+                    <td>
+                      Remember your preferences, settings, and personalization
+                    </td>
+                    <td>1-2 years</td>
+                    <td>No</td>
+                  </tr>
+                  <tr>
+                    <td>Performance</td>
+                    <td>
+                      Analyze site usage, measure performance, and track errors
+                    </td>
+                    <td>2 years</td>
+                    <td>No</td>
+                  </tr>
+                  <tr>
+                    <td>Targeting / Advertising</td>
+                    <td>
+                      Deliver personalized ads and measure campaign
+                      effectiveness
+                    </td>
+                    <td>1 year</td>
+                    <td>No</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3 class="cookie-section-subtitle">
+                3.1 Session vs. Persistent Cookies
+              </h3>
+              <ul>
+                <li>
+                  <strong>Session Cookies:</strong> Temporary cookies that
+                  expire when you close your browser. Used for authentication
+                  and navigation.
+                </li>
+                <li>
+                  <strong>Persistent Cookies:</strong> Remain on your device for
+                  a set period (or until you delete them). Used for preferences
+                  and analytics.
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">
+                3.2 First-Party vs. Third-Party
+              </h3>
+              <ul>
+                <li>
+                  <strong>First-Party Cookies:</strong> Set by Beatify directly
+                  to provide core functionality and personalization.
+                </li>
+                <li>
+                  <strong>Third-Party Cookies:</strong> Set by external services
+                  (analytics, advertising, payment processors) we integrate
+                  with.
+                </li>
+              </ul>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="section-4" class="cookie-section">
+              <h2 class="cookie-section-title">4. Third-Party Cookies</h2>
+              <p>
+                Beatify integrates with trusted third-party services that may
+                set their own cookies. These services are subject to their own
+                privacy policies and cookie practices.
+              </p>
+
+              <h3 class="cookie-section-subtitle">4.1 Analytics Partners</h3>
+              <ul>
+                <li>
+                  <strong>Google Analytics:</strong> Tracks user behavior,
+                  demographics, and site performance
+                </li>
+                <li>
+                  <strong>Mixpanel:</strong> Measures user engagement and
+                  feature adoption
+                </li>
+                <li>
+                  <strong>Amplitude:</strong> Analyzes product usage and
+                  retention metrics
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">4.2 Advertising Partners</h3>
+              <p>For free-tier users, we work with advertising networks:</p>
+              <ul>
+                <li>
+                  <strong>Google Ads:</strong> Delivers targeted display and
+                  video ads
+                </li>
+                <li>
+                  <strong>Facebook Pixel:</strong> Tracks conversions and
+                  retargets users
+                </li>
+                <li>
+                  <strong>Ad Exchanges:</strong> Real-time bidding platforms for
+                  programmatic ads
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">4.3 Payment & Support</h3>
+              <ul>
+                <li>
+                  <strong>Stripe & PayPal:</strong> Process payments securely
+                </li>
+                <li>
+                  <strong>Zendesk & Intercom:</strong> Provide customer support
+                  and live chat
+                </li>
+              </ul>
+
+              <div class="cookie-highlight">
+                <p>
+                  <strong>Note:</strong> We do not control third-party cookies.
+                  To learn more about how these services use cookies, please
+                  review their respective privacy policies.
+                </p>
+              </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="section-5" class="cookie-section">
+              <h2 class="cookie-section-title">5. Managing Cookies</h2>
+              <p>
+                You have several options to control or disable cookies based on
+                your preferences.
+              </p>
+
+              <h3 class="cookie-section-subtitle">5.1 Browser Settings</h3>
+              <p>
+                Most browsers allow you to manage cookies through their
+                settings:
+              </p>
+              <ul>
+                <li>
+                  <strong>Google Chrome:</strong> Settings → Privacy and
+                  Security → Cookies and other site data
+                </li>
+                <li>
+                  <strong>Firefox:</strong> Settings → Privacy & Security →
+                  Cookies and Site Data
+                </li>
+                <li>
+                  <strong>Safari:</strong> Preferences → Privacy → Manage
+                  Website Data
+                </li>
+                <li>
+                  <strong>Edge:</strong> Settings → Privacy, search, and
+                  services → Cookies
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">
+                5.2 Cookie Preferences Center
+              </h3>
+              <p>
+                Use our Cookie Preferences tool below to customize which types
+                of cookies you allow. Note that disabling certain cookies may
+                limit functionality.
+              </p>
+
+              <h3 class="cookie-section-subtitle">5.3 Opt-Out Tools</h3>
+              <p>
+                To opt out of specific tracking and advertising cookies, visit:
+              </p>
+              <ul>
+                <li>
+                  <a
+                    href="https://optout.networkadvertising.org/"
+                    target="_blank"
+                    style="color: #a3e635; text-decoration: none"
+                    >Network Advertising Initiative (NAI) Opt-Out</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://optout.aboutads.info/"
+                    target="_blank"
+                    style="color: #a3e635; text-decoration: none"
+                    >Digital Advertising Alliance (DAA) Opt-Out</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.youronlinechoices.com/"
+                    target="_blank"
+                    style="color: #a3e635; text-decoration: none"
+                    >Your Online Choices (EU)</a
+                  >
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">5.4 Mobile Devices</h3>
+              <p>
+                To manage tracking on mobile devices, adjust your device
+                settings:
+              </p>
+              <ul>
+                <li>
+                  <strong>iOS:</strong> Settings → Privacy → Tracking → Limit Ad
+                  Tracking
+                </li>
+                <li>
+                  <strong>Android:</strong> Settings → Google → Ads → Opt out of
+                  Ads Personalization
+                </li>
+              </ul>
+
+              <div class="cookie-highlight">
+                <p>
+                  <strong>Important:</strong> Blocking or deleting cookies may
+                  impact your Beatify experience. Some features may not function
+                  properly, and you may lose personalized settings.
+                </p>
+              </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="section-6" class="cookie-section">
+              <h2 class="cookie-section-title">6. Cookie Consent</h2>
+
+              <h3 class="cookie-section-subtitle">6.1 How We Obtain Consent</h3>
+              <p>
+                When you first visit Beatify, we display a cookie consent banner
+                that explains our use of cookies. You can:
+              </p>
+              <ul>
+                <li>
+                  <strong>Accept All:</strong> Consent to all types of cookies
+                </li>
+                <li>
+                  <strong>Reject Non-Essential:</strong> Allow only strictly
+                  necessary cookies
+                </li>
+                <li>
+                  <strong>Customize:</strong> Select specific cookie categories
+                  to enable
+                </li>
+              </ul>
+
+              <h3 class="cookie-section-subtitle">6.2 Withdrawing Consent</h3>
+              <p>
+                You can change your cookie preferences at any time by accessing
+                the Cookie Preferences Center or adjusting your browser
+                settings. Withdrawing consent does not affect the lawfulness of
+                processing based on consent before withdrawal.
+              </p>
+
+              <h3 class="cookie-section-subtitle">6.3 EU & UK Users</h3>
+              <p>
+                If you're in the European Union or United Kingdom, we comply
+                with the ePrivacy Directive and GDPR. We will not use
+                non-essential cookies without your explicit consent.
+              </p>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="section-7" class="cookie-section">
+              <h2 class="cookie-section-title">7. Updates to This Policy</h2>
+              <p>
+                We may update this Cookie Policy from time to time to reflect
+                changes in our practices, technologies, or legal requirements.
+                When we make significant changes, we'll notify you through:
+              </p>
+              <ul>
+                <li>A prominent notice on our website</li>
+                <li>An in-app notification</li>
+                <li>Email to your registered address</li>
+              </ul>
+              <p>
+                The "Last Updated" date at the top of this policy indicates when
+                it was last revised. Your continued use of Beatify after changes
+                are posted constitutes acceptance of the updated policy.
+              </p>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="section-8" class="cookie-section">
+              <h2 class="cookie-section-title">8. Contact Us</h2>
+              <p>
+                If you have questions or concerns about our use of cookies,
+                please contact us:
+              </p>
+              <ul>
+                <li>
+                  <strong>Email:</strong>
+                  <a
+                    href="mailto:privacy@snippet.co"
+                    style="color: #a3e635; text-decoration: none"
+                    >privacy@snippet.co</a
+                  >
+                </li>
+                <li>
+                  <strong>Support:</strong>
+                  <a
+                    href="support.html"
+                    style="color: #a3e635; text-decoration: none"
+                    >Visit our Support Center</a
+                  >
+                </li>
+                <li>
+                  <strong>Privacy Policy:</strong>
+                  <a
+                    href="policy.html"
+                    style="color: #a3e635; text-decoration: none"
+                    >Read our full Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <strong>Address:</strong> Snippet.co, San Francisco, CA 94103,
+                  USA
+                </li>
+              </ul>
+            </section>
+
+            <!-- Cookie Settings Card -->
+            <div class="cookie-settings-card">
+              <h3>Manage Your Cookie Preferences</h3>
+              <p>
+                Choose which types of cookies you want to allow. Essential
+                cookies cannot be disabled as they are necessary for the site to
+                function.
+              </p>
+
+              <div class="cookie-control-item">
+                <div class="cookie-control-info">
+                  <h4>Strictly Necessary Cookies</h4>
+                  <p>
+                    Required for authentication, security, and core
+                    functionality
+                  </p>
+                </div>
+                <div class="cookie-toggle active disabled"></div>
+              </div>
+
+              <div class="cookie-control-item">
+                <div class="cookie-control-info">
+                  <h4>Functional Cookies</h4>
+                  <p>
+                    Remember your preferences and personalize your experience
+                  </p>
+                </div>
+                <div
+                  class="cookie-toggle active"
+                  onclick="toggleCookie(this)"
+                ></div>
+              </div>
+
+              <div class="cookie-control-item">
+                <div class="cookie-control-info">
+                  <h4>Performance Cookies</h4>
+                  <p>Help us analyze site usage and improve performance</p>
+                </div>
+                <div
+                  class="cookie-toggle active"
+                  onclick="toggleCookie(this)"
+                ></div>
+              </div>
+
+              <div class="cookie-control-item">
+                <div class="cookie-control-info">
+                  <h4>Advertising Cookies</h4>
+                  <p>
+                    Deliver personalized ads based on your interests (Free tier
+                    only)
+                  </p>
+                </div>
+                <div class="cookie-toggle" onclick="toggleCookie(this)"></div>
+              </div>
+
+              <button class="cookie-save-btn" onclick="saveCookiePreferences()">
+                Save Preferences
+              </button>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="footer-logo-text">Snippet.co</span>
+            </a>
+            <p class="footer-tagline">
+              Powered by AI. Built for music lovers. Designed for you.
+            </p>
+          </div>
+
+          <!-- Product -->
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#pricing">Pricing</a></li>
+              <li><a href="/support">Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/team">About us</a></li>
+              <li><a href="index.html#contribute">contribute</a></li>
+              <li><a href="/contact">Careers</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/policy">Privacy &amp; Policy</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/cookies">Cookies</a></li>
+              <li><a href="/licenses">Licenses</a></li>
+            </ul>
+          </div>
+
+          <!-- Download -->
+          <div class="footer-column footer-download">
+            <h4>Download</h4>
+            <div class="download-links">
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/play-store.png"
+                  alt="Download Beatify on Google Play"
+                />
+              </a>
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/app-store.png"
+                  alt="Download Beatify on the App Store"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 Snippet.co. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Visit Snippet.co on Twitter">
+              <span class="social-icon"><i class="fab fa-x-twitter"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Instagram">
+              <span class="social-icon"><i class="fab fa-instagram"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Facebook">
+              <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+      // Smooth scroll for TOC links
+      document.querySelectorAll(".cookie-toc-list a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Active section highlighting in TOC
+      const observerOptions = {
+        root: null,
+        rootMargin: "-100px 0px -80% 0px",
+        threshold: 0,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll(".cookie-toc-list a").forEach((link) => {
+              link.classList.remove("active");
+            });
+            const activeLink = document.querySelector(
+              `.cookie-toc-list a[href="#${entry.target.id}"]`
+            );
+            if (activeLink) {
+              activeLink.classList.add("active");
+            }
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".cookie-section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Cookie toggle functionality
+      function toggleCookie(element) {
+        if (!element.classList.contains("disabled")) {
+          element.classList.toggle("active");
+        }
+      }
+
+      // Save cookie preferences
+      function saveCookiePreferences() {
+        const preferences = {
+          essential: true, // Always true
+          functional: document
+            .querySelectorAll(".cookie-toggle")[1]
+            .classList.contains("active"),
+          performance: document
+            .querySelectorAll(".cookie-toggle")[2]
+            .classList.contains("active"),
+          advertising: document
+            .querySelectorAll(".cookie-toggle")[3]
+            .classList.contains("active"),
+        };
+
+        // Save to localStorage
+        localStorage.setItem("cookiePreferences", JSON.stringify(preferences));
+
+        // Show confirmation
+        alert("Your cookie preferences have been saved successfully!");
+      }
+
+      // Load saved preferences on page load
+      window.addEventListener("DOMContentLoaded", function () {
+        const saved = localStorage.getItem("cookiePreferences");
+        if (saved) {
+          const preferences = JSON.parse(saved);
+          const toggles = document.querySelectorAll(".cookie-toggle");
+
+          // Apply saved preferences (skip first toggle as it's disabled)
+          if (!preferences.functional) toggles[1].classList.remove("active");
+          if (!preferences.performance) toggles[2].classList.remove("active");
+          if (preferences.advertising) toggles[3].classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>

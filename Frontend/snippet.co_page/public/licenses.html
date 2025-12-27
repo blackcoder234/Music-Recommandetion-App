@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Licenses & Attribution - Beatify by Snippet.co</title>
+    <meta
+      name="description"
+      content="View licenses, attributions, and legal notices for Beatify. Learn about our software licenses, music rights, and third-party components."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://snippet.co/licenses" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* License Page Specific Styles */
+      .license-hero {
+        padding: 140px 0 60px;
+        text-align: center;
+        background: radial-gradient(
+            circle at 50% 0%,
+            rgba(59, 130, 246, 0.08),
+            transparent 60%
+          ),
+          #0a0a0a;
+      }
+
+      .license-hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .license-hero-description {
+        font-size: 18px;
+        color: #9ca3af;
+        max-width: 700px;
+        margin: 0 auto 24px;
+        line-height: 1.7;
+      }
+
+      .license-meta {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: #6b7280;
+      }
+
+      .license-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .license-meta-item svg {
+        color: #a3e635;
+      }
+
+      .license-content-wrapper {
+        padding: 80px 0;
+        background: #0a0a0a;
+      }
+
+      .license-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 48px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .license-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+      }
+
+      .license-toc {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
+      .license-toc-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #a3e635;
+        margin-bottom: 16px;
+      }
+
+      .license-toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .license-toc-list a {
+        display: block;
+        padding: 8px 12px;
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .license-toc-list a:hover,
+      .license-toc-list a.active {
+        color: #ffffff;
+        background: rgba(132, 204, 22, 0.1);
+      }
+
+      .license-main {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 24px;
+        padding: 48px;
+      }
+
+      .license-section {
+        margin-bottom: 48px;
+        scroll-margin-top: 100px;
+      }
+
+      .license-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .license-section-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        background: linear-gradient(90deg, #a3e635, #22c55e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .license-section-subtitle {
+        font-size: 20px;
+        font-weight: 600;
+        color: #e5e7eb;
+        margin-top: 32px;
+        margin-bottom: 12px;
+      }
+
+      .license-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #d1d5db;
+        margin-bottom: 16px;
+      }
+
+      .license-section ul,
+      .license-section ol {
+        margin: 16px 0;
+        padding-left: 24px;
+        color: #d1d5db;
+      }
+
+      .license-section li {
+        margin-bottom: 12px;
+        line-height: 1.8;
+      }
+
+      .license-highlight {
+        background: rgba(132, 204, 22, 0.1);
+        border-left: 3px solid #a3e635;
+        padding: 16px 20px;
+        margin: 24px 0;
+        border-radius: 8px;
+      }
+
+      .license-highlight p {
+        margin-bottom: 0;
+        color: #e5e7eb;
+      }
+
+      .license-code-block {
+        background: rgba(10, 10, 10, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 24px 0;
+        overflow-x: auto;
+      }
+
+      .license-code-block pre {
+        margin: 0;
+        color: #e5e7eb;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      .license-card {
+        background: rgba(10, 10, 10, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 16px;
+        padding: 24px;
+        margin: 20px 0;
+      }
+
+      .license-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .license-card-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #e5e7eb;
+      }
+
+      .license-badge {
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .license-badge-mit {
+        background: rgba(34, 197, 94, 0.2);
+        color: #4ade80;
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+
+      .license-badge-apache {
+        background: rgba(59, 130, 246, 0.2);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+      }
+
+      .license-badge-gpl {
+        background: rgba(168, 85, 247, 0.2);
+        color: #c084fc;
+        border: 1px solid rgba(168, 85, 247, 0.3);
+      }
+
+      .license-badge-proprietary {
+        background: rgba(239, 68, 68, 0.2);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+
+      .license-card-content {
+        font-size: 14px;
+        color: #9ca3af;
+        line-height: 1.6;
+      }
+
+      .license-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        color: #a3e635;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .license-card-link:hover {
+        color: #d9f99d;
+      }
+
+      .license-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        background: rgba(10, 10, 10, 0.5);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .license-table th,
+      .license-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .license-table th {
+        background: rgba(132, 204, 22, 0.1);
+        color: #a3e635;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .license-table td {
+        color: #d1d5db;
+        font-size: 14px;
+      }
+
+      .license-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      @media (max-width: 1024px) {
+        .license-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .license-sidebar {
+          position: static;
+        }
+
+        .license-toc {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .license-hero-title {
+          font-size: 36px;
+        }
+
+        .license-hero {
+          padding: 120px 0 40px;
+        }
+
+        .license-main {
+          padding: 32px 24px;
+        }
+
+        .license-section-title {
+          font-size: 24px;
+        }
+
+        .license-section-subtitle {
+          font-size: 18px;
+        }
+
+        .license-card-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <!-- Logo -->
+          <div class="logo" onclick="window.location.href='index.html'">
+            <span class="logo-text">Snippet.co</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="nav-desktop">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#contribute">Contribute</a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <svg
+              class="menu-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg
+              class="close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="mobileMenu">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#contribute">Contribute</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- License Hero -->
+    <section class="license-hero">
+      <div class="container">
+        <h1 class="license-hero-title">
+          <span class="gradient-text">Licenses & Attribution</span>
+        </h1>
+        <p class="license-hero-description">
+          Beatify is built with the help of amazing open-source projects and
+          licensed content. This page provides legal notices, attributions, and
+          licensing information for all components used in our service.
+        </p>
+        <div class="license-meta">
+          <div class="license-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Last Updated: December 27, 2025</span>
+          </div>
+          <div class="license-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            <span>Version 1.0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- License Content -->
+    <section class="license-content-wrapper">
+      <div class="container">
+        <div class="license-layout">
+          <!-- Sidebar TOC -->
+          <aside class="license-sidebar">
+            <nav class="license-toc">
+              <h3 class="license-toc-title">Table of Contents</h3>
+              <ul class="license-toc-list">
+                <li><a href="#section-1">Software License</a></li>
+                <li><a href="#section-2">Music Content Rights</a></li>
+                <li><a href="#section-3">Open Source Components</a></li>
+                <li><a href="#section-4">Frontend Libraries</a></li>
+                <li><a href="#section-5">Backend Services</a></li>
+                <li><a href="#section-6">Fonts & Icons</a></li>
+                <li><a href="#section-7">Images & Media</a></li>
+                <li><a href="#section-8">API & Data Sources</a></li>
+              </ul>
+            </nav>
+          </aside>
+
+          <!-- Main Content -->
+          <main class="license-main">
+            <!-- Section 1 -->
+            <section id="section-1" class="license-section">
+              <h2 class="license-section-title">1. Software License</h2>
+              <p>
+                The Beatify application and its proprietary components are owned
+                and licensed by Snippet.co. All rights reserved.
+              </p>
+
+              <div class="license-highlight">
+                <p>
+                  <strong>Proprietary License:</strong> Beatify's core software,
+                  including the AI recommendation engine, authentication system,
+                  and streaming infrastructure, is proprietary and protected by
+                  copyright law. Unauthorized use, reproduction, or distribution
+                  is strictly prohibited.
+                </p>
+              </div>
+
+              <h3 class="license-section-subtitle">1.1 Copyright Notice</h3>
+              <div class="license-code-block">
+                <pre>© 2025 Snippet.co. All rights reserved.
+
+Beatify Music Streaming Platform
+Version 1.0
+
+This software and associated documentation are the proprietary 
+property of Snippet.co. Unauthorized copying, modification, 
+distribution, or use is prohibited without explicit written 
+permission from Snippet.co.
+
+For licensing inquiries, contact: legal@snippet.co</pre>
+              </div>
+
+              <h3 class="license-section-subtitle">1.2 User License Grant</h3>
+              <p>
+                Subject to the Terms of Service, Snippet.co grants you a
+                limited, non-exclusive, non-transferable, revocable license to
+                access and use Beatify for personal, non-commercial purposes
+                only.
+              </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section-2" class="license-section">
+              <h2 class="license-section-title">2. Music Content Rights</h2>
+              <p>
+                All music content available on Beatify is licensed from record
+                labels, publishers, distributors, and independent artists. We do
+                not claim ownership of any musical works, recordings, or
+                compositions.
+              </p>
+
+              <h3 class="license-section-subtitle">2.1 Music Licensing Partners</h3>
+              <table class="license-table">
+                <thead>
+                  <tr>
+                    <th>Organization</th>
+                    <th>Type</th>
+                    <th>Coverage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ASCAP</td>
+                    <td>Performance Rights</td>
+                    <td>Public performance licenses for compositions</td>
+                  </tr>
+                  <tr>
+                    <td>BMI</td>
+                    <td>Performance Rights</td>
+                    <td>Public performance licenses for compositions</td>
+                  </tr>
+                  <tr>
+                    <td>SESAC</td>
+                    <td>Performance Rights</td>
+                    <td>Public performance licenses for compositions</td>
+                  </tr>
+                  <tr>
+                    <td>SoundExchange</td>
+                    <td>Digital Performance</td>
+                    <td>Statutory licenses for sound recordings</td>
+                  </tr>
+                  <tr>
+                    <td>Record Labels</td>
+                    <td>Master Recording Rights</td>
+                    <td>Direct licensing agreements for recordings</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3 class="license-section-subtitle">2.2 Rights & Restrictions</h3>
+              <ul>
+                <li>
+                  <strong>Streaming Rights:</strong> You may stream music within
+                  the Beatify app for personal listening
+                </li>
+                <li>
+                  <strong>Offline Downloads:</strong> Premium users may download
+                  encrypted files for offline use within the app only
+                </li>
+                <li>
+                  <strong>Restrictions:</strong> You may not copy, redistribute,
+                  sell, or publicly perform any music content
+                </li>
+                <li>
+                  <strong>Artist Attribution:</strong> All music is credited to
+                  original artists and rights holders
+                </li>
+              </ul>
+
+              <div class="license-highlight">
+                <p>
+                  <strong>Copyright Notice:</strong> All music available on
+                  Beatify is protected by copyright. Artists, composers, and
+                  rights holders retain all ownership. Beatify operates under
+                  valid licensing agreements to stream this content to you.
+                </p>
+              </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="section-3" class="license-section">
+              <h2 class="license-section-title">3. Open Source Components</h2>
+              <p>
+                Beatify is built using open-source libraries and frameworks. We
+                are grateful to the open-source community and acknowledge all
+                contributors. Below are the major open-source components used in
+                our application.
+              </p>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">React</h3>
+                  <span class="license-badge license-badge-mit">MIT</span>
+                </div>
+                <div class="license-card-content">
+                  A JavaScript library for building user interfaces. Used for
+                  our web and mobile applications.
+                  <br />
+                  <strong>Copyright:</strong> Facebook, Inc. and its affiliates
+                  <br />
+                  <a
+                    href="https://github.com/facebook/react"
+                    target="_blank"
+                    class="license-card-link"
+                  >
+                    View on GitHub
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Node.js</h3>
+                  <span class="license-badge license-badge-mit">MIT</span>
+                </div>
+                <div class="license-card-content">
+                  JavaScript runtime built on Chrome's V8 engine. Powers our
+                  backend infrastructure.
+                  <br />
+                  <strong>Copyright:</strong> Node.js contributors
+                  <br />
+                  <a
+                    href="https://github.com/nodejs/node"
+                    target="_blank"
+                    class="license-card-link"
+                  >
+                    View on GitHub
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Express.js</h3>
+                  <span class="license-badge license-badge-mit">MIT</span>
+                </div>
+                <div class="license-card-content">
+                  Fast, minimalist web framework for Node.js. Used for API
+                  routing and middleware.
+                  <br />
+                  <strong>Copyright:</strong> TJ Holowaychuk and contributors
+                  <br />
+                  <a
+                    href="https://github.com/expressjs/express"
+                    target="_blank"
+                    class="license-card-link"
+                  >
+                    View on GitHub
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">MongoDB</h3>
+                  <span class="license-badge license-badge-apache"
+                    >Apache 2.0</span
+                  >
+                </div>
+                <div class="license-card-content">
+                  NoSQL database for storing user data, playlists, and
+                  preferences.
+                  <br />
+                  <strong>Copyright:</strong> MongoDB, Inc.
+                  <br />
+                  <a
+                    href="https://github.com/mongodb/mongo"
+                    target="_blank"
+                    class="license-card-link"
+                  >
+                    View on GitHub
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="section-4" class="license-section">
+              <h2 class="license-section-title">4. Frontend Libraries</h2>
+              <p>
+                The following JavaScript libraries and tools are used in our web
+                and mobile applications:
+              </p>
+
+              <table class="license-table">
+                <thead>
+                  <tr>
+                    <th>Library</th>
+                    <th>Version</th>
+                    <th>License</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Axios</td>
+                    <td>1.6.x</td>
+                    <td>MIT</td>
+                    <td>HTTP client for API requests</td>
+                  </tr>
+                  <tr>
+                    <td>Redux</td>
+                    <td>5.0.x</td>
+                    <td>MIT</td>
+                    <td>State management</td>
+                  </tr>
+                  <tr>
+                    <td>React Router</td>
+                    <td>6.x</td>
+                    <td>MIT</td>
+                    <td>Client-side routing</td>
+                  </tr>
+                  <tr>
+                    <td>Tailwind CSS</td>
+                    <td>3.x</td>
+                    <td>MIT</td>
+                    <td>Utility-first CSS framework</td>
+                  </tr>
+                  <tr>
+                    <td>Framer Motion</td>
+                    <td>11.x</td>
+                    <td>MIT</td>
+                    <td>Animation library</td>
+                  </tr>
+                  <tr>
+                    <td>Howler.js</td>
+                    <td>2.2.x</td>
+                    <td>MIT</td>
+                    <td>Audio playback engine</td>
+                  </tr>
+                  <tr>
+                    <td>Chart.js</td>
+                    <td>4.x</td>
+                    <td>MIT</td>
+                    <td>Data visualization</td>
+                  </tr>
+                  <tr>
+                    <td>Socket.io</td>
+                    <td>4.x</td>
+                    <td>MIT</td>
+                    <td>Real-time communication</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="section-5" class="license-section">
+              <h2 class="license-section-title">5. Backend Services</h2>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">TensorFlow</h3>
+                  <span class="license-badge license-badge-apache"
+                    >Apache 2.0</span
+                  >
+                </div>
+                <div class="license-card-content">
+                  Machine learning framework for building our AI recommendation
+                  engine.
+                  <br />
+                  <strong>Copyright:</strong> The TensorFlow Authors
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Redis</h3>
+                  <span class="license-badge license-badge-mit">BSD 3-Clause</span>
+                </div>
+                <div class="license-card-content">
+                  In-memory data store for caching and session management.
+                  <br />
+                  <strong>Copyright:</strong> Redis Ltd.
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Nginx</h3>
+                  <span class="license-badge license-badge-mit">BSD 2-Clause</span>
+                </div>
+                <div class="license-card-content">
+                  Web server and reverse proxy for load balancing.
+                  <br />
+                  <strong>Copyright:</strong> Igor Sysoev, Nginx, Inc.
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">FFmpeg</h3>
+                  <span class="license-badge license-badge-gpl">LGPL 2.1</span>
+                </div>
+                <div class="license-card-content">
+                  Multimedia framework for audio transcoding and streaming.
+                  <br />
+                  <strong>Copyright:</strong> FFmpeg developers
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="section-6" class="license-section">
+              <h2 class="license-section-title">6. Fonts & Icons</h2>
+
+              <h3 class="license-section-subtitle">6.1 Fonts</h3>
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Inter Font Family</h3>
+                  <span class="license-badge license-badge-mit">SIL OFL 1.1</span>
+                </div>
+                <div class="license-card-content">
+                  Modern, open-source typeface designed for user interfaces.
+                  <br />
+                  <strong>Designer:</strong> Rasmus Andersson
+                  <br />
+                  <a
+                    href="https://github.com/rsms/inter"
+                    target="_blank"
+                    class="license-card-link"
+                  >
+                    View on GitHub
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <h3 class="license-section-subtitle">6.2 Icon Libraries</h3>
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Font Awesome</h3>
+                  <span class="license-badge license-badge-mit"
+                    >CC BY 4.0 / MIT</span
+                  >
+                </div>
+                <div class="license-card-content">
+                  Icon library and toolkit used throughout the Beatify
+                  interface.
+                  <br />
+                  <strong>Copyright:</strong> Fonticons, Inc.
+                  <br />
+                  Icons: CC BY 4.0 License | Code: MIT License
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Heroicons</h3>
+                  <span class="license-badge license-badge-mit">MIT</span>
+                </div>
+                <div class="license-card-content">
+                  Beautiful hand-crafted SVG icons by the makers of Tailwind
+                  CSS.
+                  <br />
+                  <strong>Copyright:</strong> Tailwind Labs, Inc.
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="section-7" class="license-section">
+              <h2 class="license-section-title">7. Images & Media</h2>
+
+              <h3 class="license-section-subtitle">7.1 Stock Photography</h3>
+              <p>
+                Promotional and marketing images used on Beatify are sourced
+                from the following providers:
+              </p>
+              <ul>
+                <li>
+                  <strong>Unsplash:</strong> Free high-resolution photos under
+                  Unsplash License
+                </li>
+                <li>
+                  <strong>Pexels:</strong> Free stock photos and videos under
+                  Pexels License
+                </li>
+                <li>
+                  <strong>Custom Photography:</strong> Original photography
+                  commissioned by Snippet.co
+                </li>
+              </ul>
+
+              <h3 class="license-section-subtitle">7.2 Album Art & Artist Images</h3>
+              <p>
+                All album artwork, artist photos, and promotional materials are
+                the property of their respective rights holders. These images
+                are used under licensing agreements with record labels and
+                distributors for promotional and identification purposes only.
+              </p>
+
+              <div class="license-highlight">
+                <p>
+                  <strong>Fair Use Notice:</strong> Album artwork is displayed
+                  for identification purposes in accordance with fair use
+                  principles. All artwork remains the property of the original
+                  copyright holders.
+                </p>
+              </div>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="section-8" class="license-section">
+              <h2 class="license-section-title">8. API & Data Sources</h2>
+
+              <h3 class="license-section-subtitle">8.1 Music Metadata</h3>
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">MusicBrainz</h3>
+                  <span class="license-badge license-badge-mit"
+                    >CC0 / Public Domain</span
+                  >
+                </div>
+                <div class="license-card-content">
+                  Open music encyclopedia for metadata and artist information.
+                  <br />
+                  <strong>Copyright:</strong> MetaBrainz Foundation
+                </div>
+              </div>
+
+              <div class="license-card">
+                <div class="license-card-header">
+                  <h3 class="license-card-title">Last.fm API</h3>
+                  <span class="license-badge license-badge-proprietary"
+                    >Proprietary</span
+                  >
+                </div>
+                <div class="license-card-content">
+                  Music recommendations and scrobbling data. Used under API
+                  license agreement.
+                  <br />
+                  <strong>Copyright:</strong> Last.fm Limited
+                </div>
+              </div>
+
+              <h3 class="license-section-subtitle">8.2 Payment Processing</h3>
+              <ul>
+                <li>
+                  <strong>Stripe:</strong> Payment gateway for subscription
+                  billing (Proprietary license)
+                </li>
+                <li>
+                  <strong>PayPal:</strong> Alternative payment processor
+                  (Proprietary license)
+                </li>
+              </ul>
+
+              <h3 class="license-section-subtitle">8.3 Analytics & Monitoring</h3>
+              <ul>
+                <li>
+                  <strong>Google Analytics:</strong> Web and app analytics
+                  (Proprietary license)
+                </li>
+                <li>
+                  <strong>Sentry:</strong> Error tracking and monitoring (BSD
+                  3-Clause)
+                </li>
+                <li>
+                  <strong>Mixpanel:</strong> Product analytics (Proprietary
+                  license)
+                </li>
+              </ul>
+
+              <div class="license-highlight">
+                <p>
+                  <strong>Attribution:</strong> We thank all open-source
+                  contributors, library maintainers, and the broader developer
+                  community for making Beatify possible. Your work powers
+                  millions of music streaming experiences.
+                </p>
+              </div>
+
+              <h3 class="license-section-subtitle">8.4 Contact for Licensing</h3>
+              <p>
+                For questions about licenses, attributions, or to report missing
+                credits, please contact us:
+              </p>
+              <ul>
+                <li>
+                  <strong>Email:</strong>
+                  <a
+                    href="mailto:legal@snippet.co"
+                    style="color: #a3e635; text-decoration: none"
+                    >legal@snippet.co</a
+                  >
+                </li>
+                <li>
+                  <strong>License Inquiries:</strong>
+                  <a
+                    href="mailto:licensing@snippet.co"
+                    style="color: #a3e635; text-decoration: none"
+                    >licensing@snippet.co</a
+                  >
+                </li>
+                <li>
+                  <strong>Support:</strong>
+                  <a
+                    href="/support"
+                    style="color: #a3e635; text-decoration: none"
+                    >Visit Support Center</a
+                  >
+                </li>
+              </ul>
+            </section>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-brand">
+            <a href="/" class="footer-logo">
+              <span class="footer-logo-text">Snippet.co</span>
+            </a>
+            <p class="footer-tagline">
+              Powered by AI. Built for music lovers. Designed for you.
+            </p>
+          </div>
+
+          <!-- Product -->
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#pricing">Pricing</a></li>
+              <li><a href="/support">Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/team">About us</a></li>
+              <li><a href="/contact">contribute</a></li>
+              <li><a href="/blog">blog</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/policy">Privacy &amp; Policy</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/cookies">Cookies</a></li>
+              <li><a href="/licenses">Licenses</a></li>
+            </ul>
+          </div>
+
+          <!-- Download -->
+          <div class="footer-column footer-download">
+            <h4>Download</h4>
+            <div class="download-links">
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/play-store.png"
+                  alt="Download Beatify on Google Play"
+                />
+              </a>
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/app-store.png"
+                  alt="Download Beatify on the App Store"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 Snippet.co. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Visit Snippet.co on Twitter">
+              <span class="social-icon"><i class="fab fa-x-twitter"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Instagram">
+              <span class="social-icon"><i class="fab fa-instagram"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Facebook">
+              <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+      // Smooth scroll for TOC links
+      document.querySelectorAll(".license-toc-list a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Active section highlighting in TOC
+      const observerOptions = {
+        root: null,
+        rootMargin: "-100px 0px -80% 0px",
+        threshold: 0,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll(".license-toc-list a").forEach((link) => {
+              link.classList.remove("active");
+            });
+            const activeLink = document.querySelector(
+              `.license-toc-list a[href="#${entry.target.id}"]`
+            );
+            if (activeLink) {
+              activeLink.classList.add("active");
+            }
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".license-section").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>

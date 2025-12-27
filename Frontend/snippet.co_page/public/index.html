@@ -3,8 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SoundWave - Music Streaming Platform</title>
+    <title>
+      Beatify by Snippet.co  AI-Powered Music Streaming & Recommendations
+    </title>
+    <meta
+      name="description"
+      content="Beatify by Snippet.co is an AI-powered music streaming app that learns your taste and mood to deliver personalized playlists, high-quality audio, offline listening, and live radio."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="Beatify, Snippet.co, music streaming, AI music recommendations, playlists, offline listening, high quality audio, live radio"
+    />
+    <meta name="theme-color" content="#020617" />
+    <!-- TODO: Update canonical URL once the site is hosted -->
+    <link rel="canonical" href="https://snippet.co/" />
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Snippet.co" />
+    <meta
+      property="og:title"
+      content="Beatify by Snippet.co  AI-Powered Music Streaming & Recommendations"
+    />
+    <meta
+      property="og:description"
+      content="Stream 100M+ songs with AI-powered recommendations, offline listening, and crystal-clear audio with Beatify by Snippet.co."
+    />
+    <meta property="og:url" content="https://snippet.co/" />
+    <!-- Update to an absolute URL once hosted -->
+    <meta property="og:image" content="assets/images/hero-bg.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@snippetco" />
+    <meta
+      name="twitter:title"
+      content="Beatify by Snippet.co  AI-Powered Music Streaming & Recommendations"
+    />
+    <meta
+      name="twitter:description"
+      content="Discover music that understands you with Beatify  AI-powered playlists, high-quality audio, and offline listening."
+    />
+    <meta name="twitter:image" content="assets/images/hero-bg.png" />
+
+    <!-- Structured Data: Beatify App -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Beatify",
+        "alternateName": "Beatify by Snippet.co",
+        "operatingSystem": "Android, iOS, Web",
+        "applicationCategory": "MultimediaApplication",
+        "description": "Beatify by Snippet.co is an AI-powered music streaming app that learns your taste and mood to deliver personalized playlists, high-quality audio, offline listening, and live radio.",
+        "creator": {
+          "@type": "Organization",
+          "name": "Snippet.co"
+        }
+      }
+    </script>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Header -->
@@ -13,29 +79,12 @@
         <div class="header-content">
           <!-- Logo -->
           <div class="logo">
-            <div class="logo-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M9 18V5l12-2v13"></path>
-                <circle cx="6" cy="18" r="3"></circle>
-                <circle cx="18" cy="16" r="3"></circle>
-              </svg>
-            </div>
             <span class="logo-text">Snippet.co</span>
           </div>
 
           <!-- Desktop Navigation -->
           <nav class="nav-desktop">
-            <a href="#home">Home</a>
+            <a href="/">Home</a>
             <a href="#about">About</a>
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
@@ -80,10 +129,10 @@
 
         <!-- Mobile Menu -->
         <nav class="nav-mobile" id="mobileMenu">
-          <a href="#home">Home</a>
+          <a href="/">Home</a>
           <a href="#about">About</a>
           <a href="#pricing">Pricing</a>
-          <a href="#contribute">Contributr</a>
+          <a href="#contribute">Contribute</a>
         </nav>
       </div>
     </header>
@@ -130,22 +179,24 @@
             </p>
 
             <div class="hero-buttons">
-              <button class="btn-hero-primary">
-                Start Listening Free
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </button>
+              <a href="/" style="text-decoration: none">
+                <button class="btn-hero-primary">
+                  Start Listening Free
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </a>
               <button class="btn-hero-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -184,182 +235,51 @@
               </div>
             </div>
           </div>
-
-          <!-- Right Content - Phone Mockup -->
-          <div class="hero-right">
-            <div class="phone-wrapper">
-              <div class="phone-glow"></div>
-              <div class="phone">
-                <div class="phone-screen">
-                  <!-- Status Bar -->
-                  <div class="status-bar">
-                    <span>9:41</span>
-                    <div class="status-icons">
-                      <div class="status-icon"></div>
-                      <div class="status-icon"></div>
-                      <div class="status-icon"></div>
-                    </div>
-                  </div>
-
-                  <!-- App Content -->
-                  <div class="app-content">
-                    <!-- Now Playing Card -->
-                    <div class="now-playing">
-                      <div class="album-art">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="64"
-                          height="64"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M9 18V5l12-2v13"></path>
-                          <circle cx="6" cy="18" r="3"></circle>
-                          <circle cx="18" cy="16" r="3"></circle>
-                        </svg>
-                      </div>
-                      <div class="song-info">
-                        <div class="song-title"></div>
-                        <div class="song-artist"></div>
-                      </div>
-
-                      <!-- Progress Bar -->
-                      <div class="progress-container">
-                        <div class="progress-bar">
-                          <div class="progress-fill"></div>
-                        </div>
-                        <div class="progress-time">
-                          <span>1:23</span>
-                          <span>3:45</span>
-                        </div>
-                      </div>
-
-                      <!-- Controls -->
-                      <div class="controls">
-                        <div class="control-btn">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <polygon points="6 6 8 6 8 18 6 18"></polygon>
-                            <polygon points="9.5 12 18 6 18 18"></polygon>
-                          </svg>
-                        </div>
-                        <div class="control-btn-play">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="black"
-                          >
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                          </svg>
-                        </div>
-                        <div class="control-btn">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <polygon points="16 18 18 18 18 6 16 6"></polygon>
-                            <polygon points="12.5 12 4 18 4 6"></polygon>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Playlist Items -->
-                    <div class="playlist">
-                      <div class="playlist-item">
-                        <div class="playlist-thumb"></div>
-                        <div class="playlist-info">
-                          <div class="playlist-title"></div>
-                          <div class="playlist-artist"></div>
-                        </div>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                      </div>
-                      <div class="playlist-item">
-                        <div class="playlist-thumb"></div>
-                        <div class="playlist-info">
-                          <div class="playlist-title"></div>
-                          <div class="playlist-artist"></div>
-                        </div>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                      </div>
-                      <div class="playlist-item">
-                        <div class="playlist-thumb"></div>
-                        <div class="playlist-info">
-                          <div class="playlist-title"></div>
-                          <div class="playlist-artist"></div>
-                        </div>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
-    <section id="about" class="about">
-      <div class="container text-center">
-        <h2 class="section-title">
-          About <span class="gradient-text">Snippet.co</span>
-        </h2>
 
-        <p class="section-description">
-          Snippet.co is redefining the way you experience music. Built with
-          powerful AI intelligence, our platform understands your taste, your
-          mood, and your moments—delivering perfectly curated songs every time
-          you press play.
-          <br /><br />
-          From discovering hidden gems to enjoying crystal-clear, high-quality
-          audio, Snippet.co brings you a smarter, deeper, and more personal
-          music journey. It’s not just streaming music — it’s music that truly
-          understands you.
-        </p>
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            About <span class="gradient-text">Beatify</span>
+          </h2>
+          <p class="section-description">
+            Beatify is an AI-powered music recommendation app crafted by
+            Snippet.co to make discovering the right song at the right moment
+            feel effortless.
+          </p>
+        </div>
+
+        <div class="about-content">
+          <p class="section-description">
+            Instead of endlessly scrolling, skipping, and guessing what to play
+            next, Beatify listens to your habits, understands your mood, and
+            curates playlists that feel handpicked just for you. Whether you're
+            working, working out, or unwinding, the experience stays smooth,
+            personal, and distraction-free.
+          </p>
+
+          <p class="section-description">
+            Built by the team at Snippet.co, Beatify is designed as a modern
+            listening companion for real people: fast, clean, and thoughtful.
+            From the recommendation engine to the interface, every detail is
+            shaped around one idea—your music should feel like it truly knows
+            you.
+          </p>
+
+          <p class="section-description">
+            Choose Beatify if you want a streaming experience that puts you, not
+            the algorithm, at the center. Smart recommendations, less noise, and
+            a product created by a team that genuinely cares about how you
+            listen.
+          </p>
+
+          <div class="about-team-cta">
+            <a href="/team" class="btn-about-team">Meet the Snippet.co Team</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -529,6 +449,214 @@
       </div>
     </section>
 
+    <!-- pricing section -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            Subscription from <span class="gradient-text">$9.99/month</span>
+          </h2>
+          <p class="section-description">
+            Unlock the full Beatify experience with ad-free listening, smarter
+            recommendations, and offline access—built by Snippet.co for people
+            who live with music.
+          </p>
+        </div>
+
+        <div class="pricing-wrapper">
+          <div class="pricing-copy">
+            <p>
+              Start with a simple monthly plan that gives you everything you
+              need: high-quality audio, unlimited skips, and AI-powered
+              playlists that adapt to your mood and habits.
+              <br />
+              Whether you’re studying, training, or just vibing, Beatify keeps
+              the music flowing without interruptions, so you can stay in your
+              zone.
+            </p>
+            <a
+              href="/login"
+              class="btn-hero-primary pricing-btn"
+              style="padding: 10px 20px"
+              >Try Free Trial</a
+            >
+            <p class="pricing-note">Cancel anytime • No credit card required</p>
+          </div>
+
+          <div class="pricing-cards">
+            <div class="pricing-card pricing-card-free">
+              <h3 class="pricing-plan-name">Beatify Free</h3>
+              <p class="pricing-price">$0 <span>/ forever</span></p>
+              <ul class="pricing-features pricing-features-free">
+                <li>Shuffle play on selected playlists</li>
+                <li>Limited skips with occasional ads</li>
+                <li>Online listening only</li>
+                <li>Standard audio quality</li>
+              </ul>
+            </div>
+
+            <div class="pricing-card pricing-card-premium">
+              <div class="pricing-badge">Most popular</div>
+              <h3 class="pricing-plan-name">Beatify Premium</h3>
+              <p class="pricing-price">$9.99 <span>/ month</span></p>
+              <ul class="pricing-features pricing-features-premium">
+                <li>Play any track, anytime</li>
+                <li>AI-powered song and playlist discovery</li>
+                <li>High-quality, crystal-clear audio</li>
+                <li>Offline listening on your favorite devices</li>
+                <li>Unlimited skips and absolutely no ads</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section id="contribute" class="contribute">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            Contribute to <span class="gradient-text">Beatify</span>
+          </h2>
+          <p class="section-description">
+            Beatify is built by Snippet.co with the community at its core. Your
+            contributions help shape the future of music streaming—whether it's
+            through feedback, feature suggestions, bug reports, or open-source
+            collaboration.
+          </p>
+        </div>
+
+        <div class="contribute-grid">
+          <div class="contribute-card">
+            <h3 class="contribute-title">How You Can Contribute</h3>
+            <p class="contribute-text">
+              We believe great products are built with the people who use them.
+              Whether you're a music lover, developer, or creator, there are
+              multiple ways to contribute to Beatify's evolution:
+            </p>
+            <ul class="contribute-list">
+              <li>
+                <strong>Share Feedback:</strong> Tell us what you love, what
+                needs improvement, or features you'd like to see. Your insights
+                drive our roadmap.
+              </li>
+              <li>
+                <strong>Report Issues:</strong> Found a bug or something not
+                working as expected? Let us know so we can fix it quickly.
+              </li>
+              <li>
+                <strong>Suggest Content:</strong> Recommend playlists, moods,
+                genres, or emerging artists we should highlight in the app.
+              </li>
+              <li>
+                <strong>Collaborate on Development:</strong> Interested in
+                contributing code, improving our AI models, or building new
+                features? We welcome open-source contributions.
+              </li>
+              <li>
+                <strong>Spread the Word:</strong> Share Beatify with friends,
+                write reviews, or create content about your experience. Community
+                growth helps us keep improving.
+              </li>
+            </ul>
+            <p class="contribute-text" style="margin-top: 20px">
+              Every contribution matters—whether it's a single line of feedback
+              or an entire feature proposal. Together, we're making music
+              streaming more personal, intelligent, and accessible for everyone.
+            </p>
+          </div>
+
+          <div
+            class="contribute-card contribute-contact"
+            style="
+              background: linear-gradient(
+                135deg,
+                rgba(163, 230, 53, 0.05),
+                rgba(34, 197, 94, 0.05)
+              );
+              border: 1px solid rgba(163, 230, 53, 0.3);
+            "
+          >
+            <h3 class="contribute-title">Ready to Make an Impact?</h3>
+            <p class="contribute-text">
+              Get in touch with our team to discuss your ideas, submit feedback,
+              or explore collaboration opportunities. We have dedicated contacts
+              for contributions, partnerships, support, and more.
+            </p>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                margin-top: 24px;
+              "
+            >
+              <div
+                style="
+                  background: rgba(10, 10, 10, 0.5);
+                  border-radius: 12px;
+                  padding: 16px;
+                "
+              >
+                <p style="color: #9ca3af; font-size: 14px; margin-bottom: 8px">
+                  For contributions and development:
+                </p>
+                <a
+                  href="mailto:contribute@snippet.co"
+                  style="
+                    color: #a3e635;
+                    text-decoration: none;
+                    font-size: 16px;
+                    font-weight: 600;
+                  "
+                >
+                  contribute@snippet.co
+                </a>
+              </div>
+              <div
+                style="
+                  background: rgba(10, 10, 10, 0.5);
+                  border-radius: 12px;
+                  padding: 16px;
+                "
+              >
+                <p style="color: #9ca3af; font-size: 14px; margin-bottom: 8px">
+                  For product feedback and suggestions:
+                </p>
+                <a
+                  href="mailto:feedback@snippet.co"
+                  style="
+                    color: #a3e635;
+                    text-decoration: none;
+                    font-size: 16px;
+                    font-weight: 600;
+                  "
+                >
+                  feedback@snippet.co
+                </a>
+              </div>
+              <a
+                href="/contact"
+                class="btn-hero-primary"
+                style="
+                  margin-top: 8px;
+                  width: 100%;
+                  text-align: center;
+                  text-decoration: none;
+                "
+              >
+                View All Contacts
+              </a>
+            </div>
+            <p class="contact-note" style="margin-top: 16px">
+              We typically respond within 1–2 business days.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta">
       <div class="container">
@@ -552,43 +680,8 @@
               <button class="btn-cta-primary">Get Started Free</button>
               <button class="btn-cta-secondary">Learn More</button>
             </div>
-            <p class="cta-note">No credit card required • Cancel anytime</p>
+            <!-- <p class="cta-note">No credit card required • Cancel anytime</p> -->
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- pricing section -->
-    <section id="pricing" class="pricing">
-      <div class="container pricing-grid">
-        <!-- LEFT CONTENT -->
-        <div class="pricing-left">
-          <h2 class="pricing-title">
-            Simple <span class="gradient-text">Pricing</span>
-          </h2>
-
-          <p class="pricing-subtitle">
-            Start your music journey with AI-powered recommendations,
-            crystal-clear audio, and zero interruptions.
-          </p>
-
-          <a href="#" class="btn-hero-primary pricing-btn">
-            Start Free Trial
-          </a>
-        </div>
-
-        <!-- RIGHT CARD -->
-        <div class="pricing-card">
-          <h3 class="pricing-price">$9.99 <span>/ month</span></h3>
-
-          <ul class="pricing-features">
-            <li>✔ Play any track</li>
-            <li>✔ AI-powered song discovery</li>
-            <li>✔ High-quality audio</li>
-            <li>✔ Offline listening</li>
-            <li>✔ Unlimited skips</li>
-            <li>✔ No ads</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -599,35 +692,21 @@
         <div class="footer-grid">
           <!-- Brand -->
           <div class="footer-brand">
-            <div class="footer-logo">
-              <div class="footer-logo-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M9 18V5l12-2v13"></path>
-                  <circle cx="6" cy="18" r="3"></circle>
-                  <circle cx="18" cy="16" r="3"></circle>
-                </svg>
-              </div>
-              <span>Snippet.co</span>
-            </div>
-            <p>The world's most powerful music streaming platform.</p>
+            <a href="/" class="footer-logo">
+              <span class="footer-logo-text">Snippet.co</span>
+            </a>
+            <p class="footer-tagline">
+              Powered by AI. Built for music lovers. Designed for you.
+            </p>
           </div>
 
           <!-- Product -->
           <div class="footer-column">
             <h4>Product</h4>
             <ul>
-              <li><a href="#">Features</a></li>
-              <li><a href="#">Pricing</a></li>
-              <li><a href="#">Download</a></li>
-              <li><a href="#">Support</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="/support">Support</a></li>
             </ul>
           </div>
 
@@ -635,10 +714,10 @@
           <div class="footer-column">
             <h4>Company</h4>
             <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="/team">About us</a></li>
+              <li><a href="#contribute">Contribute</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
 
@@ -646,29 +725,64 @@
           <div class="footer-column">
             <h4>Legal</h4>
             <ul>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Terms</a></li>
-              <li><a href="#">Cookies</a></li>
-              <li><a href="#">Licenses</a></li>
+              <li><a href="/policy">Privacy &amp; Policy</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/cookies">Cookies</a></li>
+              <li><a href="/licenses">Licenses</a></li>
             </ul>
           </div>
-        </div>
-        <!-- Download -->
-        <div class="footer-column footer-download">
-          <h4>Download</h4>
-          <div class="download-links">
-            <a href="#" class="download-btn"> <span></span> App Store </a>
-            <a href="#" class="download-btn"> ▶ Play Store </a>
-            <a href="#" class="download-btn"> 💻 Desktop </a>
+
+          <!-- Download -->
+          <div class="footer-column footer-download">
+            <h4>Download</h4>
+            <div class="download-links">
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/play-store.png"
+                  alt="Download Beatify on Google Play"
+                />
+              </a>
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/app-store.png"
+                  alt="Download Beatify on the App Store"
+                />
+              </a>
+              <!-- <a href="#" class="download-btn">
+                <span class="download-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+                    <path d="M8 20h8"></path>
+                  </svg>
+                </span>
+                <span class="download-text">Desktop</span>
+              </a> -->
+            </div>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>© 2025 Snippet.co All rights reserved.</p>
+          <p>© 2025 Snippet.co. All rights reserved.</p>
           <div class="footer-social">
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
+            <a href="#" aria-label="Visit Snippet.co on Twitter">
+              <span class="social-icon"><i class="fab fa-x-twitter"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Instagram">
+              <span class="social-icon"><i class="fab fa-instagram"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Facebook">
+              <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+            </a>
           </div>
         </div>
       </div>

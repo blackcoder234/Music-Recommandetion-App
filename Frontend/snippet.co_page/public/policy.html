@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Beatify by Snippet.co</title>
+    <meta
+      name="description"
+      content="Read Beatify's privacy policy to understand how we collect, use, and protect your personal information and listening data."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://snippet.co/policy" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Policy Page Specific Styles */
+      .policy-hero {
+        padding: 140px 0 60px;
+        text-align: center;
+        background: radial-gradient(
+            circle at 50% 0%,
+            rgba(59, 130, 246, 0.08),
+            transparent 60%
+          ),
+          #0a0a0a;
+      }
+
+      .policy-hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .policy-hero-description {
+        font-size: 18px;
+        color: #9ca3af;
+        max-width: 700px;
+        margin: 0 auto 24px;
+        line-height: 1.7;
+      }
+
+      .policy-meta {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: #6b7280;
+      }
+
+      .policy-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .policy-meta-item svg {
+        color: #a3e635;
+      }
+
+      .policy-content-wrapper {
+        padding: 80px 0;
+        background: #0a0a0a;
+      }
+
+      .policy-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 48px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .policy-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+      }
+
+      .policy-toc {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
+      .policy-toc-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #a3e635;
+        margin-bottom: 16px;
+      }
+
+      .policy-toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .policy-toc-list a {
+        display: block;
+        padding: 8px 12px;
+        color: #9ca3af;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .policy-toc-list a:hover,
+      .policy-toc-list a.active {
+        color: #ffffff;
+        background: rgba(132, 204, 22, 0.1);
+      }
+
+      .policy-main {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 24px;
+        padding: 48px;
+      }
+
+      .policy-section {
+        margin-bottom: 48px;
+        scroll-margin-top: 100px;
+      }
+
+      .policy-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .policy-section-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        background: linear-gradient(90deg, #a3e635, #22c55e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .policy-section-subtitle {
+        font-size: 20px;
+        font-weight: 600;
+        color: #e5e7eb;
+        margin-top: 32px;
+        margin-bottom: 12px;
+      }
+
+      .policy-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #d1d5db;
+        margin-bottom: 16px;
+      }
+
+      .policy-section ul,
+      .policy-section ol {
+        margin: 16px 0;
+        padding-left: 24px;
+        color: #d1d5db;
+      }
+
+      .policy-section li {
+        margin-bottom: 8px;
+        line-height: 1.8;
+      }
+
+      .policy-highlight {
+        background: rgba(132, 204, 22, 0.1);
+        border-left: 3px solid #a3e635;
+        padding: 16px 20px;
+        margin: 24px 0;
+        border-radius: 8px;
+      }
+
+      .policy-highlight p {
+        margin-bottom: 0;
+        color: #e5e7eb;
+      }
+
+      .policy-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        background: rgba(10, 10, 10, 0.5);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .policy-table th,
+      .policy-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .policy-table th {
+        background: rgba(132, 204, 22, 0.1);
+        color: #a3e635;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .policy-table td {
+        color: #d1d5db;
+        font-size: 14px;
+      }
+
+      .policy-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .policy-contact-card {
+        background: linear-gradient(
+          145deg,
+          rgba(15, 23, 42, 0.95),
+          rgba(0, 0, 0, 0.9)
+        );
+        border: 1px solid rgba(132, 204, 22, 0.4);
+        border-radius: 20px;
+        padding: 32px;
+        margin-top: 48px;
+        text-align: center;
+      }
+
+      .policy-contact-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #ffffff;
+      }
+
+      .policy-contact-card p {
+        margin-bottom: 20px;
+        color: #9ca3af;
+      }
+
+      .policy-contact-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        background: linear-gradient(90deg, #84cc16, #22c55e, #10b981);
+        color: #000;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(132, 204, 22, 0.4);
+      }
+
+      .policy-contact-btn:hover {
+        background: linear-gradient(90deg, #a3e635, #4ade80, #34d399);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 1024px) {
+        .policy-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .policy-sidebar {
+          position: static;
+        }
+
+        .policy-toc {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .policy-hero-title {
+          font-size: 36px;
+        }
+
+        .policy-hero {
+          padding: 120px 0 40px;
+        }
+
+        .policy-main {
+          padding: 32px 24px;
+        }
+
+        .policy-section-title {
+          font-size: 24px;
+        }
+
+        .policy-section-subtitle {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <!-- Logo -->
+          <div class="logo" onclick="window.location.href='index.html'">
+            <span class="logo-text">Snippet.co</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="nav-desktop">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#contribute">Contribute</a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <svg
+              class="menu-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg
+              class="close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="mobileMenu">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#contribute">Contribute</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Policy Hero -->
+    <section class="policy-hero">
+      <div class="container">
+        <h1 class="policy-hero-title">
+          <span class="gradient-text">Privacy Policy</span>
+        </h1>
+        <p class="policy-hero-description">
+          At Snippet.co, we respect your privacy and are committed to protecting
+          your personal information. This policy explains how we collect, use,
+          and safeguard your data when you use Beatify.
+        </p>
+        <div class="policy-meta">
+          <div class="policy-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Last Updated: December 27, 2025</span>
+          </div>
+          <div class="policy-meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Effective: January 1, 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policy Content -->
+    <section class="policy-content-wrapper">
+      <div class="container">
+        <div class="policy-layout">
+          <!-- Sidebar TOC -->
+          <aside class="policy-sidebar">
+            <nav class="policy-toc">
+              <h3 class="policy-toc-title">Table of Contents</h3>
+              <ul class="policy-toc-list">
+                <li><a href="#section-1">Information We Collect</a></li>
+                <li><a href="#section-2">How We Use Your Data</a></li>
+                <li><a href="#section-3">Data Sharing & Disclosure</a></li>
+                <li><a href="#section-4">Cookies & Tracking</a></li>
+                <li><a href="#section-5">Your Rights & Choices</a></li>
+                <li><a href="#section-6">Data Security</a></li>
+                <li><a href="#section-7">Children's Privacy</a></li>
+                <li><a href="#section-8">International Transfers</a></li>
+                <li><a href="#section-9">Changes to This Policy</a></li>
+                <li><a href="#section-10">Contact Us</a></li>
+              </ul>
+            </nav>
+          </aside>
+
+          <!-- Main Content -->
+          <main class="policy-main">
+            <!-- Section 1 -->
+            <section id="section-1" class="policy-section">
+              <h2 class="policy-section-title">1. Information We Collect</h2>
+              <p>
+                We collect various types of information to provide and improve
+                our services. The data we collect falls into the following
+                categories:
+              </p>
+
+              <h3 class="policy-section-subtitle">
+                1.1 Information You Provide
+              </h3>
+              <ul>
+                <li>
+                  <strong>Account Information:</strong> Name, email address,
+                  username, password, date of birth, and profile picture when
+                  you create an account
+                </li>
+                <li>
+                  <strong>Payment Information:</strong> Billing details, payment
+                  card information (processed securely through third-party
+                  payment providers)
+                </li>
+                <li>
+                  <strong>User Content:</strong> Playlists you create, songs you
+                  like, comments, and other content you share
+                </li>
+                <li>
+                  <strong>Support Communications:</strong> Information you
+                  provide when contacting customer support
+                </li>
+              </ul>
+
+              <h3 class="policy-section-subtitle">
+                1.2 Information Collected Automatically
+              </h3>
+              <ul>
+                <li>
+                  <strong>Usage Data:</strong> Songs played, listening history,
+                  search queries, playlists accessed, skipped tracks, and
+                  playback duration
+                </li>
+                <li>
+                  <strong>Device Information:</strong> Device type, operating
+                  system, browser type, IP address, mobile network information,
+                  and unique device identifiers
+                </li>
+                <li>
+                  <strong>Location Data:</strong> Approximate location based on
+                  IP address (precise location only with your permission)
+                </li>
+                <li>
+                  <strong>Cookies & Similar Technologies:</strong> Information
+                  collected through cookies, web beacons, and similar tracking
+                  technologies
+                </li>
+              </ul>
+
+              <h3 class="policy-section-subtitle">
+                1.3 Information from Third Parties
+              </h3>
+              <ul>
+                <li>
+                  <strong>Social Media:</strong> If you connect via Google,
+                  Apple, or Facebook, we receive basic profile information
+                </li>
+                <li>
+                  <strong>Partners:</strong> Data from business partners and
+                  service providers who help us deliver our services
+                </li>
+              </ul>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section-2" class="policy-section">
+              <h2 class="policy-section-title">2. How We Use Your Data</h2>
+              <p>
+                We use the information we collect for the following purposes:
+              </p>
+
+              <table class="policy-table">
+                <thead>
+                  <tr>
+                    <th>Purpose</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Service Delivery</td>
+                    <td>
+                      Provide, maintain, and improve Beatify's core
+                      functionality
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Personalization</td>
+                    <td>
+                      Create AI-powered recommendations and personalized
+                      playlists
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Communication</td>
+                    <td>
+                      Send service updates, promotional emails, and respond to
+                      inquiries
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Account Management</td>
+                    <td>Manage subscriptions, billing, and authentication</td>
+                  </tr>
+                  <tr>
+                    <td>Analytics</td>
+                    <td>
+                      Analyze usage patterns to improve features and user
+                      experience
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Security</td>
+                    <td>
+                      Detect fraud, prevent abuse, and ensure platform safety
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Legal Compliance</td>
+                    <td>Comply with legal obligations and enforce our terms</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="policy-highlight">
+                <p>
+                  <strong>AI-Powered Recommendations:</strong> We use machine
+                  learning algorithms to analyze your listening habits and
+                  preferences to suggest music you'll love. This processing
+                  happens securely and helps create your personalized Beatify
+                  experience.
+                </p>
+              </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="section-3" class="policy-section">
+              <h2 class="policy-section-title">3. Data Sharing & Disclosure</h2>
+              <p>
+                We do not sell your personal information. We may share your data
+                in the following limited circumstances:
+              </p>
+
+              <h3 class="policy-section-subtitle">3.1 Service Providers</h3>
+              <p>
+                We share data with trusted third-party vendors who help us
+                operate Beatify, including:
+              </p>
+              <ul>
+                <li>Cloud hosting and storage providers</li>
+                <li>Payment processors (Stripe, PayPal, etc.)</li>
+                <li>Analytics platforms (Google Analytics, Mixpanel)</li>
+                <li>Customer support tools (Zendesk, Intercom)</li>
+                <li>Email service providers (SendGrid, Mailchimp)</li>
+              </ul>
+
+              <h3 class="policy-section-subtitle">3.2 Business Transfers</h3>
+              <p>
+                If Snippet.co is involved in a merger, acquisition, or asset
+                sale, your data may be transferred as part of that transaction.
+              </p>
+
+              <h3 class="policy-section-subtitle">3.3 Legal Requirements</h3>
+              <p>We may disclose your information to:</p>
+              <ul>
+                <li>
+                  Comply with legal obligations, court orders, or subpoenas
+                </li>
+                <li>Protect Snippet.co's rights and property</li>
+                <li>Investigate fraud or security issues</li>
+                <li>Protect the safety of users or the public</li>
+              </ul>
+
+              <h3 class="policy-section-subtitle">3.4 With Your Consent</h3>
+              <p>
+                We may share information with third parties when you explicitly
+                consent, such as when sharing playlists on social media.
+              </p>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="section-4" class="policy-section">
+              <h2 class="policy-section-title">
+                4. Cookies & Tracking Technologies
+              </h2>
+              <p>
+                We use cookies and similar technologies to enhance your
+                experience and collect usage data.
+              </p>
+
+              <h3 class="policy-section-subtitle">Types of Cookies We Use</h3>
+              <ul>
+                <li>
+                  <strong>Essential Cookies:</strong> Required for basic site
+                  functionality (login, security)
+                </li>
+                <li>
+                  <strong>Performance Cookies:</strong> Help us analyze site
+                  performance and usage patterns
+                </li>
+                <li>
+                  <strong>Functional Cookies:</strong> Remember your preferences
+                  and settings
+                </li>
+                <li>
+                  <strong>Advertising Cookies:</strong> Used to deliver relevant
+                  ads (only for free tier users)
+                </li>
+              </ul>
+
+              <p>
+                You can control cookies through your browser settings. Note that
+                disabling certain cookies may limit some features of Beatify.
+              </p>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="section-5" class="policy-section">
+              <h2 class="policy-section-title">5. Your Rights & Choices</h2>
+              <p>You have the following rights regarding your personal data:</p>
+
+              <h3 class="policy-section-subtitle">5.1 Access & Portability</h3>
+              <p>
+                Request a copy of your data in a structured, machine-readable
+                format.
+              </p>
+
+              <h3 class="policy-section-subtitle">5.2 Correction</h3>
+              <p>
+                Update or correct inaccurate information in your account
+                settings.
+              </p>
+
+              <h3 class="policy-section-subtitle">5.3 Deletion</h3>
+              <p>
+                Request deletion of your account and associated data. Some data
+                may be retained for legal or security purposes.
+              </p>
+
+              <h3 class="policy-section-subtitle">5.4 Opt-Out</h3>
+              <p>
+                Unsubscribe from marketing emails, disable personalized ads, or
+                limit data collection.
+              </p>
+
+              <h3 class="policy-section-subtitle">5.5 Restriction</h3>
+              <p>Limit how we process your data in certain circumstances.</p>
+
+              <div class="policy-highlight">
+                <p>
+                  <strong>Exercising Your Rights:</strong> To exercise any of
+                  these rights, email us at privacy@snippet.co or visit your
+                  account settings. We'll respond within 30 days.
+                </p>
+              </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="section-6" class="policy-section">
+              <h2 class="policy-section-title">6. Data Security</h2>
+              <p>
+                We implement industry-standard security measures to protect your
+                data:
+              </p>
+              <ul>
+                <li>
+                  <strong>Encryption:</strong> Data is encrypted in transit
+                  (TLS/SSL) and at rest (AES-256)
+                </li>
+                <li>
+                  <strong>Access Controls:</strong> Strict internal access
+                  policies and role-based permissions
+                </li>
+                <li>
+                  <strong>Regular Audits:</strong> Security assessments and
+                  vulnerability testing
+                </li>
+                <li>
+                  <strong>Secure Infrastructure:</strong> Data centers with
+                  physical and digital security measures
+                </li>
+                <li>
+                  <strong>Incident Response:</strong> Protocols to detect and
+                  respond to security breaches
+                </li>
+              </ul>
+              <p>
+                While we strive to protect your data, no system is 100% secure.
+                If a breach occurs, we'll notify affected users as required by
+                law.
+              </p>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="section-7" class="policy-section">
+              <h2 class="policy-section-title">7. Children's Privacy</h2>
+              <p>
+                Beatify is not intended for children under 13 years old. We do
+                not knowingly collect personal information from children under
+                13. If we discover we've collected data from a child under 13,
+                we'll delete it immediately.
+              </p>
+              <p>
+                For users aged 13-17, parental consent may be required in
+                certain jurisdictions. Please check your local laws.
+              </p>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="section-8" class="policy-section">
+              <h2 class="policy-section-title">
+                8. International Data Transfers
+              </h2>
+              <p>
+                Beatify operates globally. Your data may be transferred to and
+                processed in countries outside your residence, including the
+                United States, where data protection laws may differ.
+              </p>
+              <p>
+                We use appropriate safeguards, such as Standard Contractual
+                Clauses (SCCs) and Privacy Shield frameworks (where applicable),
+                to protect your data during international transfers.
+              </p>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="section-9" class="policy-section">
+              <h2 class="policy-section-title">9. Changes to This Policy</h2>
+              <p>
+                We may update this Privacy Policy from time to time to reflect
+                changes in our practices or legal requirements. When we make
+                significant changes, we'll notify you via:
+              </p>
+              <ul>
+                <li>Email to your registered address</li>
+                <li>In-app notification</li>
+                <li>Prominent notice on our website</li>
+              </ul>
+              <p>
+                The "Last Updated" date at the top of this policy indicates when
+                it was last revised. Your continued use of Beatify after changes
+                become effective constitutes acceptance of the updated policy.
+              </p>
+            </section>
+
+            <!-- Section 10 -->
+            <section id="section-10" class="policy-section">
+              <h2 class="policy-section-title">10. Contact Us</h2>
+              <p>
+                If you have questions, concerns, or requests regarding this
+                Privacy Policy or your personal data, please contact us:
+              </p>
+              <ul>
+                <li>
+                  <strong>Email:</strong>
+                  <a
+                    href="mailto:privacy@snippet.co"
+                    style="color: #a3e635; text-decoration: none"
+                    >privacy@snippet.co</a
+                  >
+                </li>
+                <li>
+                  <strong>Support:</strong>
+                  <a
+                    href="support.html"
+                    style="color: #a3e635; text-decoration: none"
+                    >Visit our Support Center</a
+                  >
+                </li>
+                <li>
+                  <strong>Address:</strong> Snippet.co, San Francisco, CA 94103,
+                  USA
+                </li>
+              </ul>
+
+              <p style="margin-top: 24px">
+                For EU residents: You have the right to lodge a complaint with
+                your local data protection authority if you believe your privacy
+                rights have been violated.
+              </p>
+            </section>
+
+            <!-- Contact Card -->
+            <div class="policy-contact-card">
+              <h3>Need Help Understanding Our Policy?</h3>
+              <p>
+                Our support team is here to answer any questions about how we
+                handle your data.
+              </p>
+              <a href="support.html" class="policy-contact-btn">
+                Contact Support
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-brand">
+            <a href="/" class="footer-logo">
+              <span class="footer-logo-text">Snippet.co</span>
+            </a>
+            <p class="footer-tagline">
+              Powered by AI. Built for music lovers. Designed for you.
+            </p>
+          </div>
+
+          <!-- Product -->
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#pricing">Pricing</a></li>
+              <li><a href="/support">Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/team">About us</a></li>
+              <li><a href="/contact">contribute</a></li>
+              <li><a href="/blog">blog</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/policy">Privacy &amp; Policy</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/cookies">Cookies</a></li>
+              <li><a href="/licenses">Licenses</a></li>
+            </ul>
+          </div>
+
+          <!-- Download -->
+          <div class="footer-column footer-download">
+            <h4>Download</h4>
+            <div class="download-links">
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/play-store.png"
+                  alt="Download Beatify on Google Play"
+                />
+              </a>
+              <a href="#" class="download-btn">
+                <img
+                  src="./assets/images/app-store.png"
+                  alt="Download Beatify on the App Store"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 Snippet.co. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Visit Snippet.co on Twitter">
+              <span class="social-icon"><i class="fab fa-x-twitter"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Instagram">
+              <span class="social-icon"><i class="fab fa-instagram"></i></span>
+            </a>
+            <a href="#" aria-label="Visit Snippet.co on Facebook">
+              <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+      // Smooth scroll for TOC links
+      document.querySelectorAll(".policy-toc-list a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Active section highlighting in TOC
+      const observerOptions = {
+        root: null,
+        rootMargin: "-100px 0px -80% 0px",
+        threshold: 0,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll(".policy-toc-list a").forEach((link) => {
+              link.classList.remove("active");
+            });
+            const activeLink = document.querySelector(
+              `.policy-toc-list a[href="#${entry.target.id}"]`
+            );
+            if (activeLink) {
+              activeLink.classList.add("active");
+            }
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".policy-section").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
