@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Beatify</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#121212',
+                        surface: '#1A1A1A',
+                        primary: '#FF007A',
+                        text: {
+                            main: '#FFFFFF',
+                            secondary: '#A0A0A0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-text-main font-sans min-h-screen">
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-white/5 px-4 h-20 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <div
+                class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-300">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" />
+                </svg>
+            </div>
+            <span class="text-xl font-bold tracking-wide">Beatify</span>
+        </a>
+        <nav class="hidden md:flex gap-8">
+            <a href="index.html"
+                class="text-text-secondary hover:text-white transition-colors text-sm font-medium">Home</a>
+            <a href="#" class="text-text-main font-medium border-b-2 border-primary pb-1">About</a>
+            <a href="signup.html"
+                class="text-text-secondary hover:text-white transition-colors text-sm font-medium">Join Now</a>
+        </nav>
+        <a href="login.html" class="md:hidden text-text-secondary hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                </path>
+            </svg>
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 px-4 overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none transform translate-x-1/3 -translate-y-1/3">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none transform -translate-x-1/3 translate-y-1/3">
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1
+                class="text-5xl md:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-gray-500">
+                The Sound of <br class="hidden md:block" /> Tomorrow.
+            </h1>
+            <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-10">
+                Beatify isn't just a player; it's a movement. We're rebuilding the bridge between artists and fans with
+                lossless audio and AI-powered discovery.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="signup.html"
+                    class="px-8 py-3.5 bg-primary hover:bg-primary/90 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all transform hover:-translate-y-1">
+                    Start Listening
+                </a>
+                <a href="#journey"
+                    class="px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium rounded-full transition-colors">
+                    Our Journey
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Core Rhythms (Values) -->
+    <section class="py-20 px-4 bg-surface/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-3">Our Core Rhythms</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white">Principles We Live By</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div
+                    class="bg-surface/50 border border-white/5 p-8 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500">
+                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Artist First</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        We believe creators dictate the culture. That's why we offer the highest payout rates in the
+                        industry and transparent analytics for every play.
+                    </p>
+                </div>
+                <!-- Value 2 -->
+                <div
+                    class="bg-surface/50 border border-white/5 p-8 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500">
+                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Pure Fidelity</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        No compression. No compromise. We deliver audio bits exactly as they left the studio, ensuring
+                        you hear the breath before the verse.
+                    </p>
+                </div>
+                <!-- Value 3 -->
+                <div
+                    class="bg-surface/50 border border-white/5 p-8 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500">
+                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Radical Discovery</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        Break the algorithmic bubble. Our "Deep Dive" mode explores genres you didn't know you loved,
+                        connecting you with the underground.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Timeline -->
+    <section id="journey" class="py-20 px-4 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl md:text-4xl font-bold text-white">Our Journey</h3>
+            </div>
+
+            <div class="relative py-10">
+                <!-- Vertical Line -->
+                <div
+                    class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-transparent via-primary to-transparent">
+                </div>
+
+                <!-- Event 1 -->
+                <div class="relative mb-20">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="w-5/12 text-right pr-8">
+                            <h4 class="text-xl font-bold text-white">The First Note</h4>
+                            <p class="text-primary font-mono text-sm mb-2">Jan 2023</p>
+                            <p class="text-text-secondary text-sm">Concept phase. A small team of audiophiles meets in a
+                                garage to prototype a lossless streaming engine.</p>
+                        </div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background border-4 border-primary rounded-full z-10">
+                        </div>
+                        <div class="w-5/12 pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="relative mb-20">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="w-5/12 pr-8"></div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background border-4 border-primary rounded-full z-10">
+                        </div>
+                        <div class="w-5/12 text-left pl-8">
+                            <h4 class="text-xl font-bold text-white">Building the Studio</h4>
+                            <p class="text-primary font-mono text-sm mb-2">Nov 2024</p>
+                            <p class="text-text-secondary text-sm">Beta launch. Invite-only access for 10,000 users.
+                                Feedback loops shape the "Smart Discovery" AI.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="relative">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="w-5/12 text-right pr-8">
+                            <h4 class="text-xl font-bold text-white">Going Live</h4>
+                            <p class="text-primary font-mono text-sm mb-2">Present Day</p>
+                            <p class="text-text-secondary text-sm">Beatify launches globally. 1M+ users and counting.
+                                The revolution is just beginning.</p>
+                        </div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary shadow-[0_0_15px_rgba(255,0,122,0.8)] rounded-full z-10 animate-pulse">
+                        </div>
+                        <div class="w-5/12 pl-8"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Made by Snippet.co -->
+    <section class="py-24 px-4 bg-gradient-to-b from-surface/30 to-background border-t border-white/5">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-1">
+                <div class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-mono text-white mb-6">Built by
+                    Developers</div>
+                <h2 class="text-4xl font-bold text-white mb-6">
+                    Made by <a href="/snippet.co"
+                        class="text-primary hover:underline decoration-2 underline-offset-4">Snippet.co</a>
+                </h2>
+                <div class="space-y-6 text-text-secondary text-lg leading-relaxed">
+                    <p>
+                        Beatify is the flagship product of Snippet.co, a digital product studio obsessed with
+                        craftsmanship. We don't just write code; we compose experiences.
+                    </p>
+                    <p>
+                        Our team spans the globe, united by a love for clean code and heavy basslines. Want to see who's
+                        behind the deck?
+                    </p>
+                </div>
+                <div class="mt-8 flex gap-4">
+                    <a href="/snippet.co"
+                        class="px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors">
+                        Visit Landing Page
+                    </a>
+                    <a href="/snippet.co/team"
+                        class="px-6 py-3 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-colors flex items-center gap-2 group">
+                        Meet the Team
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visual representation of "Snippet.co" -->
+            <div
+                class="flex-shrink-0 w-full md:w-80 aspect-[4/5] bg-surface rounded-2xl border border-white/10 relative overflow-hidden group shadow-2xl">
+                <!-- Fake Code Editor UI -->
+                <div
+                    class="absolute top-0 left-0 right-0 h-8 bg-black/20 border-b border-white/5 flex items-center px-4 gap-2">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                </div>
+                <div class="pt-12 px-6 font-mono text-xs text-secondary leading-loose">
+                    <span class="text-purple-400">const</span> <span class="text-blue-400">Mission</span> = {<br>
+                    &nbsp;&nbsp;company: <span class="text-green-400">"Snippet.co"</span>,<br>
+                    &nbsp;&nbsp;product: <span class="text-green-400">"Beatify"</span>,<br>
+                    &nbsp;&nbsp;values: [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-400">"Innovation"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-400">"Quality"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-400">"Community"</span><br>
+                    &nbsp;&nbsp;],<br>
+                    &nbsp;&nbsp;status: <span class="text-yellow-400">"Deploying..."</span><br>
+                    };<br><br>
+                    <span class="text-gray-500">// Join us building the future</span>
+                </div>
+                <!-- Glitch Effect Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join the Band / Careers -->
+    <section class="py-20 px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-6">Ready to Join the Band?</h2>
+        <p class="text-text-secondary max-w-lg mx-auto mb-8">We're always looking for talented engineers, designers, and
+            curators to help us shape the future of audio.</p>
+        <a href="#"
+            class="inline-block px-8 py-4 bg-white/5 border border-white/10 hover:border-primary text-white font-medium rounded-xl transition-all duration-300 hover:scale-105">
+            View Open Roles
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <!-- Main Footer -->
+    <footer class="mt-20 border-t border-white/5 pt-12 hidden md:block">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <!-- Added max-w container to match about page layout style if needed, or stick to grid -->
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                    <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" />
+                    </svg>
+                    Beatify
+                </h4>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    The Sound of Tomorrow. <br>
+                    High-fidelity streaming for music lovers.
+                </p>
+            </div>
+
+            <div>
+                <h5 class="text-white font-semibold mb-4">Features</h5>
+                <ul class="space-y-2 text-sm text-text-secondary">
+                    <li><a href="#" class="hover:text-primary transition-colors">Go Premium</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Mobile App</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Offline Mode</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-white font-semibold mb-4">Community</h5>
+                <ul class="space-y-2 text-sm text-text-secondary">
+                    <li><a href="#" class="hover:text-primary transition-colors">For Artists</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Developers</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Support</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-white font-semibold mb-4">Legal</h5>
+                <ul class="space-y-2 text-sm text-text-secondary">
+                    <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-text-secondary gap-4 mb-12">
+            <div>© 2025 Beatify. All rights reserved.</div>
+            <div class="flex items-center gap-2 opacity-70">
+                <span>Beatify is a product by</span>
+                <a href="/snippet.co" class="hover:text-white transition-colors font-semibold">Snippet.co</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

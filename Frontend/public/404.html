@@ -1,563 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Snippet.co | 404 - Page Not Found</title>
 
-		<style>
-			*,
-			*::before,
-			*::after {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
-
-			:root {
-				--bg-dark: #050510;
-				--bg-card: #111123;
-				--primary: #8b5cf6;
-				--primary-soft: rgba(139, 92, 246, 0.12);
-				--accent: #06b6d4;
-				--text-primary: #f9fafb;
-				--text-secondary: #9ca3af;
-				--border: #27272f;
-			}
-
-			html,
-			body {
-				height: 100%;
-			}
-
-			body {
-				font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-				background: radial-gradient(circle at top left, #111827 0, #020617 40%, #02010a 100%);
-				color: var(--text-primary);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 24px;
-			}
-
-			.outer-shell {
-				position: relative;
-				width: 100%;
-				max-width: 960px;
-				border-radius: 32px;
-				background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.05));
-				padding: 1px;
-				overflow: hidden;
-			}
-
-			.outer-blur {
-				position: absolute;
-				inset: -40%;
-				background: radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.4), transparent 60%),
-					radial-gradient(circle at 90% 100%, rgba(6, 182, 212, 0.35), transparent 55%);
-				opacity: 0.25;
-				filter: blur(40px);
-				pointer-events: none;
-			}
-
-			.card {
-				position: relative;
-				z-index: 1;
-				display: grid;
-				grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-				gap: 40px;
-				padding: 32px 32px 28px;
-				border-radius: 31px;
-				background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
-				border: 1px solid rgba(148, 163, 184, 0.18);
-				box-shadow: 0 22px 80px rgba(15, 23, 42, 0.9);
-			}
-
-			.left {
-				display: flex;
-				flex-direction: column;
-				gap: 20px;
-			}
-
-			.badge {
-				align-self: flex-start;
-				display: inline-flex;
-				align-items: center;
-				gap: 8px;
-				padding: 6px 14px;
-				border-radius: 999px;
-				background: rgba(15, 23, 42, 0.9);
-				border: 1px solid rgba(148, 163, 184, 0.35);
-				font-size: 11px;
-				letter-spacing: 0.12em;
-				text-transform: uppercase;
-				color: var(--text-secondary);
-			}
-
-			.badge-dot {
-				width: 8px;
-				height: 8px;
-				border-radius: 999px;
-				background: radial-gradient(circle, #22c55e, #15803d);
-				box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
-			}
-
-			.code-label {
-				font-size: 13px;
-				color: var(--text-secondary);
-			}
-
-			.code-line {
-				font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-					monospace;
-				font-size: 13px;
-				color: #9ca3af;
-			}
-
-			.code-key {
-				color: #e5e7eb;
-			}
-
-			.code-value {
-				color: #a5b4fc;
-			}
-
-			.code-status {
-				color: #fb7185;
-			}
-
-			.title-404 {
-				font-size: clamp(3rem, 6vw, 3.75rem);
-				font-weight: 800;
-				letter-spacing: 0.06em;
-				background: linear-gradient(120deg, #e5e7eb, #a5b4fc);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-			}
-
-			.subtitle {
-				font-size: clamp(1.2rem, 2.1vw, 1.5rem);
-				font-weight: 600;
-			}
-
-			.subtitle span {
-				background: linear-gradient(135deg, var(--primary), var(--accent));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-			}
-
-			.text {
-				margin-top: 4px;
-				font-size: 14px;
-				color: var(--text-secondary);
-				max-width: 420px;
-			}
-
-			.actions {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 12px;
-				margin-top: 18px;
-			}
-
-			.btn {
-				border-radius: 999px;
-				padding: 10px 20px;
-				font-size: 14px;
-				font-weight: 500;
-				border: 1px solid transparent;
-				display: inline-flex;
-				align-items: center;
-				gap: 8px;
-				cursor: pointer;
-				transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease,
-					color 0.15s ease;
-				text-decoration: none;
-			}
-
-			.btn-primary {
-				background: linear-gradient(135deg, var(--primary), var(--accent));
-				color: #0b1020;
-				box-shadow: 0 14px 35px rgba(88, 28, 135, 0.7);
-			}
-
-			.btn-primary:hover {
-				transform: translateY(-1px);
-				box-shadow: 0 18px 45px rgba(88, 28, 135, 0.85);
-			}
-
-			.btn-ghost {
-				background: rgba(15, 23, 42, 0.9);
-				border-color: rgba(148, 163, 184, 0.5);
-				color: var(--text-secondary);
-			}
-
-			.btn-ghost:hover {
-				background: rgba(15, 23, 42, 1);
-				color: var(--text-primary);
-			}
-
-			.hint-row {
-				margin-top: 14px;
-				display: flex;
-				align-items: center;
-				gap: 8px;
-				font-size: 12px;
-				color: var(--text-secondary);
-			}
-
-			.dot-soft {
-				width: 7px;
-				height: 7px;
-				border-radius: 999px;
-				background: var(--primary-soft);
-				outline: 1px solid rgba(148, 163, 184, 0.4);
-			}
-
-			.right {
-				position: relative;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			.player-shell {
-				position: relative;
-				width: 100%;
-				max-width: 320px;
-				border-radius: 24px;
-				padding: 1px;
-				background: linear-gradient(150deg, rgba(139, 92, 246, 0.9), rgba(6, 182, 212, 0.5));
-				box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
-			}
-
-			.player-card {
-				border-radius: 23px;
-				background: radial-gradient(circle at top, #020617, #020617 52%, #020617 100%);
-				border: 1px solid rgba(148, 163, 184, 0.2);
-				padding: 16px 14px 14px;
-			}
-
-			.player-header {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				margin-bottom: 14px;
-			}
-
-			.player-dots {
-				display: flex;
-				gap: 5px;
-			}
-
-			.player-dots span {
-				width: 8px;
-				height: 8px;
-				border-radius: 50%;
-			}
-
-			.player-dots span:nth-child(1) {
-				background: #f97373;
-			}
-
-			.player-dots span:nth-child(2) {
-				background: #fbbf24;
-			}
-
-			.player-dots span:nth-child(3) {
-				background: #22c55e;
-			}
-
-			.player-badge {
-				font-size: 10px;
-				padding: 3px 9px;
-				border-radius: 999px;
-				border: 1px solid rgba(148, 163, 184, 0.5);
-				color: var(--text-secondary);
-			}
-
-			.art {
-				position: relative;
-				border-radius: 18px;
-				overflow: hidden;
-				height: 170px;
-				margin-bottom: 14px;
-				background: radial-gradient(circle at 10% 0%, #8b5cf6 0, #0ea5e9 40%, #0f172a 80%);
-			}
-
-			.art-overlay {
-				position: absolute;
-				inset: 0;
-				background: radial-gradient(circle at 80% 0%, rgba(15, 23, 42, 0.1), transparent 60%),
-					radial-gradient(circle at 10% 100%, rgba(15, 23, 42, 0.55), transparent 60%);
-			}
-
-			.art-note {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				font-size: 36px;
-				filter: drop-shadow(0 12px 25px rgba(15, 23, 42, 0.9));
-			}
-
-			.player-title {
-				font-size: 13px;
-				font-weight: 600;
-			}
-
-			.player-sub {
-				font-size: 11px;
-				color: var(--text-secondary);
-			}
-
-			.meta-row {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 10px;
-			}
-
-			.pill {
-				font-size: 10px;
-				padding: 3px 7px;
-				border-radius: 999px;
-				background: rgba(15, 23, 42, 0.9);
-				border: 1px solid rgba(148, 163, 184, 0.3);
-				color: var(--text-secondary);
-			}
-
-			.wave-row {
-				margin-bottom: 12px;
-				display: grid;
-				grid-template-columns: repeat(10, minmax(0, 1fr));
-				gap: 3px;
-				align-items: flex-end;
-			}
-
-			.bar {
-				height: 12px;
-				border-radius: 999px;
-				background: linear-gradient(to top, rgba(148, 163, 184, 0.45), rgba(79, 70, 229, 0.9));
-				opacity: 0.5;
-			}
-
-			.bar:nth-child(2n) {
-				height: 20px;
-			}
-
-			.bar:nth-child(3n) {
-				height: 26px;
-			}
-
-			.bar:nth-child(5n) {
-				height: 30px;
-			}
-
-			.progress-shell {
-				margin-bottom: 10px;
-			}
-
-			.progress-track {
-				height: 4px;
-				border-radius: 999px;
-				background: rgba(31, 41, 55, 0.9);
-				overflow: hidden;
-			}
-
-			.progress-fill {
-				width: 35%;
-				height: 100%;
-				background: linear-gradient(90deg, var(--primary), var(--accent));
-			}
-
-			.progress-labels {
-				display: flex;
-				justify-content: space-between;
-				font-size: 10px;
-				margin-top: 4px;
-				color: var(--text-secondary);
-			}
-
-			.controls {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				gap: 16px;
-				margin-top: 8px;
-			}
-
-			.ctrl-btn {
-				width: 30px;
-				height: 30px;
-				border-radius: 999px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: var(--text-secondary);
-				font-size: 14px;
-				background: transparent;
-			}
-
-			.ctrl-btn.main {
-				width: 40px;
-				height: 40px;
-				background: radial-gradient(circle at 30% 0%, #f9fafb, #e5e7eb);
-				color: #020617;
-				box-shadow: 0 12px 25px rgba(15, 23, 42, 0.9);
-			}
-
-			.badge-404 {
-				position: absolute;
-				bottom: -14px;
-				right: 12px;
-				font-size: 10px;
-				padding: 6px 10px;
-				border-radius: 999px;
-				background: rgba(15, 23, 42, 0.98);
-				border: 1px solid rgba(148, 163, 184, 0.5);
-				color: var(--text-secondary);
-			}
-
-			.badge-404 span {
-				color: #f97373;
-				font-weight: 600;
-			}
-
-			@media (max-width: 768px) {
-				.card {
-					grid-template-columns: minmax(0, 1fr);
-					padding: 24px 18px 20px;
-					gap: 32px;
-				}
-
-				.left {
-					text-align: left;
-				}
-
-				.title-404 {
-					font-size: 2.4rem;
-				}
-
-				.text {
-					max-width: none;
-				}
-
-				.badge {
-					align-self: flex-start;
-				}
-
-				.outer-shell {
-					border-radius: 26px;
-				}
-
-				.card {
-					border-radius: 25px;
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>404 - Track Not Found | Beatify</title>
+
+	<!-- Google Fonts: Poppins -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Tailwind CSS -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ['Poppins', 'sans-serif'],
+					},
+					colors: {
+						background: '#121212',
+						surface: '#1A1A1A',
+						primary: '#FF007A',
+						text: {
+							main: '#FFFFFF',
+							secondary: '#A0A0A0'
+						}
+					},
+					animation: {
+						'spin-slow': 'spin 8s linear infinite',
+						'float': 'float 6s ease-in-out infinite',
+						'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+					},
+					keyframes: {
+						float: {
+							'0%, 100%': { transform: 'translateY(0)' },
+							'50%': { transform: 'translateY(-20px)' },
+						}
+					}
 				}
 			}
-		</style>
-	</head>
-	<body>
-		<div class="outer-shell" role="document">
-			<div class="outer-blur" aria-hidden="true"></div>
+		}
+	</script>
+	<style>
+		.vinyl-grooves {
+			background: repeating-radial-gradient(#111 0,
+					#111 2px,
+					#222 3px,
+					#222 4px);
+		}
 
-			<main class="card" aria-labelledby="page-title">
-				<section class="left">
-					<div class="badge">
-						<span class="badge-dot"></span>
-						<span>Snippet.co · Player</span>
-					</div>
+		.glitch-text {
+			position: relative;
+		}
 
-					<p class="code-label">Request log</p>
-					<p class="code-line">
-						<span class="code-key">status</span>
-						<span class="code-status">404</span>
-						<span class="code-key">message</span>
-						<span class="code-value">"Track not found"</span>
-					</p>
+		.glitch-text::before,
+		.glitch-text::after {
+			content: attr(data-text);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #121212;
+		}
 
-					<h1 id="page-title" class="title-404">404</h1>
-					<p class="subtitle">This page is a little <span>off‑beat</span>.</p>
-					<p class="text">
-						The URL you hit is out of tune or no longer exists. Try heading back to the home page or return to the last
-						track you were listening to.
-					</p>
+		.glitch-text::before {
+			left: 2px;
+			text-shadow: -1px 0 #ff007a;
+			clip: rect(24px, 550px, 90px, 0);
+			animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+		}
 
-					<div class="actions">
-						<a href="index.html" class="btn btn-primary">Back to home</a>
-						<button type="button" class="btn btn-ghost" onclick="history.back()">Go to previous page</button>
-					</div>
+		.glitch-text::after {
+			left: -2px;
+			text-shadow: -1px 0 #00fff9;
+			clip: rect(85px, 550px, 140px, 0);
+			animation: glitch-anim-2 2s infinite linear alternate-reverse;
+		}
 
-					<div class="hint-row">
-						<span class="dot-soft"></span>
-						<span>If this keeps happening, double‑check the link or try again later.</span>
-					</div>
-				</section>
+		@keyframes glitch-anim-1 {
+			0% {
+				clip: rect(20px, 9999px, 15px, 0);
+			}
 
-				<aside class="right" aria-hidden="true">
-					<div class="player-shell">
-						<div class="player-card">
-							<header class="player-header">
-								<div class="player-dots">
-									<span></span>
-									<span></span>
-									<span></span>
-								</div>
-								<span class="player-badge">Lost in the mix</span>
-							</header>
+			20% {
+				clip: rect(60px, 9999px, 85px, 0);
+			}
 
-							<div class="art">
-								<div class="art-overlay"></div>
-								<span class="art-note">♪</span>
-							</div>
+			40% {
+				clip: rect(2px, 9999px, 40px, 0);
+			}
 
-							<div class="meta-row">
-								<div>
-									<p class="player-title">Page Not Found</p>
-									<p class="player-sub">Snippet.co · 404 playlist</p>
-								</div>
-								<span class="pill">auto‑skip</span>
-							</div>
+			60% {
+				clip: rect(80px, 9999px, 5px, 0);
+			}
 
-							<div class="wave-row">
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-								<div class="bar"></div>
-							</div>
+			80% {
+				clip: rect(30px, 9999px, 100px, 0);
+			}
 
-							<div class="progress-shell">
-								<div class="progress-track">
-									<div class="progress-fill"></div>
-								</div>
-								<div class="progress-labels">
-									<span>00:00</span>
-									<span>04:04</span>
-								</div>
-							</div>
+			100% {
+				clip: rect(50px, 9999px, 70px, 0);
+			}
+		}
 
-							<div class="controls">
-								<button type="button" class="ctrl-btn" aria-label="Previous track">⏮</button>
-								<button type="button" class="ctrl-btn main" aria-label="Play again">▶</button>
-								<button type="button" class="ctrl-btn" aria-label="Next track">⏭</button>
-							</div>
-						</div>
+		@keyframes glitch-anim-2 {
+			0% {
+				clip: rect(10px, 9999px, 90px, 0);
+			}
 
-						<div class="badge-404">
-							Error code <span>404</span>
-						</div>
-					</div>
-				</aside>
-			</main>
+			20% {
+				clip: rect(30px, 9999px, 10px, 0);
+			}
+
+			40% {
+				clip: rect(70px, 9999px, 50px, 0);
+			}
+
+			60% {
+				clip: rect(20px, 9999px, 20px, 0);
+			}
+
+			80% {
+				clip: rect(90px, 9999px, 60px, 0);
+			}
+
+			100% {
+				clip: rect(40px, 9999px, 10px, 0);
+			}
+		}
+	</style>
+</head>
+
+<body class="bg-background text-text-main font-sans min-h-screen flex flex-col">
+
+	<!-- Header -->
+	<header
+		class="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-white/5 px-4 h-20 flex items-center justify-between">
+		<a href="index.html" class="flex items-center gap-2 group">
+			<div
+				class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-300">
+				<svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+					<path
+						d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" />
+				</svg>
+			</div>
+			<span class="text-xl font-bold tracking-wide">Beatify</span>
+		</a>
+		<nav class="hidden md:flex gap-8">
+			<a href="index.html"
+				class="text-text-secondary hover:text-white transition-colors text-sm font-medium">Home</a>
+			<a href="discover.html"
+				class="text-text-secondary hover:text-white transition-colors text-sm font-medium">Discover</a>
+			<a href="signup.html"
+				class="text-text-secondary hover:text-white transition-colors text-sm font-medium">Join Now</a>
+		</nav>
+		<a href="login.html" class="md:hidden text-text-secondary hover:text-white">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+					d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+				</path>
+			</svg>
+		</a>
+	</header>
+
+	<!-- Main Content -->
+	<main class="flex-grow flex items-center justify-center relative overflow-hidden px-4">
+		<!-- Background Ambient Glow -->
+		<div
+			class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none">
 		</div>
-	</body>
-</html>
+		<div
+			class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[100px] pointer-events-none">
+		</div>
 
+		<div class="max-w-6xl w-full mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+
+			<!-- Left: Text & Actions -->
+			<div class="order-2 md:order-1 text-center md:text-left">
+				<h1 class="text-[8rem] md:text-[10rem] font-black leading-none text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-600 glitch-text mb-4 select-none"
+					data-text="404">
+					404
+				</h1>
+				<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+					Track Not Found
+				</h2>
+				<p class="text-text-secondary text-lg mb-8 max-w-md mx-auto md:mx-0">
+					It looks like this record skipped a beat. The page you're searching for seems to have been deleted
+					or moved to a different playlist.
+				</p>
+
+				<!-- Search Bar -->
+				<div class="max-w-md mx-auto md:mx-0 mb-8 relative group">
+					<input type="text" placeholder="Search for artists, songs, or albums..."
+						class="w-full bg-surface/50 border border-white/10 rounded-full py-4 pl-6 pr-12 text-white placeholder-text-secondary focus:outline-none focus:border-primary/50 focus:bg-surface transition-all">
+					<button
+						class="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition-all transform hover:scale-110">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+						</svg>
+					</button>
+				</div>
+
+				<!-- Action Buttons -->
+				<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+					<a href="index.html"
+						class="px-8 py-3.5 bg-primary hover:bg-primary/90 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+							</path>
+						</svg>
+						Back to Home
+					</a>
+					<a href="discover.html"
+						class="px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium rounded-full transition-colors flex items-center justify-center gap-2">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+							</path>
+						</svg>
+						Discover New Music
+					</a>
+				</div>
+			</div>
+
+			<!-- Right: Visual (Spinning Record) -->
+			<div class="order-1 md:order-2 flex justify-center items-center relative">
+				<!-- Floating Animation Container -->
+				<div class="animate-float relative">
+					<!-- The Record -->
+					<div
+						class="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center animate-spin-slow group">
+						<!-- Vinyl Texture -->
+						<div class="absolute inset-0 rounded-full vinyl-grooves opacity-90 border-4 border-surface/50">
+						</div>
+						<!-- Shine Reflection -->
+						<div
+							class="absolute inset-0 rounded-full bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none">
+						</div>
+
+						<!-- Record Label -->
+						<div
+							class="absolute w-1/3 h-1/3 bg-primary rounded-full flex items-center justify-center shadow-inner overflow-hidden">
+							<div
+								class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-70 mix-blend-overlay">
+							</div>
+							<div class="relative z-10 text-center">
+								<span
+									class="block text-[0.6rem] md:text-xs font-bold text-white/80 tracking-widest uppercase mb-1">Error
+									Records</span>
+								<span class="block text-xl md:text-3xl font-black text-white leading-none">404</span>
+								<span class="block text-[0.5rem] md:text-[0.6rem] text-white/80 mt-1">Side B //
+									Missing</span>
+							</div>
+							<!-- Central Hole -->
+							<div class="absolute w-4 h-4 bg-background rounded-full"></div>
+						</div>
+					</div>
+
+					<!-- Tone Arm (Stylized simple graphic or just hint) -->
+					<!-- Keeping it simple to avoid complex SVG drawing, focusing on the record -->
+
+					<!-- Shadow -->
+					<div
+						class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-2/3 h-8 bg-black/40 blur-xl rounded-full scale-110">
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="border-t border-white/5 pt-12 hidden md:block bg-background">
+		<div
+			class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center pb-8 pt-4 text-xs text-text-secondary gap-4">
+			<div>© 2025 Beatify. All rights reserved.</div>
+			<div class="flex gap-6">
+				<a href="#" class="hover:text-primary transition-colors">Privacy</a>
+				<a href="#" class="hover:text-primary transition-colors">Terms</a>
+				<a href="#" class="hover:text-primary transition-colors">Help</a>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

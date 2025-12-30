@@ -19,9 +19,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap');
 /*  font-family: "Inter", sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+/* Font-family: poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
+
+@theme {
+    --font-sans: "Poppins", system-ui, sans-serif;
+    --color-background: #121212;
+    --color-surface: #1A1A1A;
+    --color-primary: #FF007A;
+    --color-text-main: #FFFFFF;
+    --color-text-secondary: #A0A0A0;
+}
 
 
 @layer base{

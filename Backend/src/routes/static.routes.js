@@ -26,11 +26,11 @@ router.route("/")
     })
 
 
-router.route("/register")
+router.route("/signup")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "register.html"), (err) => {
+        res.sendFile(path.join(staticPath, "signup.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading register.html")
+                res.status(500).send("Error loading signup.html")
             }
         })
         // console.log(req.url)
@@ -50,78 +50,70 @@ router.route("/login")
 
 router.route("/about")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "aboutPage.html"), (err) => {
+        res.sendFile(path.join(staticPath, "about.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading aboutPage.html")
+                res.status(500).send("Error loading about.html")
             }
         })
         // console.log(req.url)
     })
 
-router.route("/blog")
+
+
+// router.route("/articles/:slug")
+//     .get((req, res) => {
+//         res.sendFile(path.join(staticPath, "article.html"), (err) => {
+//             if (err) {
+//                 res.status(500).send("Error loading article.html")
+//             }
+//         })
+//         // console.log(req.url)
+//     })
+
+router.route("/discover")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "blog_page.html"), (err) => {
+        res.sendFile(path.join(staticPath, "discover.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading blog_page.html")
+                res.status(500).send("Error loading discover.html")
             }
         })
         // console.log(req.url)
     })
 
-router.route("/articles/:slug")
+router.route("/album")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "article.html"), (err) => {
+        res.sendFile(path.join(staticPath, "album.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading article.html")
+                res.status(500).send("Error loading album.html")
             }
         })
         // console.log(req.url)
     })
 
-router.route("/research")
+router.route("/artist")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "research_page.html"), (err) => {
+        res.sendFile(path.join(staticPath, "artist.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading research_page.html")
+                res.status(500).send("Error loading artist.html")
             }
         })
         // console.log(req.url)
     })
 
-router.route("/user-profile")
+router.route("/profile")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "user_profile_page.html"), (err) => {
+        res.sendFile(path.join(staticPath, "profile.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading user_profile_page.html")
+                res.status(500).send("Error loading profile.html")
             }
         })
         // console.log(req.url)
     })
-
-router.route("/edit-profile")
+router.route("/setting")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "user_profile_update.html"), (err) => {
+        res.sendFile(path.join(staticPath, "setting.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading user_profile_update.html")
-            }
-        })
-        // console.log(req.url)
-    })
-
-router.route("/forgot-password")
-    .get((req, res) => {
-        res.sendFile(path.join(staticPath, "forget.password.html"), (err) => {
-            if (err) {
-                res.status(500).send("Error loading forget.password.html")
-            }
-        })
-        // console.log(req.url)
-    })
-router.route("/gallery")
-    .get((req, res) => {
-        res.sendFile(path.join(staticPath, "gallery.html"), (err) => {
-            if (err) {
-                res.status(500).send("Error loading gallery.html")
+                res.status(500).send("Error loading setting.html")
             }
         })
         // console.log(req.url)
@@ -129,9 +121,9 @@ router.route("/gallery")
 
 router.route("/contact")
     .get((req, res) => {
-        res.sendFile(path.join(staticPath, "contact_us.html"), (err) => {
+        res.sendFile(path.join(staticPath, "contact.html"), (err) => {
             if (err) {
-                res.status(500).send("Error loading contact_us.html")
+                res.status(500).send("Error loading contact.html")
             }
         })
         // console.log(req.url)
