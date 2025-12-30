@@ -9,31 +9,8 @@
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        background: '#121212',
-                        surface: '#1A1A1A',
-                        primary: '#FF007A',
-                        text: {
-                            main: '#FFFFFF',
-                            secondary: '#A0A0A0'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <style>
         /* Custom Toggle Switch */
         .toggle-checkbox:checked {
@@ -57,7 +34,7 @@
     <header
         class="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-white/5 px-4 h-16 flex items-center">
         <div class="max-w-2xl w-full mx-auto flex items-center gap-4">
-            <a href="profile.html" class="p-2 -ml-2 hover:bg-white/5 rounded-full text-text-main transition-colors">
+            <a href="/profile" class="p-2 -ml-2 hover:bg-white/5 rounded-full text-text-main transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 19l-7-7 7-7m8 14l-7-7 7-7"></path>
@@ -202,7 +179,7 @@
         </section>
 
         <!-- Logout Button -->
-        <a href="login.html"
+        <a href="/login"
             class="block w-full text-center bg-surface border border-white/5 text-red-500 font-semibold py-4 rounded-2xl hover:bg-red-500/10 transition-colors mt-8">
             Log Out
         </a>

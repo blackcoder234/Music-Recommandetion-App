@@ -1,171 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Beatify</title>
 
     <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Custom CSS -->
+     <link rel="stylesheet" href="./assets/css/custom_css.css">
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        background: '#121212',
-                        surface: '#1A1A1A',
-                        primary: '#FF007A',
-                        text: {
-                            main: '#FFFFFF',
-                            secondary: '#A0A0A0'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-</head>
+     <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-<body
-    class="bg-background text-text-main font-sans min-h-screen flex items-center justify-center p-4 py-10 relative overflow-x-hidden">
-
+  <body
+    class="bg-background text-text-main font-sans min-h-screen flex items-center justify-center p-4 py-10 relative overflow-x-hidden"
+  >
     <!-- Background Decoration -->
     <div
-        class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none">
-    </div>
+      class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"
+    ></div>
     <div
-        class="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none">
-    </div>
+      class="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none"
+    ></div>
 
     <!-- Login Card -->
     <div
-        class="w-full max-w-sm bg-surface/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl relative z-10 animate-fade-in-up">
-
-        <!-- Header -->
-        <div class="text-center mb-6">
-            <a href="index.html" class="inline-flex items-center gap-2 mb-3 group">
-                <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-300">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" />
-                    </svg>
-                </div>
-            </a>
-            <h2 class="text-2xl font-bold mb-1">Welcome Back</h2>
-            <p class="text-sm text-text-secondary">Please enter your details to sign in.</p>
-        </div>
-
-        <!-- Form -->
-        <form class="space-y-4" action="index.html"> <!-- Static routing to home -->
-            <div>
-                <label for="email" class="block text-xs font-medium text-text-secondary mb-1.5">Email Address</label>
-                <div class="relative">
-                    <input type="email" id="email" placeholder="hello@example.com"
-                        class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
-                    <svg class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                        </path>
-                    </svg>
-                </div>
-            </div>
-
-            <div>
-                <div class="flex justify-between items-center mb-1.5">
-                    <label for="password" class="block text-xs font-medium text-text-secondary">Password</label>
-                    <a href="#" class="text-xs font-medium text-primary hover:text-primary/80 transition-colors">Forgot
-                        Password?</a>
-                </div>
-                <div class="relative">
-                    <input type="password" id="password" placeholder="••••••••"
-                        class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
-                    <button type="button"
-                        class="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-white">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                            </path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <button type="submit"
-                class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 transform hover:-translate-y-0.5 text-sm">
-                Sign In
-            </button>
-        </form>
-
-        <!-- Divider -->
-        <div class="relative my-6">
-            <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-white/10"></div>
-            </div>
-            <div class="relative flex justify-center text-[10px] uppercase"><span
-                    class="bg-surface px-4 text-text-secondary">Or continue with</span></div>
-        </div>
-
-        <!-- Social Buttons -->
-        <div class="grid grid-cols-2 gap-3">
-            <button
-                class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl py-2.5 transition-colors">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
-                </svg>
-                <span class="text-xs font-medium">Google</span>
-            </button>
-            <button
-                class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl py-2.5 transition-colors">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.1 1.88-2.6 5.39.53 6.64-.67 1.83-1.59 3.47-2.58 4.57zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-                </svg>
-                <span class="text-xs font-medium">Apple</span>
-            </button>
-        </div>
-
-        <!-- Footer -->
-        <p class="text-center text-text-secondary mt-6 text-xs">
-            Don't have an account?
-            <a href="signup.html" class="text-primary font-semibold hover:text-primary/80 transition-colors">Sign up</a>
+      class="w-full max-w-sm bg-surface/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl relative z-10 animate-fade-in-up"
+    >
+      <!-- Header -->
+      <div class="text-center mb-6">
+        <a href="/" class="inline-flex items-center gap-2 mb-3 group">
+          <div
+            class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-300"
+          >
+            <svg
+              class="w-5 h-5 text-white"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"
+              />
+            </svg>
+          </div>
+        </a>
+        <h2 class="text-2xl font-bold mb-1">Welcome Back</h2>
+        <p class="text-sm text-text-secondary">
+          Please enter your details to sign in.
         </p>
+      </div>
 
+      <!-- Form -->
+      <form class="space-y-4" action="/">
+        <!-- Static routing to home -->
+        <div>
+          <label
+            for="email"
+            class="block text-xs font-medium text-text-secondary mb-1.5"
+            >Email Address</label
+          >
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              placeholder="hello@example.com"
+              class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+            />
+            <svg
+              class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-1.5">
+            <label
+              for="password"
+              class="block text-xs font-medium text-text-secondary"
+              >Password</label
+            >
+            <a
+              href="#"
+              class="text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+              >Forgot Password?</a
+            >
+          </div>
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+            />
+            <button
+              type="button"
+              class="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-white"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 transform hover:-translate-y-0.5 text-sm"
+        >
+          Sign In
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="relative my-6">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-white/10"></div>
+        </div>
+        <div class="relative flex justify-center text-[10px] uppercase">
+          <span class="bg-surface px-4 text-text-secondary"
+            >Or continue with</span
+          >
+        </div>
+      </div>
+
+      <!-- Social Buttons -->
+      <div class="grid grid-cols-2 gap-3">
+        <a
+          href="https://accounts.google.com/o/oauth2/v2/auth"
+          class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl py-2.5 transition-colors"
+        >
+          <img
+            src="assets/images/logos/google-icon-logo-svgrepo-com.svg"
+            alt="Google logo"
+            class="w-4 h-4"
+          />
+          <span class="text-xs font-medium">Google</span>
+        </a>
+        <button
+          class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl py-2.5 transition-colors"
+        >
+          <img
+            src="assets/images/logos/apple-black-logo-svgrepo-com.svg"
+            alt="Apple logo"
+            class="w-4 h-4"
+          />
+          <span class="text-xs font-medium">Apple</span>
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <p class="text-center text-text-secondary mt-6 text-xs">
+        Don't have an account?
+        <a
+          href="/signup"
+          class="text-primary font-semibold hover:text-primary/80 transition-colors"
+          >Sign up</a
+        >
+      </p>
     </div>
 
     <!-- Animation Keyframes -->
     <style>
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
 
-        .animate-fade-in-up {
-            animation: fade-in-up 0.6s ease-out forwards;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
+
+      .animate-fade-in-up {
+        animation: fade-in-up 0.6s ease-out forwards;
+      }
     </style>
-
-</body>
-
+  </body>
 </html>

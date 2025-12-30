@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Beatify</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body
+    class="bg-background text-text-main font-sans antialiased min-h-screen flex flex-col"
+  >
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-white/5 px-4 h-20 flex items-center justify-between"
+    >
+      <a href="/" class="flex items-center gap-2 group">
+        <div
+          class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-300"
+        >
+          <svg
+            class="w-5 h-5 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"
+            />
+          </svg>
+        </div>
+        <span class="text-xl font-bold tracking-wide">Beatify</span>
+      </a>
+      <nav class="hidden md:flex gap-8">
+        <a
+          href="/"
+          class="text-text-secondary hover:text-white transition-colors text-sm font-medium"
+          >Home</a
+        >
+        <a
+          href="/about"
+          class="text-text-secondary hover:text-white transition-colors text-sm font-medium"
+          >About</a
+        >
+        <a
+          href="/premium"
+          class="text-text-secondary hover:text-white transition-colors text-sm font-medium"
+          >Premium</a
+        >
+        <a
+          href="/contact"
+          class="text-text-main font-medium border-b-2 border-primary pb-1"
+          >Contact</a
+        >
+      </nav>
+      <div class="flex items-center gap-4">
+        <a
+          href="/login"
+          class="hidden md:block text-sm font-semibold text-white px-4 py-2 hover:opacity-80 transition-opacity"
+          >Login</a
+        >
+        <a
+          href="/signup"
+          class="hidden md:block bg-white text-black text-sm font-bold px-6 py-2 rounded-full hover:bg-gray-200 transition-all duration-300"
+          >Sign Up</a
+        >
+        <!-- Mobile Menu Icon -->
+        <button
+          id="mobile-menu-toggle"
+          class="md:hidden text-text-secondary hover:text-white"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div
+      id="mobile-nav"
+      class="fixed top-0 right-0 w-3/4 h-full bg-surface border-l border-white/10 z-[60] flex flex-col items-center justify-center space-y-8 transform translate-x-full transition-transform duration-300 md:hidden shadow-2xl"
+    >
+      <button
+        id="close-mobile-nav"
+        class="absolute top-6 right-6 text-white p-2"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+
+      <a
+        href="/"
+        class="text-xl font-bold text-white hover:text-primary transition-colors"
+        >Home</a
+      >
+      <a
+        href="/about"
+        class="text-xl font-bold text-white hover:text-primary transition-colors"
+        >About</a
+      >
+      <a
+        href="/premium"
+        class="text-xl font-bold text-white hover:text-primary transition-colors"
+        >Premium</a
+      >
+      <a
+        href="/contact"
+        class="text-xl font-bold text-primary transition-colors"
+        >Contact</a
+      >
+      <div class="w-20 h-px bg-white/10"></div>
+      <a
+        href="/login"
+        class="text-lg font-medium text-white hover:text-primary transition-colors"
+        >Login</a
+      >
+      <a
+        href="/signup"
+        class="px-6 py-2 bg-white text-black font-bold rounded-full text-sm"
+        >Sign Up</a
+      >
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <section class="py-20 px-4 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div
+          class="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none transform -translate-x-1/2 -translate-y-1/2"
+        ></div>
+
+        <div class="max-w-4xl mx-auto text-center mb-16 relative z-10">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
+          <p class="text-text-secondary text-lg">
+            We'd love to hear from you. Send us a message and we'll respond as
+            soon as possible.
+          </p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 relative z-10">
+          <!-- Contact Form -->
+          <div
+            class="bg-surface/50 backdrop-blur-sm p-8 rounded-2xl border border-white/5"
+          >
+            <form class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-text-secondary mb-2"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
+                    placeholder="John"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-sm font-medium text-text-secondary mb-2"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
+                    placeholder="Doe"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  class="block text-sm font-medium text-text-secondary mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  class="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
+                  placeholder="john@example.com"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-sm font-medium text-text-secondary mb-2"
+                  >Subject</label
+                >
+                <select
+                  class="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
+                >
+                  <option>General Inquiry</option>
+                  <option>Technical Support</option>
+                  <option>Business Partnership</option>
+                  <option>Billing Issue</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="block text-sm font-medium text-text-secondary mb-2"
+                  >Message</label
+                >
+                <textarea
+                  rows="4"
+                  class="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
+                  placeholder="How can we help you?"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-primary hover:bg-pink-600 text-white font-bold py-4 rounded-lg transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/25"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="flex flex-col justify-center space-y-12">
+            <div class="flex items-start gap-6">
+              <div
+                class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">Email Us</h3>
+                <p class="text-text-secondary mb-1">
+                  Our friendly team is here to help.
+                </p>
+                <a
+                  href="mailto:support@beatify.com"
+                  class="text-primary hover:underline"
+                  >support@beatify.com</a
+                >
+              </div>
+            </div>
+
+            <div class="flex items-start gap-6">
+              <div
+                class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">Visit Us</h3>
+                <p class="text-text-secondary mb-1">
+                  Come say hello at our office headquarters.
+                </p>
+                <p class="text-white">
+                  100 Music Lane<br />San Francisco, CA 94105
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-6">
+              <div
+                class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">Call Us</h3>
+                <p class="text-text-secondary mb-1">Mon-Fri from 8am to 5pm.</p>
+                <a href="tel:+15550000000" class="text-primary hover:underline"
+                  >+1 (555) 000-0000</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-white/5 pt-12">
+      <div
+        class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12"
+      >
+        <div class="space-y-4">
+          <h4 class="text-xl font-bold text-white flex items-center gap-2">
+            <svg
+              class="w-6 h-6 text-primary"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"
+              />
+            </svg>
+            Beatify
+          </h4>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            The Sound of Tomorrow. <br />
+            High-fidelity streaming for music lovers.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="text-white font-semibold mb-4">Features</h5>
+          <ul class="space-y-2 text-sm text-text-secondary">
+            <li>
+              <a href="/premium" class="hover:text-primary transition-colors"
+                >Go Premium</a
+              >
+            </li>
+            <li>
+              <a href="/download" class="hover:text-primary transition-colors"
+                >Mobile App</a
+              >
+            </li>
+            <li>
+              <a
+                href="/offline-mode"
+                class="hover:text-primary transition-colors"
+                >Offline Mode</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-semibold mb-4">Community</h5>
+          <ul class="space-y-2 text-sm text-text-secondary">
+            <li>
+              <a href="/contact" class="hover:text-primary transition-colors"
+                >For Artists</a
+              >
+            </li>
+            <li>
+              <a href="/contact" class="hover:text-primary transition-colors"
+                >Developers</a
+              >
+            </li>
+            <li>
+              <a href="/support" class="hover:text-primary transition-colors"
+                >Support</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-semibold mb-4">Legal</h5>
+          <ul class="space-y-2 text-sm text-text-secondary">
+            <li>
+              <a href="/privacy" class="hover:text-primary transition-colors"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="/terms" class="hover:text-primary transition-colors"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a href="/cookies" class="hover:text-primary transition-colors"
+                >Cookies</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-text-secondary gap-4 mb-12"
+      >
+        <div>© 2025 Beatify. All rights reserved.</div>
+        <div class="flex items-center gap-2 opacity-70">
+          <span>Beatify is a product by</span>
+          <a
+            href="/snippet.co"
+            class="hover:text-white transition-colors font-semibold"
+            >Snippet.co</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    const mobileNav = document.getElementById("mobile-nav");
+    const openBtn = document.getElementById("mobile-menu-toggle");
+    const closeBtn = document.getElementById("close-mobile-nav");
+
+    function toggleMenu() {
+      const isClosed = mobileNav.classList.contains("translate-x-full");
+      if (isClosed) {
+        mobileNav.classList.remove("translate-x-full");
+        document.body.style.overflow = "hidden";
+      } else {
+        mobileNav.classList.add("translate-x-full");
+        document.body.style.overflow = "";
+      }
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      const isClickInsideMenu = mobileNav.contains(e.target);
+      const isClickOnToggleBtn = openBtn.contains(e.target);
+      if (
+        !mobileNav.classList.contains("translate-x-full") &&
+        !isClickInsideMenu &&
+        !isClickOnToggleBtn
+      ) {
+        mobileNav.classList.add("translate-x-full");
+        document.body.style.overflow = "";
+      }
+    });
+
+    if (openBtn) openBtn.addEventListener("click", toggleMenu);
+    if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
+  </script>
+</html>

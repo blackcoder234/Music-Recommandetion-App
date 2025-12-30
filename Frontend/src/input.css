@@ -31,6 +31,12 @@
     --color-primary: #FF007A;
     --color-text-main: #FFFFFF;
     --color-text-secondary: #A0A0A0;
+    /* Premium-specific colors */
+    --color-premium-gold: #FFD700;
+    --color-premium-dark-gold: #B8860B;
+    /* Premium-specific background gradients (used via bg-premium-gradient, bg-gold-gradient) */
+    --background-image-premium-gradient: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+    --background-image-gold-gradient: linear-gradient(to right, #DF9F28, #FFF2CC, #DF9F28);
 }
 
 
