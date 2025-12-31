@@ -1,6 +1,6 @@
 /* Global Styles & Scrollbar Customization */
 :root {
-  color-scheme: dark;
+    color-scheme: dark;
 }
 
 body {
@@ -33,4 +33,247 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+
+/* Notification CSS */
+
+
+/* Notification Container */
+#displayMessage {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+    width: auto;
+}
+
+/* Show state */
+#displayMessage:not(.hidden) {
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
+    animation: slideDownFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animation */
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -10px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+}
+
+/* 
+         * Premium Glassmorphism Card 
+         * Uses a multi-layered shadow and border-gradient approach for that "high-end" feel.
+         */
+.message-content-base {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-radius: 16px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+
+    /* Glass Effect (Slightly more saturated for better separation) */
+    background: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(16px) saturate(250%);
+    -webkit-backdrop-filter: blur(16px) saturate(250%);
+
+    /* Border & Shadow */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        0 20px 40px -8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    min-width: 320px;
+    max-width: 90vw;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    /* For the inner glow/gradient effects */
+}
+
+/* Variant: Success (Electric Green) */
+.message-type-success {
+    border-left: 4px solid #00FF9D;
+    /* More vibrant neon green */
+    /* Subtle green tint gradient behind */
+    background: linear-gradient(90deg, rgba(0, 255, 157, 0.15) 0%, rgba(20, 20, 20, 0.6) 50%);
+    /* Outer glow for neon feel */
+    box-shadow: 0 4px 20px -5px rgba(0, 255, 157, 0.15), 0 10px 40px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Variant: Error (Electric Red) */
+.message-type-error {
+    border-left: 4px solid #FF4343;
+    /* More vibrant electric red */
+    /* Subtle red tint gradient behind */
+    background: linear-gradient(90deg, rgba(255, 67, 67, 0.15) 0%, rgba(20, 20, 20, 0.6) 50%);
+    /* Outer glow for neon feel */
+    box-shadow: 0 4px 20px -5px rgba(255, 67, 67, 0.15), 0 10px 40px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Icon Wrapper */
+.msg-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    font-size: 16px;
+    /* Icon size */
+}
+
+.message-type-success .msg-icon-box {
+    background: rgba(0, 255, 157, 0.2);
+    color: #00FF9D;
+    box-shadow: 0 0 12px rgba(0, 255, 157, 0.3);
+}
+
+.message-type-error .msg-icon-box {
+    background: rgba(255, 67, 67, 0.2);
+    color: #FF4343;
+    box-shadow: 0 0 12px rgba(255, 67, 67, 0.3);
+}
+
+/* Message Text */
+#message {
+    flex: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Loader Overlay */
+#globalLoader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(24px) saturate(180%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+}
+
+/* Active State */
+#globalLoader.active {
+    display: flex;
+    animation: fadeInLoader 0.4s ease forwards;
+}
+
+@keyframes fadeInLoader {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Equalizer Container */
+.equalizer {
+    display: flex;
+    gap: 6px;
+    height: 60px;
+    align-items: center;
+}
+
+/* Equalizer Bars */
+.bar {
+    width: 8px;
+    background: linear-gradient(to top, #FF007A, #a855f7);
+    border-radius: 99px;
+    animation: equalize 1s infinite ease-in-out;
+    box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+}
+
+/* Unique animation timing for each bar to create 'wave' effect */
+.bar:nth-child(1) {
+    height: 20px;
+    animation-delay: 0.0s;
+}
+
+.bar:nth-child(2) {
+    height: 40px;
+    animation-delay: 0.2s;
+}
+
+.bar:nth-child(3) {
+    height: 50px;
+    animation-delay: 0.4s;
+}
+
+.bar:nth-child(4) {
+    height: 30px;
+    animation-delay: 0.1s;
+}
+
+.bar:nth-child(5) {
+    height: 20px;
+    animation-delay: 0.3s;
+}
+
+@keyframes equalize {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scaleY(2);
+        opacity: 1;
+        box-shadow: 0 0 25px rgba(255, 0, 122, 0.8);
+    }
+}
+
+/* Loading Text */
+.loader-text {
+    margin-top: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0.8;
+    animation: pulseText 2s infinite ease-in-out;
+}
+
+@keyframes pulseText {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
 }
