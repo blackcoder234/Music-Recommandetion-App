@@ -1,3 +1,4 @@
+
 import { Router } from "express"
 import {
     registerUser,
@@ -12,7 +13,9 @@ import {
     getCurrentUser,
     updateUserAvatar,
     deleteAccount,
-
+    getLikedTracks,
+    getListeningHistory,
+    getTopTracks
 } from "../controllers/user.controller.js"
 import { saveUserInfo } from "../controllers/track-visitor.controller.js"
 import { upload } from "../middlewares/multer.middleware.js"
@@ -33,6 +36,11 @@ router.route("/current-user").get(verifyJWT, getCurrentUser)
 router.route("/update-account").patch(verifyJWT, updateAccountDetails)
 router.route("/update-avatar").patch(verifyJWT, upload, updateUserAvatar)
 router.route("/delete-account").delete(verifyJWT, deleteAccount)
+
+// User Library Routes
+router.route("/liked-tracks").get(verifyJWT, getLikedTracks)
+router.route("/history").get(verifyJWT, getListeningHistory)
+router.route("/top-tracks").get(verifyJWT, getTopTracks)
 
 
 router.post("/forgot-password", forgotPassword)

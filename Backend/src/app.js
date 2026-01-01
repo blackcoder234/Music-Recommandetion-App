@@ -25,6 +25,7 @@ import userRoutes from "./routes/user.routes.js"
 import trackRoutes from "./routes/track.routes.js"
 import artistRoutes from "./routes/artist.routes.js"
 import playlistRoutes from "./routes/playlist.routes.js"
+import albumRoutes from "./routes/album.routes.js"
 import playbackRoutes from "./routes/playback.routes.js"
 import recommendationRoutes from "./routes/recommendation.routes.js"
 
@@ -34,6 +35,7 @@ app.use("/snippet.co", landingPageStaticRoutes)
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/tracks", trackRoutes)
 app.use("/api/v1/artists", artistRoutes)
+app.use("/api/v1/albums", albumRoutes)
 app.use("/api/v1/playlists", playlistRoutes)
 app.use("/api/v1/playback", playbackRoutes)
 app.use("/api/v1/recommendations", recommendationRoutes)

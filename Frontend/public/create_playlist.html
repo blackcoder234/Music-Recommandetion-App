@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beatify - Discover</title>
+    <title>Beatify - Create Playlist</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -137,7 +137,7 @@
             </a>
             <a
               href="/discover"
-              class="nav-item flex items-center gap-4 px-4 py-3 text-sm font-medium rounded-lg bg-primary text-white shadow-lg shadow-primary/20"
+              class="nav-item flex items-center gap-4 px-4 py-3 text-sm font-medium rounded-lg text-text-secondary hover:text-white hover:bg-white/5 transition-colors"
             >
               <svg
                 class="w-5 h-5"
@@ -269,7 +269,7 @@
             </h3>
             <a
               href="/playlists/create"
-              class="nav-item flex items-center gap-4 px-4 py-3 text-sm font-medium rounded-lg text-text-secondary hover:text-white hover:bg-white/5 transition-colors"
+              class="nav-item flex items-center gap-4 px-4 py-3 text-sm font-medium rounded-lg bg-surface text-white border border-white/10 shadow-lg"
             >
               <svg
                 class="w-5 h-5"
@@ -374,7 +374,7 @@
       <main
         class="flex-1 overflow-y-auto bg-background relative custom-scrollbar"
       >
-        <!-- Desktop Navbar (Hidden on Small Screens) -->
+        <!-- Desktop Navbar -->
         <header
           class="h-20 px-8 hidden md:flex justify-between items-center sticky top-0 bg-background/95 backdrop-blur-md z-30 border-b border-white/5"
         >
@@ -404,148 +404,53 @@
               />
             </div>
           </div>
-          <div class="flex items-center gap-8 ml-8">
-            <nav
-              class="hidden sm:flex gap-6 text-sm font-medium text-text-secondary"
-            >
-              <a href="/about" class="hover:text-white transition-colors"
-                >About Us</a
-              >
-              <a href="/contact" class="hover:text-white transition-colors">Contact</a>
-              <a href="/premium" class="hover:text-white transition-colors">Premium</a>
-            </nav>
-            <div class="flex items-center gap-4">
-              <a
-                href="/login"
-                class="text-sm font-semibold text-white px-4 py-2 hover:opacity-80 transition-opacity"
-                >Login</a
-              >
-              <a
-                href="/signup"
-                class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all duration-300"
-                >Sign Up</a
-              >
-            </div>
+          <!-- Dynamic Auth Container -->
+          <div id="auth-container" class="flex items-center gap-8 ml-8">
+               <!-- Injected by main.js -->
+               <div class="animate-pulse flex gap-4">
+                  <div class="w-16 h-8 bg-white/10 rounded"></div>
+                  <div class="w-20 h-8 bg-white/10 rounded"></div>
+               </div>
           </div>
         </header>
 
         <div class="p-8 pb-32">
-          <!-- Header -->
-          <div class="mb-8">
-            <h2 id="results-title" class="text-3xl font-bold text-white mb-2">Discover</h2>
-            <p class="text-text-secondary text-sm">
-              Explore new sounds, moods, and genres.
-            </p>
+          <!-- Create Playlist Form -->
+          <div class="max-w-2xl mx-auto mt-8">
+            <h2 class="text-3xl font-bold text-white mb-2">Create New Playlist</h2>
+            <p class="text-text-secondary text-sm mb-8">Curate your own musical journey.</p>
+            
+            <form id="create-playlist-form" class="space-y-6 bg-[#181818] p-8 rounded-xl border border-white/5 shadow-2xl">
+                <!-- Title -->
+                <div>
+                    <label for="playlist-title" class="block text-sm font-medium text-text-secondary mb-2">Playlist Title</label>
+                    <input type="text" id="playlist-title" name="playListTitle" required 
+                           class="w-full bg-surface border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-white/20"
+                           placeholder="My Awesome Playlist">
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label for="playlist-desc" class="block text-sm font-medium text-text-secondary mb-2">Description</label>
+                    <textarea id="playlist-desc" name="description" rows="4"
+                           class="w-full bg-surface border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-white/20 resize-none"
+                           placeholder="Describe your playlist..."></textarea>
+                </div>
+
+                <!-- Privacy -->
+                <div class="flex items-center gap-3 p-4 bg-surface/50 rounded-lg border border-white/5">
+                    <input type="checkbox" id="is-public" name="isPublic" class="w-5 h-5 rounded bg-surface border-white/10 text-primary focus:ring-primary cursor-pointer">
+                    <label for="is-public" class="text-sm text-white cursor-pointer select-none">Make this playlist public</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" 
+                        class="w-full bg-primary text-white font-bold py-3 px-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                    Create Playlist
+                </button>
+            </form>
           </div>
 
-          <!-- Genre Filters -->
-          <div class="flex gap-4 overflow-x-auto pb-4 mb-8 no-scrollbar">
-            <button class="genre-filter bg-white text-black px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap" data-genre="All">All</button>
-            <button class="genre-filter bg-surface text-text-secondary px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-white/10 hover:text-white transition-colors border border-white/5" data-genre="Pop">Pop</button>
-            <button class="genre-filter bg-surface text-text-secondary px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-white/10 hover:text-white transition-colors border border-white/5" data-genre="Hip-Hop">Hip-Hop</button>
-            <button class="genre-filter bg-surface text-text-secondary px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-white/10 hover:text-white transition-colors border border-white/5" data-genre="Rock">Rock</button>
-            <button class="genre-filter bg-surface text-text-secondary px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-white/10 hover:text-white transition-colors border border-white/5" data-genre="Indie">Indie</button>
-            <button class="genre-filter bg-surface text-text-secondary px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-white/10 hover:text-white transition-colors border border-white/5" data-genre="K-Pop">K-Pop</button>
-            <button class="genre-filter bg-surface text-text-secondary px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-white/10 hover:text-white transition-colors border border-white/5" data-genre="Jazz">Jazz</button>
-          </div>
-          
-          <div id="discover-results" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-12">
-            <!-- Results injected here -->
-          </div>
-
-          <section id="browse-all-section" class="mb-12">
-            <h3 class="text-xl font-bold text-white mb-6">Browse All</h3>
-            <div
-              class="flex overflow-x-auto pb-4 snap-x gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-6 hide-scrollbar"
-            >
-              <!-- Pop -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">Pop</h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-              <!-- Hip Hop -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-orange-500 to-red-600 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">
-                  Hip-Hop
-                </h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-              <!-- Dance -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-green-400 to-teal-600 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">
-                  Dance/Electronic
-                </h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-              <!-- Rock -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-pink-600 to-rose-800 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">
-                  Rock
-                </h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-              <!-- Indie -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-indigo-500 to-purple-800 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">
-                  Indie
-                </h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-              <!-- R&B -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-blue-700 to-indigo-900 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">R&B</h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-              <!-- KPop -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">
-                  K-Pop
-                </h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-              <!-- Chill -->
-              <div
-                class="min-w-[160px] snap-start aspect-[4/3] rounded-xl bg-gradient-to-br from-teal-400 to-emerald-600 p-6 relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform"
-              >
-                <h4 class="text-2xl font-bold text-white relative z-10">
-                  Chill
-                </h4>
-                <div
-                  class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"
-                ></div>
-              </div>
-            </div>
-          </section>
-
-          </section>
           <!-- Main Footer -->
           <footer class="mt-20 border-t border-white/5 pt-12 hidden md:block">
             <div
@@ -654,95 +559,10 @@
       </main>
     </div>
 
-    <!-- Player Bar -->
-    <!-- Player Bar (Injected via JS) -->
-
-    <!-- Mobile Player Overlay (Injected via JS) -->
-
-    <!-- Mobile Bottom Navigation -->
-    <nav
-      class="md:hidden fixed bottom-0 w-full bg-[#121212] border-t border-white/5 flex justify-around items-center h-16 z-50 pb-safe"
-    >
-      <a
-        href="/"
-        class="flex flex-col items-center gap-1 text-text-secondary hover:text-white"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          ></path>
-        </svg>
-        <span class="text-[10px] font-medium">Home</span>
-      </a>
-      <a
-        href="/discover"
-        class="flex flex-col items-center gap-1 text-primary"
-      >
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          ></path>
-        </svg>
-        <span class="text-[10px] font-medium">Discover</span>
-      </a>
-      <a
-        href="/library"
-        class="flex flex-col items-center gap-1 text-text-secondary hover:text-white"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
-          ></path>
-        </svg>
-        <span class="text-[10px] font-medium">Library</span>
-      </a>
-      <a
-        href="/profile"
-        class="flex flex-col items-center gap-1 text-text-secondary hover:text-white"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          ></path>
-        </svg>
-        <span class="text-[10px] font-medium">Profile</span>
-      </a>
-    </nav>
-
     <!-- Notification -->
     <div id="displayMessage" class="hidden">
       <div id="messageContent" class="message-content-base">
-        <!-- Icon will be injected by JS based on type, or we can use generic one and style it -->
-        <div class="msg-icon-box" id="msgIcon">
-          <!-- SVGs injected via JS for visual variety -->
-        </div>
+        <div class="msg-icon-box" id="msgIcon"></div>
         <span id="message">Notification Text</span>
       </div>
     </div>
@@ -777,7 +597,7 @@
     </style>
 
     <script type="module" src="./assets/js/player.js"></script>
-    <script type="module" src="./assets/js/pages/discover.js"></script>
+    <script type="module" src="./assets/js/pages/create_playlist.js"></script>
     <script type="module" src="./assets/js/main.js"></script>
   </body>
 </html>

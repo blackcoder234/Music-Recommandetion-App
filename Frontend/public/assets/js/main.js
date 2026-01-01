@@ -1,9 +1,67 @@
 import Auth from './auth.js';
+import api from './api.js';
+import { displayMessage } from './utils.js';
+import { PLAYER_HTML, MOBILE_NAV_HTML } from './layout.js';
+
+// Global Like Function
+window.toggleLike = async (trackId) => {
+    try {
+        const response = await api.request(`/tracks/${trackId}/like`, { method: 'POST' });
+        
+        // Check current page
+        if (window.location.pathname.includes('/liked')) {
+             // If we are on Liked page, simple reload or re-render if function exists
+             if (typeof renderLikedTracks === 'function') {
+                 renderLikedTracks();
+             } else {
+                 window.location.reload();
+             }
+             displayMessage("Removed from Liked Songs", "success");
+        } else {
+            // General page: Show feedback
+            // Ideally we check response to see if liked or unliked
+            // backend 'likeTrack' typically toggles. 
+            // Let's assume response.message tells us, or we just say "Success"
+             displayMessage("Favorites updated", "success");
+        }
+    } catch (e) {
+        console.error("Like Error:", e);
+        displayMessage("Failed to update like status", "error");
+    }
+};
 
 // Main JavaScript File for Beatify
 // Handles frontend interactions: Sidebar (Mobile/Desktop) and general UI toggles.
 
 document.addEventListener('DOMContentLoaded', () => {
+    // ==========================================
+    // GLOBAL UI INJECTION (Player)
+    // ==========================================
+    if (!document.getElementById('player-bar')) {
+        document.body.insertAdjacentHTML('beforeend', PLAYER_HTML);
+    }
+    
+    // Inject Mobile Nav if missing (simple check for nav element)
+    if (!document.querySelector('nav.md\\:hidden.fixed.bottom-0')) {
+         document.body.insertAdjacentHTML('beforeend', MOBILE_NAV_HTML);
+    }
+
+    // ==========================================
+    // GLOBAL SEARCH LOGIC
+    // ==========================================
+    const globalSearchInput = document.querySelector('input[placeholder="Search..."]');
+    if (globalSearchInput) {
+        globalSearchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = globalSearchInput.value.trim();
+                if (query) {
+                    window.location.href = `/discover?search=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    }
+    
     // ==========================================
     // SIDEBAR NAVIGATION LOGIC
     // ==========================================

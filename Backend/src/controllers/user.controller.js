@@ -1,6 +1,9 @@
+
 import { asyncHandler } from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import User from "../models/user.model.js";
+import PlaybackHistory from "../models/playbackHistory.model.js";
+import Track from "../models/track.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
@@ -64,9 +67,6 @@ const registerUser = asyncHandler(async (req, res) => {
       throw new ApiError(409, "Username is already taken");
     }
   }
-  // Debugging logs
-  // console.log("FILES:", req.files)
-  // console.log("BODY:", req.body)
 
   const avatarLocalPath = req.files?.avatar?.[0]?.path;
   let avatarUrl = "";
@@ -99,8 +99,6 @@ const registerUser = asyncHandler(async (req, res) => {
   if (!createdUser) {
     throw new ApiError(500, "Internal server error: registering the user");
   }
-
-  // console.log(createdUser)
 
   const options = {
     httpOnly: true,
@@ -521,6 +519,91 @@ const deleteAccount = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "Account deleted successfully"));
 });
 
+// === NEW FEATURES ===
+const getLikedTracks = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user?._id).populate({
+        path: "likedTracks",
+        populate: {
+            path: "artist",
+            select: "name"
+        }
+    });
+
+    if (!user) {
+        throw new ApiError(404, "User not found");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(200, user.likedTracks, "Liked tracks fetched successfully")
+    );
+});
+
+const getListeningHistory = asyncHandler(async (req, res) => {
+    // Determine user ID
+    if (!req.user?._id) return res.status(200).json(new ApiResponse(200, [], ""));
+    
+    const history = await PlaybackHistory.find({ user: req.user._id })
+        .sort({ playedAt: -1 })
+        .limit(20)
+        .populate({
+            path: 'track',
+            populate: { path: 'artist', select: 'name' }
+        });
+
+    // Extract track objects from history
+    const tracks = history.map(h => h.track).filter(t => t);
+
+    return res.status(200).json(
+        new ApiResponse(200, tracks, "History fetched successfully")
+    );
+});
+
+const getTopTracks = asyncHandler(async (req, res) => {
+     // Aggregation to find most frequent trackId in history for this user
+     if (!req.user?._id) return res.status(200).json(new ApiResponse(200, [], ""));
+
+     const topTracks = await PlaybackHistory.aggregate([
+        { $match: { user: req.user._id } },
+        { 
+            $group: { 
+                _id: "$track", 
+                count: { $sum: 1 },
+                lastPlayed: { $max: "$playedAt" }
+            } 
+        },
+        { $sort: { count: -1, lastPlayed: -1 } },
+        { $limit: 20 },
+        {
+            $lookup: {
+                from: "tracks",
+                localField: "_id",
+                foreignField: "_id",
+                as: "trackDetails"
+            }
+        },
+        { $unwind: "$trackDetails" },
+        // Look up artist for the track
+        {
+             $lookup: {
+                from: "artists",
+                localField: "trackDetails.artist",
+                foreignField: "_id",
+                as: "trackDetails.artistData"
+            }
+        },
+        {
+            $addFields: {
+                "trackDetails.artist": { $arrayElemAt: ["$trackDetails.artistData", 0] }
+            }
+        },
+        { $replaceRoot: { newRoot: "$trackDetails" } }
+     ]);
+
+     return res.status(200).json(
+        new ApiResponse(200, topTracks, "Top tracks fetched successfully")
+     );
+});
+
 export {
   registerUser,
   loginUser,
@@ -534,4 +617,7 @@ export {
   getCurrentUser,
   updateUserAvatar,
   deleteAccount,
+  getLikedTracks,
+  getListeningHistory,
+  getTopTracks
 };

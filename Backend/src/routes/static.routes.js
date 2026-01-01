@@ -77,6 +77,14 @@ router.route("/album").get((req, res) => {
     // console.log(req.url)
 });
 
+router.route("/album/:id").get((req, res) => {
+    res.sendFile(path.join(staticPath, "album.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading album.html");
+        }
+    });
+});
+
 router.route("/artist").get((req, res) => {
     res.sendFile(path.join(staticPath, "artist.html"), (err) => {
         if (err) {
@@ -84,6 +92,14 @@ router.route("/artist").get((req, res) => {
         }
     });
     // console.log(req.url)
+});
+
+router.route("/artist/:id").get((req, res) => {
+    res.sendFile(path.join(staticPath, "artist.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading artist.html");
+        }
+    });
 });
 
 router.route("/profile").get((req, res) => {
@@ -154,6 +170,55 @@ router.route("/review").get((req, res) => {
         }
     });
     // console.log(req.url)
+});
+
+// Liked Songs
+router.route("/liked").get((req, res) => {
+    res.sendFile(path.join(staticPath, "liked.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading liked.html");
+        }
+    });
+});
+
+router.route("/recently-added").get((req, res) => {
+    res.sendFile(path.join(staticPath, "library.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading library.html");
+        }
+    });
+});
+
+router.route("/most-played").get((req, res) => {
+    res.sendFile(path.join(staticPath, "library.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading library.html");
+        }
+    });
+});
+
+router.route("/episodes").get((req, res) => {
+    res.sendFile(path.join(staticPath, "library.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading library.html");
+        }
+    });
+});
+
+router.route("/playlist/create").get((req, res) => {
+    res.sendFile(path.join(staticPath, "create_playlist.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading create_playlist.html");
+        }
+    });
+});
+
+router.route("/playlist/:id").get((req, res) => {
+    res.sendFile(path.join(staticPath, "playlist.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading playlist.html");
+        }
+    });
 });
 
 router.use((req, res, next) => {
