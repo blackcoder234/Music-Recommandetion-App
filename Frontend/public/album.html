@@ -410,8 +410,12 @@
               <a href="/about" class="hover:text-white transition-colors"
                 >About Us</a
               >
-              <a href="/contact" class="hover:text-white transition-colors">Contact</a>
-              <a href="/premium" class="hover:text-white transition-colors">Premium</a>
+              <a href="/contact" class="hover:text-white transition-colors"
+                >Contact</a
+              >
+              <a href="/premium" class="hover:text-white transition-colors"
+                >Premium</a
+              >
             </nav>
             <div class="flex items-center gap-4">
               <a
@@ -738,17 +742,23 @@
                 <h5 class="text-white font-semibold mb-4">Features</h5>
                 <ul class="space-y-2 text-sm text-text-secondary">
                   <li>
-                    <a href="/premium" class="hover:text-primary transition-colors"
+                    <a
+                      href="/premium"
+                      class="hover:text-primary transition-colors"
                       >Go Premium</a
                     >
                   </li>
                   <li>
-                    <a href="/download" class="hover:text-primary transition-colors"
+                    <a
+                      href="/download"
+                      class="hover:text-primary transition-colors"
                       >Mobile App</a
                     >
                   </li>
                   <li>
-                    <a href="/offline-mode" class="hover:text-primary transition-colors"
+                    <a
+                      href="/offline-mode"
+                      class="hover:text-primary transition-colors"
                       >Offline Mode</a
                     >
                   </li>
@@ -759,17 +769,23 @@
                 <h5 class="text-white font-semibold mb-4">Community</h5>
                 <ul class="space-y-2 text-sm text-text-secondary">
                   <li>
-                    <a href="/contact" class="hover:text-primary transition-colors"
+                    <a
+                      href="/contact"
+                      class="hover:text-primary transition-colors"
                       >For Artists</a
                     >
                   </li>
                   <li>
-                    <a href="/contact" class="hover:text-primary transition-colors"
+                    <a
+                      href="/contact"
+                      class="hover:text-primary transition-colors"
                       >Developers</a
                     >
                   </li>
                   <li>
-                    <a href="/support" class="hover:text-primary transition-colors"
+                    <a
+                      href="/support"
+                      class="hover:text-primary transition-colors"
                       >Support</a
                     >
                   </li>
@@ -780,17 +796,23 @@
                 <h5 class="text-white font-semibold mb-4">Legal</h5>
                 <ul class="space-y-2 text-sm text-text-secondary">
                   <li>
-                    <a href="/privacy" class="hover:text-primary transition-colors"
+                    <a
+                      href="/privacy"
+                      class="hover:text-primary transition-colors"
                       >Privacy Policy</a
                     >
                   </li>
                   <li>
-                    <a href="/terms" class="hover:text-primary transition-colors"
+                    <a
+                      href="/terms"
+                      class="hover:text-primary transition-colors"
                       >Terms of Service</a
                     >
                   </li>
                   <li>
-                    <a href="/cookies" class="hover:text-primary transition-colors"
+                    <a
+                      href="/cookies"
+                      class="hover:text-primary transition-colors"
                       >Cookies</a
                     >
                   </li>
@@ -1256,6 +1278,29 @@
         <span class="text-[10px] font-medium">Profile</span>
       </a>
     </nav>
+
+    <!-- Notification -->
+    <div id="displayMessage" class="hidden">
+      <div id="messageContent" class="message-content-base">
+        <!-- Icon will be injected by JS based on type, or we can use generic one and style it -->
+        <div class="msg-icon-box" id="msgIcon">
+          <!-- SVGs injected via JS for visual variety -->
+        </div>
+        <span id="message">Notification Text</span>
+      </div>
+    </div>
+
+    <!-- Loader Overlay -->
+    <div id="globalLoader">
+      <div class="equalizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loader-text">Loading Beatify</div>
+    </div>
 
     <style>
       @media (max-width: 768px) {

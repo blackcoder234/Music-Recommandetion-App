@@ -1,3 +1,5 @@
+import Auth from './auth.js';
+
 // Main JavaScript File for Beatify
 // Handles frontend interactions: Sidebar (Mobile/Desktop) and general UI toggles.
 
@@ -123,3 +125,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+/* =========================================
+   AUTHENTICATION LOGIC (Paste at bottom)
+   ========================================= */
+
+const protectedRoutes = [
+    '/profile',
+    '/settings',
+    '/premium'
+];
+
+// Helper: Check if current page requires login
+function isProtected() {
+    return protectedRoutes.some(route => window.location.pathname.includes(route));
+}
+
+// Helper: Update Navbar (Login vs Avatar)
+function updateAuthUI(user) {
+    const loginBtns = document.querySelectorAll('.auth-login-btn');
+    const profileSections = document.querySelectorAll('.auth-profile-section');
+    const userNames = document.querySelectorAll('.auth-user-name');
+    const userAvatars = document.querySelectorAll('.auth-user-avatar');
+
+    if (user) {
+        // Logged In State
+        loginBtns.forEach(btn => btn.classList.add('hidden'));
+        profileSections.forEach(section => section.classList.remove('hidden'));
+        
+        // Update Name & Avatar
+        userNames.forEach(el => {
+            if (el) el.textContent = user.fullName || user.username;
+        });
+        if (user.avatar) {
+            userAvatars.forEach(img => {
+                if (img) img.src = user.avatar;
+            });
+        }
+    } else {
+        // Guest State
+        loginBtns.forEach(btn => btn.classList.remove('hidden'));
+        profileSections.forEach(section => section.classList.add('hidden'));
+    }
+}
+
+// Main Auth Initialization
+(async function initAuth() {
+    // 1. Listen for Tab Sync (Login/Logout in other tabs)
+    Auth.initSessionSync();
+
+    // 2. Check Login Status
+    const user = await Auth.getCurrentUser();
+
+    // 3. Redirect if on Protected Page & Guest
+    if (!user && isProtected()) {
+        window.location.replace('/login');
+        return;
+    }
+
+    // 4. Update Navbar UI
+    updateAuthUI(user);
+
+    // 5. Setup Logout Listeners
+    window.handleLogout = () => Auth.logout();
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.auth-logout-btn')) {
+            e.preventDefault();
+            Auth.logout();
+        }
+    });
+
+    console.log("Auth System Initialized");
+})();

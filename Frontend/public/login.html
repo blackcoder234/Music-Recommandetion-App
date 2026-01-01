@@ -8,11 +8,11 @@
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
     <!-- Custom CSS -->
-     <link rel="stylesheet" href="./assets/css/custom_css.css">
+    <link rel="stylesheet" href="./assets/css/custom_css.css" />
     <!-- Tailwind CSS -->
-     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body
@@ -188,6 +188,29 @@
       </p>
     </div>
 
+    <!-- Notification -->
+    <div id="displayMessage" class="hidden">
+      <div id="messageContent" class="message-content-base">
+        <!-- Icon will be injected by JS based on type, or we can use generic one and style it -->
+        <div class="msg-icon-box" id="msgIcon">
+          <!-- SVGs injected via JS for visual variety -->
+        </div>
+        <span id="message">Notification Text</span>
+      </div>
+    </div>
+
+    <!-- Loader Overlay -->
+    <div id="globalLoader">
+      <div class="equalizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loader-text">Loading Beatify</div>
+    </div>
+
     <!-- Animation Keyframes -->
     <style>
       @keyframes fade-in-up {
@@ -206,5 +229,8 @@
         animation: fade-in-up 0.6s ease-out forwards;
       }
     </style>
+    <!-- Core Scripts -->
+    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/pages/login.js"></script>
   </body>
 </html>

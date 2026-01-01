@@ -74,9 +74,9 @@ body {
 }
 
 /* 
-         * Premium Glassmorphism Card 
-         * Uses a multi-layered shadow and border-gradient approach for that "high-end" feel.
-         */
+* Premium Glassmorphism Card 
+* Uses a multi-layered shadow and border-gradient approach for that "high-end" feel.
+*/
 .message-content-base {
     position: relative;
     display: flex;

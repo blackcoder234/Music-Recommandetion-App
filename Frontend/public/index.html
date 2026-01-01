@@ -17,9 +17,6 @@
     <link rel="stylesheet" href="./assets/css/custom_css.css" />
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-
-    <!-- Tailwind CSS (CDN for Dev) -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
 
   <body
@@ -436,16 +433,58 @@
             </nav>
 
             <div class="flex items-center gap-4">
-              <a
-                href="/login"
-                class="text-sm font-semibold text-white px-4 py-2 hover:opacity-80 transition-opacity"
-                >Login</a
+              <!-- Guest View -->
+              <div class="auth-login-btn flex items-center gap-4">
+                <a
+                  href="/login"
+                  class="text-sm font-semibold text-white px-4 py-2 hover:opacity-80 transition-opacity"
+                  >Login</a
+                >
+                <a
+                  href="/signup"
+                  class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all duration-300"
+                  >Sign Up</a
+                >
+              </div>
+
+              <!-- User View (Hidden by default) -->
+              <div
+                class="auth-profile-section hidden flex items-center gap-4 cursor-pointer relative group"
               >
-              <a
-                href="/signup"
-                class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all duration-300"
-                >Sign Up</a
-              >
+                <div class="text-right hidden md:block">
+                  <div class="auth-user-name text-sm font-semibold text-white">
+                    User
+                  </div>
+                  <div class="text-xs text-text-secondary">Premium</div>
+                </div>
+                <img
+                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+                  class="auth-user-avatar w-10 h-10 rounded-full border-2 border-primary object-cover bg-surface"
+                  alt="Profile"
+                />
+
+                <!-- Dropdown Menu -->
+                <div
+                  class="absolute top-full right-0 mt-2 w-48 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden hidden group-hover:block z-50"
+                >
+                  <a
+                    href="/profile.html"
+                    class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
+                    >Profile</a
+                  >
+                  <a
+                    href="/setting.html"
+                    class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
+                    >Settings</a
+                  >
+                  <div class="border-t border-white/5 my-1"></div>
+                  <button
+                    class="auth-logout-btn w-full text-left px-4 py-3 text-sm text-red-500 hover:bg-white/5"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </header>
@@ -457,7 +496,7 @@
           >
             <!-- Updated Hero Image -->
             <div
-              class="absolute inset-0 hidden md:block bg-[url('../images/hero_section/cover_image_7.jpg')] bg-cover bg-center opacity-50 "
+              class="absolute inset-0 hidden md:block bg-[url('../images/hero_section/cover_image_7.jpg')] bg-cover bg-center opacity-50"
             ></div>
             <!-- I removed the group hover -> group-hover:scale-105 transition-transform duration-700 -->
             <div
@@ -1301,7 +1340,9 @@
                     >
                   </li>
                   <li>
-                    <a href="/offline-mode" class="hover:text-primary transition-colors"
+                    <a
+                      href="/offline-mode"
+                      class="hover:text-primary transition-colors"
                       >Offline Mode</a
                     >
                   </li>
@@ -1381,7 +1422,6 @@
       </main>
     </div>
 
-    <!-- Player Bar -->
     <!-- Player Bar -->
     <footer
       id="player-bar"
@@ -1645,6 +1685,29 @@
       </a>
     </nav>
 
+    <!-- Notification -->
+    <div id="displayMessage" class="hidden">
+      <div id="messageContent" class="message-content-base">
+        <!-- Icon will be injected by JS based on type, or we can use generic one and style it -->
+        <div class="msg-icon-box" id="msgIcon">
+          <!-- SVGs injected via JS for visual variety -->
+        </div>
+        <span id="message">Notification Text</span>
+      </div>
+    </div>
+
+    <!-- Loader Overlay -->
+    <div id="globalLoader">
+      <div class="equalizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loader-text">Loading Beatify</div>
+    </div>
+
     <!-- Adjust Player for Mobile -->
     <style>
       @media (max-width: 768px) {
@@ -1839,6 +1902,6 @@
       </div>
     </div>
 
-    <script src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
   </body>
 </html>

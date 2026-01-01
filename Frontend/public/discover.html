@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/css/custom_css.css" />
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    
   </head>
 
   <body
@@ -1187,6 +1188,29 @@
         <span class="text-[10px] font-medium">Profile</span>
       </a>
     </nav>
+
+    <!-- Notification -->
+    <div id="displayMessage" class="hidden">
+      <div id="messageContent" class="message-content-base">
+        <!-- Icon will be injected by JS based on type, or we can use generic one and style it -->
+        <div class="msg-icon-box" id="msgIcon">
+          <!-- SVGs injected via JS for visual variety -->
+        </div>
+        <span id="message">Notification Text</span>
+      </div>
+    </div>
+
+    <!-- Loader Overlay -->
+    <div id="globalLoader">
+      <div class="equalizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loader-text">Loading Beatify</div>
+    </div>
 
     <style>
       @media (max-width: 768px) {

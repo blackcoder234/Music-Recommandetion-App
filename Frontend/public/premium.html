@@ -11,6 +11,7 @@
 
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Custom CSS -->
 
     <style>
       .gold-text {
@@ -600,6 +601,30 @@
         </div>
       </footer>
     </main>
+
+    <!-- Notification -->
+    <div id="displayMessage" class="hidden">
+      <div id="messageContent" class="message-content-base">
+        <!-- Icon will be injected by JS based on type, or we can use generic one and style it -->
+        <div class="msg-icon-box" id="msgIcon">
+          <!-- SVGs injected via JS for visual variety -->
+        </div>
+        <span id="message">Notification Text</span>
+      </div>
+    </div>
+
+    <!-- Loader Overlay -->
+    <div id="globalLoader">
+      <div class="equalizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loader-text">Loading Beatify</div>
+    </div>
+
   </body>
   <script src="./assets/js/main.js"></script>
   

@@ -11,6 +11,9 @@
 
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom_css.css" />
+
   </head>
   <body
     class="bg-background text-text-main font-sans antialiased min-h-screen flex flex-col"
@@ -441,6 +444,30 @@
         </div>
       </div>
     </footer>
+
+    <!-- Notification -->
+    <div id="displayMessage" class="hidden">
+      <div id="messageContent" class="message-content-base">
+        <!-- Icon will be injected by JS based on type, or we can use generic one and style it -->
+        <div class="msg-icon-box" id="msgIcon">
+          <!-- SVGs injected via JS for visual variety -->
+        </div>
+        <span id="message">Notification Text</span>
+      </div>
+    </div>
+
+    <!-- Loader Overlay -->
+    <div id="globalLoader">
+      <div class="equalizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loader-text">Loading Beatify</div>
+    </div>
+
   </body>
   <script>
     const mobileNav = document.getElementById("mobile-nav");
