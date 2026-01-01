@@ -104,7 +104,10 @@ class ApiClient {
 
         } catch (error) {
             // Refresh failed = User session is dead
-            this.handleSessionExpired();
+            // Check if we should suppress the redirect (e.g. for app init checks)
+            if (!originalConfig.suppressAuthRedirect) {
+                 this.handleSessionExpired();
+            }
             throw error;
         } finally {
             this.isRefreshing = false;

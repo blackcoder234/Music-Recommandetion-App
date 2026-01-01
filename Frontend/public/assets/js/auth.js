@@ -97,7 +97,10 @@ const Auth = {
      */
     async getCurrentUser() {
         try {
-            const data = await api.request('/users/current-user', { method: 'GET' });
+            const data = await api.request('/users/current-user', { 
+                method: 'GET',
+                suppressAuthRedirect: true
+            });
             return data.data; // Assuming backend returns { data: userObject }
         } catch (error) {
             return null;

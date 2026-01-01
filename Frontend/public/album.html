@@ -14,9 +14,9 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom_css.css" />
+    <link rel="stylesheet" href="/assets/css/custom_css.css" />
     <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
 
   <body
@@ -449,10 +449,16 @@
               />
             </div>
             <div class="flex-1 space-y-2 w-full">
-              <div id="playlist-description" class="text-sm font-medium text-white uppercase tracking-wider">
+              <div
+                id="playlist-description"
+                class="text-sm font-medium text-white uppercase tracking-wider"
+              >
                 Album
               </div>
-              <h1 id="playlist-title" class="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">
+              <h1
+                id="playlist-title"
+                class="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight"
+              >
                 Loading...
               </h1>
               <div class="flex items-center gap-2 text-text-secondary text-sm">
@@ -460,7 +466,11 @@
                   src="assets/images/artist/artist1.png"
                   class="w-6 h-6 rounded-full object-cover"
                 />
-                <span id="playlist-owner" class="text-white hover:underline cursor-pointer font-semibold">Artist</span>
+                <span
+                  id="playlist-owner"
+                  class="text-white hover:underline cursor-pointer font-semibold"
+                  >Artist</span
+                >
                 <span>•</span>
                 <span id="playlist-stats-count">0 songs</span>
                 <span>•</span>
@@ -557,7 +567,7 @@
                   </tr>
                 </thead>
                 <tbody id="playlist-tracks" class="text-sm text-gray-300">
-                    <!-- Loaded via JS -->
+                  <!-- Loaded via JS -->
                 </tbody>
               </table>
             </div>
@@ -740,8 +750,8 @@
       }
     </style>
 
-    <script type="module" src="./assets/js/player.js"></script>
-    <script type="module" src="./assets/js/pages/album.js"></script>
-    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="/assets/js/player.js"></script>
+    <script type="module" src="/assets/js/pages/album.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>
