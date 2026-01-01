@@ -10,10 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom_css.css" />
+    <link rel="stylesheet" href="/assets/css/custom_css.css" />
     <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
 
   <body
@@ -406,48 +405,85 @@
           </div>
           <!-- Dynamic Auth Container -->
           <div id="auth-container" class="flex items-center gap-8 ml-8">
-               <!-- Injected by main.js -->
-               <div class="animate-pulse flex gap-4">
-                  <div class="w-16 h-8 bg-white/10 rounded"></div>
-                  <div class="w-20 h-8 bg-white/10 rounded"></div>
-               </div>
+            <!-- Injected by main.js -->
+            <div class="animate-pulse flex gap-4">
+              <div class="w-16 h-8 bg-white/10 rounded"></div>
+              <div class="w-20 h-8 bg-white/10 rounded"></div>
+            </div>
           </div>
         </header>
 
         <div class="p-8 pb-32">
           <!-- Create Playlist Form -->
           <div class="max-w-2xl mx-auto mt-8">
-            <h2 class="text-3xl font-bold text-white mb-2">Create New Playlist</h2>
-            <p class="text-text-secondary text-sm mb-8">Curate your own musical journey.</p>
-            
-            <form id="create-playlist-form" class="space-y-6 bg-[#181818] p-8 rounded-xl border border-white/5 shadow-2xl">
-                <!-- Title -->
-                <div>
-                    <label for="playlist-title" class="block text-sm font-medium text-text-secondary mb-2">Playlist Title</label>
-                    <input type="text" id="playlist-title" name="playListTitle" required 
-                           class="w-full bg-surface border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-white/20"
-                           placeholder="My Awesome Playlist">
-                </div>
+            <h2 class="text-3xl font-bold text-white mb-2">
+              Create New Playlist
+            </h2>
+            <p class="text-text-secondary text-sm mb-8">
+              Curate your own musical journey.
+            </p>
 
-                <!-- Description -->
-                <div>
-                    <label for="playlist-desc" class="block text-sm font-medium text-text-secondary mb-2">Description</label>
-                    <textarea id="playlist-desc" name="description" rows="4"
-                           class="w-full bg-surface border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-white/20 resize-none"
-                           placeholder="Describe your playlist..."></textarea>
-                </div>
+            <form
+              id="create-playlist-form"
+              class="space-y-6 bg-[#181818] p-8 rounded-xl border border-white/5 shadow-2xl"
+            >
+              <!-- Title -->
+              <div>
+                <label
+                  for="playlist-title"
+                  class="block text-sm font-medium text-text-secondary mb-2"
+                  >Playlist Title</label
+                >
+                <input
+                  type="text"
+                  id="playlist-title"
+                  name="playListTitle"
+                  required
+                  class="w-full bg-surface border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-white/20"
+                  placeholder="My Awesome Playlist"
+                />
+              </div>
 
-                <!-- Privacy -->
-                <div class="flex items-center gap-3 p-4 bg-surface/50 rounded-lg border border-white/5">
-                    <input type="checkbox" id="is-public" name="isPublic" class="w-5 h-5 rounded bg-surface border-white/10 text-primary focus:ring-primary cursor-pointer">
-                    <label for="is-public" class="text-sm text-white cursor-pointer select-none">Make this playlist public</label>
-                </div>
+              <!-- Description -->
+              <div>
+                <label
+                  for="playlist-desc"
+                  class="block text-sm font-medium text-text-secondary mb-2"
+                  >Description</label
+                >
+                <textarea
+                  id="playlist-desc"
+                  name="description"
+                  rows="4"
+                  class="w-full bg-surface border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-white/20 resize-none"
+                  placeholder="Describe your playlist..."
+                ></textarea>
+              </div>
 
-                <!-- Submit Button -->
-                <button type="submit" 
-                        class="w-full bg-primary text-white font-bold py-3 px-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
-                    Create Playlist
-                </button>
+              <!-- Privacy -->
+              <div
+                class="flex items-center gap-3 p-4 bg-surface/50 rounded-lg border border-white/5"
+              >
+                <input
+                  type="checkbox"
+                  id="is-public"
+                  name="isPublic"
+                  class="w-5 h-5 rounded bg-surface border-white/10 text-primary focus:ring-primary cursor-pointer"
+                />
+                <label
+                  for="is-public"
+                  class="text-sm text-white cursor-pointer select-none"
+                  >Make this playlist public</label
+                >
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                class="w-full bg-primary text-white font-bold py-3 px-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                Create Playlist
+              </button>
             </form>
           </div>
 
@@ -481,17 +517,23 @@
                 <h5 class="text-white font-semibold mb-4">Features</h5>
                 <ul class="space-y-2 text-sm text-text-secondary">
                   <li>
-                    <a href="/premium" class="hover:text-primary transition-colors"
+                    <a
+                      href="/premium"
+                      class="hover:text-primary transition-colors"
                       >Go Premium</a
                     >
                   </li>
                   <li>
-                    <a href="/download" class="hover:text-primary transition-colors"
+                    <a
+                      href="/download"
+                      class="hover:text-primary transition-colors"
                       >Mobile App</a
                     >
                   </li>
                   <li>
-                    <a href="/offline" class="hover:text-primary transition-colors"
+                    <a
+                      href="/offline"
+                      class="hover:text-primary transition-colors"
                       >Offline Mode</a
                     >
                   </li>
@@ -502,17 +544,23 @@
                 <h5 class="text-white font-semibold mb-4">Community</h5>
                 <ul class="space-y-2 text-sm text-text-secondary">
                   <li>
-                    <a href="/contact" class="hover:text-primary transition-colors"
+                    <a
+                      href="/contact"
+                      class="hover:text-primary transition-colors"
                       >For Artists</a
                     >
                   </li>
                   <li>
-                    <a href="/contact" class="hover:text-primary transition-colors"
+                    <a
+                      href="/contact"
+                      class="hover:text-primary transition-colors"
                       >Developers</a
                     >
                   </li>
                   <li>
-                    <a href="/support" class="hover:text-primary transition-colors"
+                    <a
+                      href="/support"
+                      class="hover:text-primary transition-colors"
                       >Support</a
                     >
                   </li>
@@ -523,17 +571,23 @@
                 <h5 class="text-white font-semibold mb-4">Legal</h5>
                 <ul class="space-y-2 text-sm text-text-secondary">
                   <li>
-                    <a href="/privacy" class="hover:text-primary transition-colors"
+                    <a
+                      href="/privacy"
+                      class="hover:text-primary transition-colors"
                       >Privacy Policy</a
                     >
                   </li>
                   <li>
-                    <a href="/terms" class="hover:text-primary transition-colors"
+                    <a
+                      href="/terms"
+                      class="hover:text-primary transition-colors"
                       >Terms of Service</a
                     >
                   </li>
                   <li>
-                    <a href="/cookies" class="hover:text-primary transition-colors"
+                    <a
+                      href="/cookies"
+                      class="hover:text-primary transition-colors"
                       >Cookies</a
                     >
                   </li>
@@ -596,8 +650,8 @@
       }
     </style>
 
-    <script type="module" src="./assets/js/player.js"></script>
-    <script type="module" src="./assets/js/pages/create_playlist.js"></script>
-    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="/assets/js/player.js"></script>
+    <script type="module" src="/assets/js/pages/create_playlist.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>
