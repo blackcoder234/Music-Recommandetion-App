@@ -28,20 +28,20 @@
         color: transparent;
         background-size: 200% auto;
         animation: shine 5s linear infinite;
-      }
+
       @keyframes shine {
         to {
           background-position: 200% center;
-        }
-      }
+  
+
       .glass-card {
         background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.05);
-      }
+
       .check-icon {
         filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
-      }
+
     </style>
   </head>
   <body
@@ -786,42 +786,44 @@
     </div>
 
   </body>
-  <script src="./assets/js/main.js"></script>
+  <script type="module" src="./assets/js/main.js"></script>
   
-  <script>
-    const mobileNav = document.getElementById("mobile-nav");
-    const openBtn = document.getElementById("mobile-menu-toggle");
-    const closeBtn = document.getElementById("close-mobile-nav");
 
-    function toggleMenu() {
-      const isClosed = mobileNav.classList.contains("translate-x-full");
-      if (isClosed) {
-        mobileNav.classList.remove("translate-x-full");
-        document.body.style.overflow = "hidden";
-      } else {
-        mobileNav.classList.add("translate-x-full");
-        document.body.style.overflow = "";
-      }
-    }
 
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      const isClickInsideMenu = mobileNav.contains(e.target);
-      const isClickOnToggleBtn = openBtn.contains(e.target);
-      if (
-        !mobileNav.classList.contains("translate-x-full") &&
-        !isClickInsideMenu &&
-        !isClickOnToggleBtn
-      ) {
-        mobileNav.classList.add("translate-x-full");
-        document.body.style.overflow = "";
-      }
-    });
 
-    if (openBtn) openBtn.addEventListener("click", toggleMenu);
-    if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
-  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+);
+
+
+
+
 </html>
+
+
 
 
 
