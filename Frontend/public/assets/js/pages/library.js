@@ -1,9 +1,9 @@
-
+﻿
 import api from '../api.js';
 import { displayMessage, toggleLoader } from '../utils.js';
 
 const tracksContainer = document.getElementById('playlist-tracks');
-const pageTitle = document.querySelector('h1');
+const pageTitle = document.getElementById('page-title') || document.querySelector('h1');
 const pageDescription = document.querySelector('.text-sm.font-medium.uppercase');
 
 async function loadLibraryData() {
@@ -118,3 +118,4 @@ function renderTracks(tracks, emptyMsg) {
 document.addEventListener('DOMContentLoaded', () => {
     loadLibraryData();
 });
+

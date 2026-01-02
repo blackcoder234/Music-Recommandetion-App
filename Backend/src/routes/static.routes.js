@@ -49,15 +49,7 @@ router.route("/about").get((req, res) => {
     // console.log(req.url)
 });
 
-// router.route("/articles/:slug")
-//     .get((req, res) => {
-//         res.sendFile(path.join(staticPath, "article.html"), (err) => {
-//             if (err) {
-//                 res.status(500).send("Error loading article.html")
-//             }
-//         })
-//         // console.log(req.url)
-//     })
+
 
 router.route("/discover").get((req, res) => {
     res.sendFile(path.join(staticPath, "discover.html"), (err) => {
@@ -220,6 +212,15 @@ router.route("/playlist/:id").get((req, res) => {
         }
     });
 });
+
+router.route("/library").get((req, res) => {
+    res.sendFile(path.join(staticPath, "library.html"), (err) => {
+        if (err) {
+            res.status(500).send("Error loading library.html");
+        }
+    });
+});
+
 
 router.use((req, res, next) => {
     res.status(404).sendFile(path.join(staticPath, "404.html"), (err) => {

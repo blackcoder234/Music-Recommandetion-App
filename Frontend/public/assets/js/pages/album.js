@@ -38,6 +38,7 @@ async function loadAlbumData() {
         if (albumId) {
             const response = await api.request(`/albums/${albumId}`);
             album = response.data;
+            console.log('Loaded album:', album);
         } else {
              // Fallback or list of albums if no ID?
              // For now let's stop.
