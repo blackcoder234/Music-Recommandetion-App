@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/custom_css.css" />
+    <link rel="stylesheet" href="/assets/css/custom_css.css" />
     <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
     
   </head>
 
@@ -411,20 +411,70 @@
               <a href="/about" class="hover:text-white transition-colors"
                 >About Us</a
               >
-              <a href="/contact" class="hover:text-white transition-colors">Contact</a>
-              <a href="/premium" class="hover:text-white transition-colors">Premium</a>
+              <a href="/contact" class="hover:text-white transition-colors"
+                >Contact</a
+              >
+              <a href="/premium" class="hover:text-white transition-colors"
+                >Premium</a
+              >
             </nav>
             <div class="flex items-center gap-4">
-              <a
-                href="/login"
-                class="text-sm font-semibold text-white px-4 py-2 hover:opacity-80 transition-opacity"
-                >Login</a
+              <!-- Guest View -->
+              <div class="auth-login-btn flex items-center gap-4">
+                <a
+                  href="/login"
+                  class="text-sm font-semibold text-white px-4 py-2 hover:opacity-80 transition-opacity"
+                  >Login</a
+                >
+                <a
+                  href="/signup"
+                  class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all duration-300"
+                  >Sign Up</a
+                >
+              </div>
+
+              <!-- User View (Hidden by default) -->
+              <div
+                class="auth-profile-section hidden relative group"
               >
-              <a
-                href="/signup"
-                class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all duration-300"
-                >Sign Up</a
-              >
+                <a href="/profile" class="flex items-center gap-4 cursor-pointer">
+                    <div class="text-right hidden md:block">
+                    <div class="auth-user-name text-sm font-semibold text-white">
+                        User
+                    </div>
+                    <div class="text-xs text-text-secondary">Premium</div>
+                    </div>
+                    <img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+                    class="auth-user-avatar w-10 h-10 rounded-full border-2 border-primary object-cover bg-surface"
+                    alt="Profile"
+                    />
+                </a>
+
+                <!-- Dropdown Menu -->
+                <div class="absolute top-full right-0 pt-2 w-48 hidden group-hover:block z-50">
+                    <div
+                    class="bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden"
+                    >
+                    <a
+                        href="/profile"
+                        class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
+                        >Profile</a
+                    >
+                    <a
+                        href="/settings"
+                        class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
+                        >Settings</a
+                    >
+                    <div class="border-t border-white/5 my-1"></div>
+                    <button
+                        class="auth-logout-btn w-full text-left px-4 py-3 text-sm text-red-500 hover:bg-white/5"
+                    >
+                        Logout
+                    </button>
+                    </div>
+                </div>
+              </div>
             </div>
           </div>
         </header>
@@ -639,7 +689,7 @@
             <div
               class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-text-secondary gap-4 mb-12"
             >
-              <div>© 2025 Beatify. All rights reserved.</div>
+              <div>Â© 2025 Beatify. All rights reserved.</div>
               <div class="flex items-center gap-2 opacity-70">
                 <span>Beatify is a product by</span>
                 <a
@@ -776,8 +826,9 @@
       }
     </style>
 
-    <script type="module" src="assets/js/player.js"></script>
-    <script type="module" src="assets/js/pages/discover.js"></script>
-    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="/assets/js/player.js"></script>
+    <script type="module" src="/assets/js/pages/discover.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>
+

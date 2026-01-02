@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,7 +36,8 @@
     >
       <div class="max-w-2xl w-full mx-auto flex items-center gap-4">
         <a
-          href="/profile"
+          href="#"
+          onclick="history.back(); return false;"
           class="p-2 -ml-2 hover:bg-white/5 rounded-full text-text-main transition-colors"
         >
           <svg
@@ -74,17 +75,19 @@
           >
             <div class="flex items-center gap-4">
               <img
-                src="https://ui-avatars.com/api/?name=Alex+Doe&background=FF007A&color=fff"
+                id="settings-avatar"
+                src="https://ui-avatars.com/api/?name=User&background=FF007A&color=fff"
                 alt="Avatar"
                 class="w-12 h-12 rounded-full"
               />
               <div>
                 <p
+                  id="settings-name"
                   class="font-medium text-white group-hover:text-primary transition-colors"
                 >
-                  Alex Doe
+                  User
                 </p>
-                <p class="text-sm text-text-secondary">alex.doe@example.com</p>
+                <p id="settings-email" class="text-sm text-text-secondary">user@example.com</p>
               </div>
             </div>
             <svg
@@ -106,7 +109,7 @@
           >
             <div>
               <p class="font-medium text-white">Subscription Plan</p>
-              <p class="text-sm text-primary">Premium Individual</p>
+              <p id="settings-plan" class="text-sm text-primary">Premium Individual</p>
             </div>
             <span
               class="text-xs bg-white/10 px-3 py-1 rounded-full text-text-secondary"
@@ -367,3 +370,4 @@
     <script type="module" src="./assets/js/main.js"></script>
   </body>
 </html>
+

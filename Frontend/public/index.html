@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -449,40 +449,44 @@
 
               <!-- User View (Hidden by default) -->
               <div
-                class="auth-profile-section hidden flex items-center gap-4 cursor-pointer relative group"
+                class="auth-profile-section hidden relative group"
               >
-                <div class="text-right hidden md:block">
-                  <div class="auth-user-name text-sm font-semibold text-white">
-                    User
-                  </div>
-                  <div class="text-xs text-text-secondary">Premium</div>
-                </div>
-                <img
-                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
-                  class="auth-user-avatar w-10 h-10 rounded-full border-2 border-primary object-cover bg-surface"
-                  alt="Profile"
-                />
+                <a href="/profile" class="flex items-center gap-4 cursor-pointer">
+                    <div class="text-right hidden md:block">
+                    <div class="auth-user-name text-sm font-semibold text-white">
+                        User
+                    </div>
+                    <div class="text-xs text-text-secondary">Premium</div>
+                    </div>
+                    <img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+                    class="auth-user-avatar w-10 h-10 rounded-full border-2 border-primary object-cover bg-surface"
+                    alt="Profile"
+                    />
+                </a>
 
                 <!-- Dropdown Menu -->
-                <div
-                  class="absolute top-full right-0 mt-2 w-48 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden hidden group-hover:block z-50"
-                >
-                  <a
-                    href="/profile.html"
-                    class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
-                    >Profile</a
-                  >
-                  <a
-                    href="/setting.html"
-                    class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
-                    >Settings</a
-                  >
-                  <div class="border-t border-white/5 my-1"></div>
-                  <button
-                    class="auth-logout-btn w-full text-left px-4 py-3 text-sm text-red-500 hover:bg-white/5"
-                  >
-                    Logout
-                  </button>
+                <div class="absolute top-full right-0 pt-2 w-48 hidden group-hover:block z-50">
+                    <div
+                    class="bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden"
+                    >
+                    <a
+                        href="/profile"
+                        class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
+                        >Profile</a
+                    >
+                    <a
+                        href="/settings"
+                        class="block px-4 py-3 text-sm text-text-secondary hover:text-white hover:bg-white/5"
+                        >Settings</a
+                    >
+                    <div class="border-t border-white/5 my-1"></div>
+                    <button
+                        class="auth-logout-btn w-full text-left px-4 py-3 text-sm text-red-500 hover:bg-white/5"
+                    >
+                        Logout
+                    </button>
+                    </div>
                 </div>
               </div>
             </div>
@@ -628,7 +632,7 @@
                   Blinding Lights (Official Video)
                 </h4>
                 <p class="text-sm text-text-secondary truncate">
-                  The Weeknd • 54M Views
+                  The Weeknd â€¢ 54M Views
                 </p>
               </div>
 
@@ -666,7 +670,7 @@
                   Levitating (ft. DaBaby)
                 </h4>
                 <p class="text-sm text-text-secondary truncate">
-                  Dua Lipa • 32M Views
+                  Dua Lipa â€¢ 32M Views
                 </p>
               </div>
 
@@ -704,7 +708,7 @@
                 </div>
                 <h4 class="font-medium text-white truncate">Save Your Tears</h4>
                 <p class="text-sm text-text-secondary truncate">
-                  The Weeknd • 45M Views
+                  The Weeknd â€¢ 45M Views
                 </p>
               </div>
             </div>
@@ -1116,7 +1120,7 @@
             <div
               class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-text-secondary gap-4 mb-12"
             >
-              <div>© 2025 Beatify. All rights reserved.</div>
+              <div>Â© 2025 Beatify. All rights reserved.</div>
               <div class="flex items-center gap-2 opacity-70">
                 <span>Beatify is a product by</span>
                 <a
@@ -1255,3 +1259,4 @@
     <script type="module" src="/assets/js/pages/home.js"></script>
   </body>
 </html>
+

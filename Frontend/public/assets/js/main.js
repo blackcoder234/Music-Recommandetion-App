@@ -245,6 +245,17 @@ function updateAuthUI(user) {
     // 4. Update Navbar UI
     updateAuthUI(user);
 
+    // 4b. Populate Settings Page if applicable
+    if (window.location.pathname.includes('/setting') && user) {
+        const sName = document.getElementById('settings-name');
+        const sEmail = document.getElementById('settings-email');
+        const sAvatar = document.getElementById('settings-avatar');
+        
+        if (sName) sName.textContent = user.fullName || user.username;
+        if (sEmail) sEmail.textContent = user.email || 'user@example.com';
+        if (sAvatar && user.avatar) sAvatar.src = user.avatar;
+    }
+
     // 5. Setup Logout Listeners
     window.handleLogout = () => Auth.logout();
     document.addEventListener('click', (e) => {
