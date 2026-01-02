@@ -58,7 +58,7 @@ function renderTracks(tracks) {
     }
 
     resultsContainer.innerHTML = tracks.map(track => {
-        const image = track.imageUrl || track.album?.coverImage || 'assets/images/album/album1.png';
+        const image = track.imageUrl || track.album?.coverImage || 'assets/images/album/default_album.png';
         const artist = track.artist?.name || track.artist?.username || "Unknown Artist";
         
         return `

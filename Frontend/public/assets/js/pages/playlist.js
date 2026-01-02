@@ -64,7 +64,7 @@ function renderHero(playlist) {
             heroImage.src = playlist.coverImage;
         } else {
              // Keep default or set generic
-             heroImage.src = 'assets/images/album/album1.png';
+             heroImage.src = 'assets/images/album/default_album.png';
         }
     }
     

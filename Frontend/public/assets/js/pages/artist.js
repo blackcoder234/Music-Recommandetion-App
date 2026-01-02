@@ -3,15 +3,17 @@ import api from '../api.js';
 import { displayMessage, toggleLoader } from '../utils.js';
 
 // DOM Elements
+const allArtistsView = document.getElementById('all-artists-view');
+const singleArtistView = document.getElementById('single-artist-view');
+const artistsGrid = document.getElementById('artists-grid');
+
 const playlistImage = document.getElementById('playlist-image');
 const playlistTitle = document.getElementById('playlist-title');
 const playlistDescription = document.getElementById('playlist-description');
-const playlistOwner = document.getElementById('playlist-owner'); // Artist Name
-const playlistStatsCount = document.getElementById('playlist-stats-count');
-const playlistStatsDuration = document.getElementById('playlist-stats-duration');
+const heroStatsRow = document.getElementById('hero-stats-row');
 const tracksContainer = document.getElementById('playlist-tracks');
 
-// Get Album ID from URL
+// Get Artist ID from URL (or similar routing)
 const urlParams = new URLSearchParams(window.location.search);
 let artistId = urlParams.get('id');
 
@@ -22,60 +24,95 @@ if (pathParts.length > 2 && pathParts[1] === 'artist') {
     if (potentialId) artistId = potentialId;
 }
 
-async function loadArtistData() {
-    if (!artistId) {
-        // displayMessage('No artist ID provided', 'error');
+// Helper to switch views
+function switchView(view) {
+    if (view === 'grid') {
+        if (allArtistsView) allArtistsView.classList.remove('hidden');
+        if (singleArtistView) singleArtistView.classList.add('hidden');
+    } else {
+        if (allArtistsView) allArtistsView.classList.add('hidden');
+        if (singleArtistView) singleArtistView.classList.remove('hidden');
     }
+}
 
+async function loadArtistData() {
     toggleLoader(true);
     try {
-        let artist;
         if (artistId) {
+            // Single Artist Mode
+            switchView('single');
             const response = await api.request(`/artists/${artistId}`);
-            artist = response.data;
+            const artist = response.data;
+            renderHero(artist);
+            renderTracks(artist.tracks, artist);
         } else {
-             displayMessage('No Artist Selected', 'info');
-             toggleLoader(false);
-             return;
+            // All Artists Grid Mode
+            switchView('grid');
+            const response = await api.request('/artists?limit=50');
+            const artists = response.data.artists || response.data.docs || response.data; // Handle pagination structure
+            renderArtistsGrid(artists);
         }
-
-        renderHero(artist);
-        renderTracks(artist.tracks, artist); // Assuming artist object has 'tracks' populated (top tracks)
 
     } catch (error) {
         console.error('Error loading artist:', error);
-        displayMessage('Failed to load artist details', 'error');
+        displayMessage('Failed to load content', 'error');
     } finally {
         toggleLoader(false);
     }
 }
 
+function renderArtistsGrid(artists) {
+    if (!artistsGrid) return;
+
+    if (!artists || artists.length === 0) {
+        artistsGrid.innerHTML = '<div class="col-span-full text-center text-text-secondary">No artists found</div>';
+        return;
+    }
+
+    artistsGrid.innerHTML = artists.map(artist => {
+        const cover = artist.artistImage || artist.image || 'assets/images/artist/default_artist_1.png';
+        const name = artist.artistName || artist.name || 'Unknown Artist';
+
+        return `
+        <a href="/artist.html?id=${artist._id}" class="group bg-surface/40 hover:bg-surface/80 p-4 rounded-xl transition-all duration-300 hover:-translate-y-1 block text-center">
+            <div class="relative aspect-square rounded-full overflow-hidden mb-4 shadow-lg group-hover:shadow-xl mx-auto w-full max-w-[200px]">
+                <img src="${cover}" alt="${name}" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <h3 class="text-white font-semibold truncate mb-1">${name}</h3>
+            <p class="text-text-secondary text-sm capitalize">Artist</p>
+        </a>
+        `;
+    }).join('');
+}
+
+
 function renderHero(artist) {
     if (!artist) return;
     
     // Update elements
-    if (playlistTitle) playlistTitle.textContent = artist.name;
-    if (playlistDescription) playlistDescription.textContent = 'Artist';
-    if (playlistOwner) playlistOwner.textContent = ''; // Or genre?
+    if (playlistTitle) playlistTitle.textContent = artist.artistName || artist.name || "Unknown Artist";
+    if (playlistDescription) playlistDescription.textContent = artist.artistBio || 'Artist';
     
     // Stats
-    if (playlistStatsCount) playlistStatsCount.textContent = `${artist.listeners || 0} monthly listeners`;
-    if (playlistStatsDuration) playlistStatsDuration.style.display = 'none'; // Hide duration for artist
+    if (heroStatsRow) {
+        const followerCount = artist.followers ? artist.followers.length : 0;
+        heroStatsRow.innerHTML = `<span>${followerCount} followers</span>`; // Or listeners
+    }
 
     if (playlistImage) {
-        playlistImage.src = artist.image || 'assets/images/default-artist.png';
-        playlistImage.classList.add('rounded-full'); // Different style for artist
+        playlistImage.src = artist.artistImage || artist.image || 'assets/images/artist/default_artist_1.png';
+        playlistImage.classList.add('rounded-full'); 
     }
     
-    // Play All Handler
+    // Play All Handler -> Plays Top Tracks
     const playAllBtn = document.getElementById('play-all-btn');
     if (playAllBtn) {
         playAllBtn.onclick = () => {
              if (artist.tracks && artist.tracks.length > 0) {
                 const tracksWithMeta = artist.tracks.map(t => ({
                     ...t,
-                    artist: artist.name, // Ensure artist name is correct
-                    coverImage: t.coverImage || artist.image
+                    artist: artist.artistName || artist.name, 
+                    coverImage: t.coverImage || artist.artistImage || artist.image
                 }));
                 window.player.setQueue(tracksWithMeta);
                 window.player.playTrackById(tracksWithMeta[0]._id);
@@ -84,19 +121,31 @@ function renderHero(artist) {
     }
 }
 
-function renderTracks(tracks, albumContext) {
+function renderTracks(tracks, artistContext) {
     if (!tracksContainer) return;
 
     if (!tracks || tracks.length === 0) {
-        tracksContainer.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-text-secondary">No tracks in this album</td></tr>';
+        tracksContainer.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-text-secondary">No popular tracks found</td></tr>';
         return;
     }
 
+    // Determine artist name from context safely
+    const contextArtistName = artistContext.artistName || artistContext.name || "Unknown Artist";
+
     tracksContainer.innerHTML = tracks.map((track, index) => {
-         // Fallback for cover if not in track but in album
-         const cover = track.coverImage || (albumContext ? albumContext.coverImage : 'assets/images/default-track.png');
-         const artist = track.artist || (albumContext ? albumContext.artist : 'Unknown Artist');
+         // Fallback for cover
+         const cover = track.coverImage || artistContext.artistImage || artistContext.image || 'assets/images/track/default_track.png';
          
+         // Determine individual track artist name (if populated object, strings, etc.)
+         let trackArtistName = contextArtistName; 
+         // If track.artist is distinct populated object
+         if (track.artist && typeof track.artist === 'object' && (track.artist.artistName || track.artist.name)) {
+             trackArtistName = track.artist.artistName || track.artist.name;
+         } else if (typeof track.artist === 'string') {
+             // If matches ID, use context name, else keep string
+             if (track.artist !== artistContext._id) trackArtistName = track.artist;
+         }
+
          return `
         <tr class="group hover:bg-white/5 transition-colors cursor-pointer" onclick="window.playTrack('${track._id}')">
             <td class="px-4 py-3 text-center text-text-secondary group-hover:text-white">
@@ -110,7 +159,7 @@ function renderTracks(tracks, albumContext) {
                     <img src="${cover}" class="w-10 h-10 rounded object-cover" alt="${track.title}">
                     <div>
                         <div class="text-white font-medium truncate">${track.title}</div>
-                        <div class="text-text-secondary text-xs hover:underline">${artist}</div>
+                        <div class="text-text-secondary text-xs hover:underline">${trackArtistName}</div>
                     </div>
                 </div>
             </td>

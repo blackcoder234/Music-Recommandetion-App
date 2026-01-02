@@ -28,6 +28,10 @@ class ApiClient {
             },
             credentials: 'include', // CRITICAL: Sends HttpOnly cookies
         };
+        
+        if (options.body instanceof FormData) {
+            delete config.headers['Content-Type'];
+        }
 
         try {
             let response = await fetch(url, config);

@@ -2,6 +2,10 @@ import Auth from './auth.js';
 import api from './api.js';
 import { displayMessage } from './utils.js';
 import { PLAYER_HTML, MOBILE_NAV_HTML } from './layout.js';
+import { trackVisitor } from './visitor-tracker.js';
+
+// Initialize Visitor Tracking (Single call per session)
+document.addEventListener('DOMContentLoaded', trackVisitor);
 
 // Global Like Function
 window.toggleLike = async (trackId) => {

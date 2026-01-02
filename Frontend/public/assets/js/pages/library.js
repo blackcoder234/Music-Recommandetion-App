@@ -79,7 +79,7 @@ function renderTracks(tracks, emptyMsg) {
     }
 
     tracksContainer.innerHTML = tracks.map((track, index) => {
-        const image = track.imageUrl || track.coverImage || 'assets/images/default-track.png';
+        const image = track.imageUrl || track.coverImage || 'assets/images/track/default_track_1.png';
         const artist = track.artist?.name || track.artist?.username || track.artist || 'Unknown Artist';
         
         return `

@@ -2,6 +2,9 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import Artist from "../models/artist.model.js";
+import Album from "../models/album.model.js";
+import Track from "../models/track.model.js";
+import mongoose from "mongoose";
 
 // Create a new artist (for admin use later)
 const createArtist = asyncHandler(async (req, res) => {
@@ -40,18 +43,61 @@ const createArtist = asyncHandler(async (req, res) => {
 		.json(new ApiResponse(201, createdArtist, "Artist created successfully"));
 });
 
-// Get a single artist by ID
+// Get a single artist by ID -> ENHANCED to return Albums and Top Tracks
 const getArtistById = asyncHandler(async (req, res) => {
 	const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw new ApiError(400, "Invalid artist ID");
+    }
 
 	const artist = await Artist.findById(id);
 	if (!artist) {
 		throw new ApiError(404, "Artist not found");
 	}
 
+    // 1. Get Albums by this Artist (with Track Counts)
+    const albums = await Album.aggregate([
+        {
+            $match: {
+                albumArtist: new mongoose.Types.ObjectId(id)
+            }
+        },
+        {
+            $lookup: {
+                from: "tracks",
+                localField: "_id",
+                foreignField: "album",
+                as: "tracks"
+            }
+        },
+        {
+            $project: {
+                albumTitle: 1,
+                coverImage: 1,
+                releaseDate: 1,
+                totalTracks: { $size: "$tracks" } // Dynamic exact count
+            }
+        },
+        { $sort: { releaseDate: -1 } }
+    ]);
+
+    // 2. Get Top Tracks (limit 5)
+    // We assume 'playCount' or 'likeCount' exists, otherwise just newest
+    const topTracks = await Track.find({ artist: id })
+        .sort({ playCount: -1, createdAt: -1 })
+        .limit(5)
+        .populate("album", "albumTitle coverImage");
+
+    const artistData = {
+        ...artist.toObject(),
+        albums: albums,
+        tracks: topTracks // "Top Tracks" requested by frontend context often maps to 'tracks'
+    };
+
 	return res
 		.status(200)
-		.json(new ApiResponse(200, artist, "Artist fetched successfully"));
+		.json(new ApiResponse(200, artistData, "Artist details fetched successfully"));
 });
 
 // List artists with optional filters and basic pagination

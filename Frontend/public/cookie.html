@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Policy - Beatify</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- custom styles  -->
+    <link rel="stylesheet" href="./assets/css/custom_css.css" />
+  </head>
+  <body class="bg-background text-text-main font-sans min-h-screen selection:bg-primary selection:text-white">
+    
+    <!-- Desktop Navbar -->
+    <header class="h-20 px-8 hidden md:flex justify-between items-center sticky top-0 bg-background/95 backdrop-blur-md z-30 border-b border-white/5">
+        <div class="flex items-center gap-2 text-xl font-bold tracking-tight text-white cursor-pointer" onclick="window.location.href='/'">
+            <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>
+            </svg>
+            Beatify
+        </div>
+
+        <nav class="flex items-center gap-8">
+            <a href="/" class="text-sm font-medium text-text-secondary hover:text-white transition-colors">Home</a>
+            <a href="/about" class="text-sm font-medium text-text-secondary hover:text-white transition-colors">About</a>
+            <a href="/premium" class="text-sm font-medium text-text-secondary hover:text-white transition-colors">Premium</a>
+            
+            <div class="h-4 w-px bg-white/10"></div>
+            
+            <a href="/login" class="text-sm font-medium text-white hover:text-primary transition-colors">Login</a>
+            <a href="/signup" class="text-sm font-bold bg-primary text-white px-5 py-2 rounded-full hover:bg-primary/90 transition-transform hover:scale-105 active:scale-95">Sign Up</a>
+        </nav>
+    </header>
+
+    <!-- Mobile Header -->
+    <header class="md:hidden h-16 bg-background flex items-center justify-between px-4 sticky top-0 z-40 border-b border-white/5">
+        <div class="flex items-center gap-2 text-lg font-bold text-white">
+             <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>
+            </svg>
+            Beatify
+        </div>
+        <button id="mobile-menu-toggle" class="text-text-secondary hover:text-white p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-nav" class="fixed inset-y-0 right-0 w-64 bg-surface border-l border-white/10 transform translate-x-full transition-transform duration-300 z-50 md:hidden flex flex-col shadow-2xl">
+        <div class="p-4 flex justify-end">
+             <button id="close-mobile-nav" class="text-text-secondary hover:text-white p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col p-6 gap-6">
+            <a href="/" class="text-lg font-medium text-text-secondary hover:text-white transition-colors">Home</a>
+            <a href="/about" class="text-lg font-medium text-text-secondary hover:text-white transition-colors">About</a>
+            <a href="/premium" class="text-lg font-medium text-text-secondary hover:text-white transition-colors">Premium</a>
+            <div class="h-px bg-white/10 w-full my-2"></div>
+            <a href="/login" class="text-lg font-medium text-white hover:text-primary transition-colors">Login</a>
+            <a href="/signup" class="text-center bg-primary text-white py-3 rounded-xl font-bold hover:bg-primary/90">Sign Up</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="relative min-h-screen">
+         <!-- Hero Section -->
+        <section class="py-20 px-4 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-full h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="max-w-4xl mx-auto relative z-10">
+                <div class="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-primary mb-6">Last Updated: January 2, 2026</div>
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-6">Cookie Policy</h1>
+                <p class="text-xl text-text-secondary leading-relaxed">
+                    At Beatify, we believe in transparency. This policy explains how we use cookies 
+                    to ensure you get the best listening experience possible.
+                </p>
+                <div class="mt-8">
+                     <button id="open-cookie-settings" class="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-medium rounded-lg transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Manage Cookie Preferences
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Policy Content -->
+        <section class="pb-24 px-4">
+            <div class="max-w-4xl mx-auto space-y-12">
+                
+                <!-- Section 1 -->
+                <div class="bg-surface/30 border border-white/5 rounded-2xl p-8 md:p-10 hover:bg-surface/40 transition-colors">
+                    <h2 class="text-2xl font-bold text-white mb-4">1. What Are Cookies?</h2>
+                    <p class="text-text-secondary leading-relaxed mb-4">
+                        Cookies are small strings of text that a website sends to your device's browser. The browser saves this information 
+                        and relays it back to the website's server when you revisit. We use cookies to:
+                    </p>
+                    <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+                        <li>Keep you signed in.</li>
+                        <li>Remember your player volume and quality settings.</li>
+                        <li>Understand how you use our app to improve features.</li>
+                    </ul>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="bg-surface/30 border border-white/5 rounded-2xl p-8 md:p-10 hover:bg-surface/40 transition-colors">
+                    <h2 class="text-2xl font-bold text-white mb-4">2. Recent Updates (2025/2026)</h2>
+                    <p class="text-text-secondary leading-relaxed">
+                        To comply with the latest global standards (GDPR, CCPA, and ePrivacy), we have updated our cookie handling. 
+                        We now categorize cookies strictly into Essential, Functional, Analytics, and Targeting groups. 
+                        You have granual control over everything except "Essential" cookies, which are required for the site to work.
+                    </p>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="bg-surface/30 border border-white/5 rounded-2xl p-8 md:p-10 hover:bg-surface/40 transition-colors">
+                    <h2 class="text-2xl font-bold text-white mb-6">3. Types of Cookies We Use</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Essential -->
+                        <div class="border-l-4 border-primary pl-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Essential Cookies</h3>
+                            <p class="text-text-secondary text-sm leading-relaxed mb-2">
+                                Necessary for technical operations (e.g., Playing music, Logging in). You cannot opt-out of these.
+                            </p>
+                        </div>
+                        
+                        <!-- Analytics -->
+                        <div class="border-l-4 border-blue-500 pl-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Analytics Cookies</h3>
+                            <p class="text-text-secondary text-sm leading-relaxed mb-2">
+                                Help us understand traffic patterns. We use anonymized data to see which specific tracks or genres are trending.
+                            </p>
+                        </div>
+
+                         <!-- Detailed Table -->
+                        <div class="overflow-x-auto mt-6">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-white/10 text-white font-semibold">
+                                        <th class="py-3 px-4">Name</th>
+                                        <th class="py-3 px-4">Category</th>
+                                        <th class="py-3 px-4">Purpose</th>
+                                        <th class="py-3 px-4">Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm text-text-secondary divide-y divide-white/5">
+                                    <tr>
+                                        <td class="py-3 px-4 font-mono text-primary">beatify_session</td>
+                                        <td class="py-3 px-4">Essential</td>
+                                        <td class="py-3 px-4">Maintains your login session.</td>
+                                        <td class="py-3 px-4">Session</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-mono text-primary">player_prefs</td>
+                                        <td class="py-3 px-4">Functional</td>
+                                        <td class="py-3 px-4">Stores volume, loop, and shuffle states.</td>
+                                        <td class="py-3 px-4">1 Year</td>
+                                    </tr>
+                                     <tr>
+                                        <td class="py-3 px-4 font-mono text-primary">_ga</td>
+                                        <td class="py-3 px-4">Analytics</td>
+                                        <td class="py-3 px-4">Google Analytics user distinction.</td>
+                                        <td class="py-3 px-4">2 Years</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                 <div class="bg-surface/30 border border-white/5 rounded-2xl p-8 md:p-10 hover:bg-surface/40 transition-colors">
+                    <h2 class="text-2xl font-bold text-white mb-4">4. Managing Your Cookies</h2>
+                    <p class="text-text-secondary leading-relaxed mb-6">
+                        You can change your preferences at any time by clicking the button at the top of this page. 
+                        Additionally, most web browsers allow you to control cookies through their settings preferences.
+                        To find out more about cookies, including how to see what cookies have been set and how to manage and delete them, visit 
+                        <a href="http://www.aboutcookies.org" target="_blank" class="text-primary hover:underline">www.aboutcookies.org</a>.
+                    </p>
+                    
+                    <h3 class="text-lg font-bold text-white mb-3">Browser Settings:</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                         <a href="#" class="block px-4 py-3 bg-white/5 border border-white/5 hover:border-white/20 rounded-lg text-center text-text-secondary hover:text-white transition-colors">Chrome</a>
+                         <a href="#" class="block px-4 py-3 bg-white/5 border border-white/5 hover:border-white/20 rounded-lg text-center text-text-secondary hover:text-white transition-colors">Firefox</a>
+                         <a href="#" class="block px-4 py-3 bg-white/5 border border-white/5 hover:border-white/20 rounded-lg text-center text-text-secondary hover:text-white transition-colors">Safari</a>
+                         <a href="#" class="block px-4 py-3 bg-white/5 border border-white/5 hover:border-white/20 rounded-lg text-center text-text-secondary hover:text-white transition-colors">Edge</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-background border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
+            <div class="flex items-center gap-2 mb-8 text-2xl font-bold text-white">
+                <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>
+               </svg>
+               Beatify
+           </div>
+           <div class="flex gap-8 mb-8 text-sm text-text-secondary">
+                <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
+                <a href="/terms" class="hover:text-white transition-colors">Terms</a>
+                <a href="/cookie.html" class="text-white font-semibold transition-colors">Cookies</a>
+           </div>
+           <p class="text-xs text-text-secondary opacity-50">
+               Â© 2026 Beatify Inc. All rights reserved.
+           </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Load Cookie Manager First -->
+    <script src="assets/js/cookie-manager.js"></script>
+    <script src="assets/js/pages/cookie.js"></script>
+    
+  </body>
+</html>

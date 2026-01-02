@@ -474,22 +474,32 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
 
 const updateUserAvatar = asyncHandler(async (req, res) => {
   const avatarLocalPath = req.file?.path;
-  if (!avatarLocalPath) {
-    throw new ApiError(400, "Avatar file is missing");
+  const avatarUrlBody = req.body?.avatarUrl;
+
+  if (!avatarLocalPath && !avatarUrlBody) {
+    throw new ApiError(400, "Avatar file or URL is missing");
   }
-  const avatar = await uploadOnCloudinary(
-    avatarLocalPath,
-    "music_app/User_avatar"
-  );
-  if (!avatar?.secure_url && !avatar?.url) {
-    throw new ApiError(400, "Error while uploading the avatar");
+
+  let finalAvatarUrl = "";
+
+  if (avatarLocalPath) {
+      const avatar = await uploadOnCloudinary(
+        avatarLocalPath,
+        "music_app/User_avatar"
+      );
+      if (!avatar?.secure_url && !avatar?.url) {
+        throw new ApiError(400, "Error while uploading the avatar");
+      }
+      finalAvatarUrl = avatar.secure_url || avatar.url;
+  } else {
+      finalAvatarUrl = avatarUrlBody;
   }
 
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
       $set: {
-        avatar: avatar.secure_url || avatar.url,
+        avatar: finalAvatarUrl,
       },
     },
     { new: true }

@@ -1,6 +1,6 @@
 
 import api from '../api.js';
-import { displayMessage } from '../utils.js';
+import { displayMessage, toggleLoader } from '../utils.js';
 
 // DOM Elements
 const weeklyTopContainer = document.getElementById('weekly-top-songs-container');
@@ -11,7 +11,7 @@ const newReleasesContainer = document.getElementById('new-releases-container');
  */
 function createTrackCard(track) {
     // Fallback images if not provided
-    const image = track.imageUrl || track.album?.coverImage || './assets/images/album/album1.png';
+    const image = track.imageUrl || track.album?.coverImage || './assets/images/album/default_album.png';
     const title = track.title || 'Untitled';
     const artistName = track.artist?.name || track.artist?.username || 'Unknown Artist';
     const artistId = track.artist?._id;
@@ -114,10 +114,16 @@ async function loadTopSongs() {
 }
 
 // Initial Load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Only run if we are on the home page (container exists)
     if (weeklyTopContainer || newReleasesContainer) {
-        loadTopSongs();
-        loadNewReleases();
+        toggleLoader(true);
+        try {
+            await Promise.all([loadTopSongs(), loadNewReleases()]);
+        } catch (error) {
+            console.error('Error loading home page:', error);
+        } finally {
+            toggleLoader(false);
+        }
     }
 });

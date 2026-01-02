@@ -553,124 +553,146 @@
         </header>
 
         <div class="p-8 pb-32">
-          <!-- Album Hero -->
-          <div class="flex flex-col md:flex-row items-end gap-8 mb-12">
+          <!-- All Artists View -->
+          <div id="all-artists-view" class="hidden">
+            <h2 class="text-3xl font-bold text-white mb-8">All Artists</h2>
             <div
-              class="hidden md:block w-52 h-52 rounded-xl overflow-hidden shadow-2xl relative group"
+              id="artists-grid"
+              class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
             >
-              <img
-                id="playlist-image"
-                src="assets/images/album/album1.png"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div class="flex-1 space-y-2 w-full">
-              <div id="playlist-description" class="text-sm font-medium text-white uppercase tracking-wider">
-                Artist
-              </div>
-              <h1 id="playlist-title" class="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">
-                Loading...
-              </h1>
-              <div class="flex items-center gap-2 text-text-secondary text-sm">
-                <!-- Artist stats usually don't need owner or owner image, just followers maybe -->
-                <span id="playlist-stats-count">0 monthly listeners</span>
-              </div>
-
-              <div class="flex items-center gap-4 pt-6">
-                <button
-                  id="play-all-btn"
-                  class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/25 hover:scale-105 active:scale-95 transition-all"
-                >
-                  <svg class="w-6 h-6 ml-1 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </button>
-                <button class="text-text-secondary hover:text-white p-2">
-                  <svg
-                    class="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    ></path>
-                  </svg>
-                </button>
-                <button class="text-text-secondary hover:text-white p-2">
-                  <svg
-                    class="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                    ></path>
-                  </svg>
-                </button>
-                <button
-                  class="text-text-secondary hover:text-white p-2 ml-auto"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
+              <!-- Loaded via JS -->
             </div>
           </div>
 
-          <!-- Tracklist Table -->
-          <section class="mb-12">
-            <div
-              class="bg-surface/50 rounded-2xl overflow-hidden backdrop-blur-sm"
-            >
-              <table class="w-full text-left border-collapse">
-                <thead>
-                  <tr
-                    class="text-text-secondary text-xs uppercase border-b border-white/5"
+          <!-- Single Artist View -->
+          <div id="single-artist-view" class="hidden">
+            <!-- Album Hero -->
+            <div class="flex flex-col md:flex-row items-end gap-8 mb-12">
+              <div
+                class="hidden md:block w-52 h-52 rounded-xl overflow-hidden shadow-2xl relative group"
+              >
+                <img
+                  id="playlist-image"
+                  src="assets/images/artist/default_artist_3.jpg"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="flex-1 space-y-2 w-full">
+                <div
+                  id="playlist-description"
+                  class="text-sm font-medium text-white uppercase tracking-wider"
+                >
+                  Artist
+                </div>
+                <h1
+                  id="playlist-title"
+                  class="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight"
+                >
+                  Loading...
+                </h1>
+                <div
+                  id="hero-stats-row"
+                  class="flex items-center gap-2 text-text-secondary text-sm"
+                >
+                  <!-- Populated by JS -->
+                </div>
+
+                <div class="flex items-center gap-4 pt-6">
+                  <button
+                    id="play-all-btn"
+                    class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/25 hover:scale-105 active:scale-95 transition-all"
                   >
-                    <th class="px-4 py-3 font-medium w-12 text-center">#</th>
-                    <th class="px-4 py-3 font-medium">Title</th>
-                    <th class="px-4 py-3 font-medium text-right w-24">
-                      <svg
-                        class="w-4 h-4 ml-auto"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        ></path>
-                      </svg>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody id="playlist-tracks" class="text-sm text-gray-300">
-                    <!-- Loaded via JS -->
-                </tbody>
-              </table>
+                    <svg class="w-6 h-6 ml-1 fill-current" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </button>
+                  <button class="text-text-secondary hover:text-white p-2">
+                    <svg
+                      class="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="text-text-secondary hover:text-white p-2">
+                    <svg
+                      class="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button
+                    class="text-text-secondary hover:text-white p-2 ml-auto"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
-          </section>
+
+            <!-- Tracklist Table -->
+            <section class="mb-12">
+              <div
+                class="bg-surface/50 rounded-2xl overflow-hidden backdrop-blur-sm"
+              >
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr
+                      class="text-text-secondary text-xs uppercase border-b border-white/5"
+                    >
+                      <th class="px-4 py-3 font-medium w-12 text-center">#</th>
+                      <th class="px-4 py-3 font-medium">Title</th>
+                      <th class="px-4 py-3 font-medium text-right w-24">
+                        <svg
+                          class="w-4 h-4 ml-auto"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          ></path>
+                        </svg>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="playlist-tracks" class="text-sm text-gray-300">
+                    <!-- Loaded via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
 
           <div
             class="text-xs text-text-secondary text-center pb-8 uppercase tracking-widest hidden md:block"
