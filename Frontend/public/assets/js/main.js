@@ -49,16 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // GLOBAL SEARCH LOGIC
     // ==========================================
-    const globalSearchInput = document.querySelector('input[placeholder="Search..."]');
-    if (globalSearchInput) {
-        globalSearchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                const query = globalSearchInput.value.trim();
-                if (query) {
-                    window.location.href = `/discover?search=${encodeURIComponent(query)}`;
+    const globalSearchInputs = document.querySelectorAll('input[placeholder="Search..."]');
+    if (globalSearchInputs.length > 0) {
+        globalSearchInputs.forEach(input => {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const query = input.value.trim();
+                    if (query) {
+                        window.location.href = `/discover?search=${encodeURIComponent(query)}`;
+                    }
                 }
-            }
+            });
         });
     }
     
@@ -70,8 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
      * Mobile Sidebar Elements
      */
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const sidebar = document.getElementById('sidebar');
+    const sidebar = document.getElementById('sidebar'); // Left Sidebar
     const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+    
+    // Right Sidebar Elements
+    const mobileRightSidebarBtn = document.getElementById('mobile-right-sidebar-btn');
+    const rightSidebar = document.getElementById('right-sidebar');
+    const closeRightSidebarBtn = document.getElementById('close-right-sidebar-btn');
+
     const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     /**
@@ -85,14 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
 
     /**
-     * toggleMobileSidebar
-     * Toggles the visibility of the sidebar drawer on mobile devices.
-     * Uses CSS transforms to slide in/out.
+     * toggleMobileSidebar (Left)
      */
     function toggleMobileSidebar() {
-        // Check if the sidebar has the 'translate-x-0' class (meaning it's open)
-        const isOpen = sidebar.classList.contains('-translate-x-0'); // using the opposite logic of default hidden
-
+        const isOpen = sidebar.classList.contains('-translate-x-0'); 
         if (isOpen) {
             closeMobileSidebar();
         } else {
@@ -101,32 +105,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openMobileSidebar() {
-        // Remove the negative translate to slide it into view
         sidebar.classList.remove('-translate-x-full'); 
-        // Show the dark overlay
         sidebarOverlay.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        document.body.style.overflow = 'hidden'; 
     }
 
     function closeMobileSidebar() {
-        // Add the negative translate to slide it out of view
         sidebar.classList.add('-translate-x-full');
-        // Hide the overlay
         sidebarOverlay.classList.add('hidden');
-        document.body.style.overflow = ''; // Restore background scrolling
+        document.body.style.overflow = '';
+    }
+
+    /**
+     * toggleRightSidebar (Right)
+     */
+     function openRightSidebar() {
+        if(rightSidebar) {
+            rightSidebar.classList.remove('translate-x-full'); // Slide IN (remove hidden)
+            // Ensure logic matches CSS: transform translate-x-full is default (hidden right)
+            // remove it -> translates to 0 (visible)
+            // Wait, I need to check if default class has translate-x-full. Yes, I added it.
+            // But usually for right sidebar sliding in, we might need 'translate-x-0' to force valid state if not default.
+            // Let's assume removing translate-x-full makes it 0 if not specified closer? 
+            // Actually better to add a class 'translate-x-0' if standard tailwind doesn't default to 0 without classes.
+            rightSidebar.classList.add('translate-x-0');
+            sidebarOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeRightSidebar() {
+        if(rightSidebar) {
+            rightSidebar.classList.remove('translate-x-0');
+            rightSidebar.classList.add('translate-x-full'); 
+            sidebarOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
     }
 
     // Event Listeners for Mobile Interactions
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', openMobileSidebar);
     }
-
     if (closeSidebarBtn) {
         closeSidebarBtn.addEventListener('click', closeMobileSidebar);
     }
 
+    // Right Sidebar Listeners
+    if (mobileRightSidebarBtn) {
+        mobileRightSidebarBtn.addEventListener('click', openRightSidebar);
+    }
+    if (closeRightSidebarBtn) {
+        closeRightSidebarBtn.addEventListener('click', closeRightSidebar);
+    }
+
     if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', closeMobileSidebar);
+        sidebarOverlay.addEventListener('click', () => {
+            closeMobileSidebar();  // Close Left
+            closeRightSidebar();   // Close Right
+        });
     }
     
     // ==========================================
@@ -207,6 +244,9 @@ function updateAuthUI(user) {
     const userNames = document.querySelectorAll('.auth-user-name');
     const userAvatars = document.querySelectorAll('.auth-user-avatar');
 
+    // Mobile Bottom Nav Elements
+    const mobileNavProfileContainer = document.getElementById('mobile-nav-profile-icon-container');
+
     if (user) {
         // Logged In State
         loginBtns.forEach(btn => btn.classList.add('hidden'));
@@ -221,10 +261,29 @@ function updateAuthUI(user) {
                 if (img) img.src = user.avatar;
             });
         }
+
+        // Update Mobile Bottom Nav Icon to Avatar
+        if (mobileNavProfileContainer) {
+            mobileNavProfileContainer.innerHTML = `
+                <img src="${user.avatar || 'https://ui-avatars.com/api/?name=User'}" 
+                     class="w-6 h-6 rounded-full object-cover border border-white/20" 
+                     alt="Profile" />
+            `;
+        }
+
     } else {
         // Guest State
         loginBtns.forEach(btn => btn.classList.remove('hidden'));
         profileSections.forEach(section => section.classList.add('hidden'));
+
+        // Restore Mobile Bottom Nav Icon to SVG
+        if (mobileNavProfileContainer) {
+            mobileNavProfileContainer.innerHTML = `
+                <svg id="mobile-nav-profile-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            `;
+        }
     }
 }
 
