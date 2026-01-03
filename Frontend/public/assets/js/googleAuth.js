@@ -94,8 +94,10 @@ const ensureGoogleInitialized = async (onCredential, onError) => {
     window.google.accounts.id.initialize({
         client_id: clientId,
         callback: onCredential,
-        // FedCM migration: opt-in now to keep One Tap working as browsers enforce FedCM.
-        use_fedcm_for_prompt: true,
+        // Disable FedCM on localhost/HTTP to avoid NetworkError
+        // In production (HTTPS), this should be true, but the current error is blocking.
+        use_fedcm_for_prompt: false, 
+        cancel_on_tap_outside: false
     });
 
     googleInitialized = true;
@@ -104,14 +106,9 @@ const ensureGoogleInitialized = async (onCredential, onError) => {
 
 /**
  * Attach Google auth to an existing button.
- *
- * @param {object} params
- * @param {HTMLElement} params.buttonEl
- * @param {string} [params.endpoint='/api/v1/users/google']
- * @param {Function} [params.onStart]
- * @param {Function} [params.onFinish]
- * @param {Function} [params.onSuccess] - called with (user, rawResponse)
- * @param {Function} [params.onError] - called with (message, error)
+ * Note: GIS One Tap (prompt) is not designed for custom buttons (it's a floating widget).
+ * For a proper custom button, we should use the Authorization Code flow or renderButton.
+ * However, to keep current contract, we trigger prompt() but handle 'skipped' state.
  */
 export function attachGoogleAuth({
     buttonEl,
@@ -166,9 +163,29 @@ export function attachGoogleAuth({
         const ok = await ensureGoogleInitialized(handleGoogleCredential, (msg) => reportError(msg));
         if (!ok) return;
 
+        // Reset the cool-down so prompt always shows on click
+        // (This is a hack: prompt() has a cooldown if closed by user)
+        document.cookie = `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+
         window.google.accounts.id.prompt((notification) => {
-            if (notification?.isNotDisplayed?.() || notification?.isSkippedMoment?.()) {
-                reportError('Google Sign-In was blocked or dismissed. Please try again.');
+            if (notification.isNotDisplayed()) {
+                console.warn('Google Prompt not displayed:', notification.getNotDisplayedReason());
+                
+                // If the user closed it recently, it won't show ('opt_out_or_sliding_cool_down').
+                // We notify the user.
+                const reason = notification.getNotDisplayedReason();
+                if (reason === 'opt_out_or_sliding_cool_down') {
+                    // We actually tried to clear it above, but if it persists:
+                    reportError('Google Sign-In is temporarily on cooldown. Please wait or clear cookies.');
+                } else if (reason === 'suppressed_by_user') {
+                     reportError('Google Sign-In was suppressed. Please try again.');
+                } else if (reason === 'unregistered_origin') {
+                     reportError('Current domain (localhost/ip) is not allowed in Google Cloud Console.');
+                } else {
+                     reportError('Google Sign-In could not be displayed (' + reason + ').');
+                }
+            } else if (notification.isSkippedMoment()) {
+                console.warn('Google Prompt skipped:', notification.getSkippedReason());
             }
         });
     });

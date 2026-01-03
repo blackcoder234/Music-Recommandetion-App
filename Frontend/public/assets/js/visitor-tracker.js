@@ -28,7 +28,7 @@ export async function trackVisitor() {
         };
 
         // 4. Send to our Backend
-        await api.request('/track-visitor', {
+        await api.request('/users/save-userInfo', {
             method: 'POST',
             body: JSON.stringify(visitorData)
         });
