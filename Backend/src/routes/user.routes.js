@@ -4,6 +4,7 @@ import {
     registerUser,
     loginUser,
     googleAuth,
+    facebookAuth,
     logoutUser,
     refreshAccessToken,
     changeCurrentPassword,
@@ -27,6 +28,7 @@ const router = Router()
 router.route("/register").post(upload,registerUser)
 router.route("/login").post(loginUser)
 router.route("/google").post(googleAuth)
+router.route("/facebook").post(facebookAuth)
 
 //secured routes 
 router.route("/logout").post(verifyJWT, logoutUser)

@@ -37,7 +37,7 @@ const userSchema = new Schema(
         },
         authProvider: {
             type: String,
-            enum: ["email", "google"],
+            enum: ["email", "google", "facebook"],
             default: "email",
         },
         isEmailVerified: {

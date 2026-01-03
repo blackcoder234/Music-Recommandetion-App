@@ -133,10 +133,16 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new ApiError(404, "User not found");
   }
 
-  if (user.authProvider === "google") {
+  if (user.authProvider !== "email") {
+    const providerLabel =
+      user.authProvider === "google"
+        ? "Google"
+        : user.authProvider === "facebook"
+          ? "Facebook"
+          : "social";
     throw new ApiError(
       400,
-      "This account uses Google login. Please sign in with Google."
+      `This account uses ${providerLabel} login. Please sign in with ${providerLabel}.`
     );
   }
 
@@ -248,6 +254,108 @@ const googleAuth = asyncHandler(async (req, res) => {
     );
 });
 
+const facebookAuth = asyncHandler(async (req, res) => {
+  const { accessToken } = req.body;
+
+  if (!accessToken) {
+    throw new ApiError(400, "Facebook access token is required");
+  }
+
+  const appId = process.env.FACEBOOK_APP_ID;
+  const appSecret = process.env.FACEBOOK_APP_SECRET;
+  if (!appId || !appSecret) {
+    throw new ApiError(500, "Facebook App configuration is missing");
+  }
+
+  // 1) Validate the token belongs to this app
+  const appAccessToken = `${appId}|${appSecret}`;
+  const debugUrl = new URL("https://graph.facebook.com/debug_token");
+  debugUrl.searchParams.set("input_token", accessToken);
+  debugUrl.searchParams.set("access_token", appAccessToken);
+
+  const debugRes = await fetch(debugUrl.toString());
+  const debugJson = await debugRes.json().catch(() => ({}));
+  const debugData = debugJson?.data;
+
+  if (!debugRes.ok || !debugData?.is_valid) {
+    throw new ApiError(401, "Invalid Facebook access token");
+  }
+
+  if (debugData?.app_id && String(debugData.app_id) !== String(appId)) {
+    throw new ApiError(401, "Facebook token does not match this application");
+  }
+
+  // 2) Fetch user profile
+  const meUrl = new URL("https://graph.facebook.com/me");
+  meUrl.searchParams.set("fields", "id,name,email,picture.type(large)");
+  meUrl.searchParams.set("access_token", accessToken);
+
+  const meRes = await fetch(meUrl.toString());
+  const meJson = await meRes.json().catch(() => ({}));
+  if (!meRes.ok) {
+    throw new ApiError(401, meJson?.error?.message || "Failed to fetch Facebook profile");
+  }
+
+  const email = meJson?.email;
+  const fullName = meJson?.name;
+  const avatarUrl = meJson?.picture?.data?.url;
+
+  if (!email) {
+    throw new ApiError(
+      400,
+      "Facebook account does not have a valid email (email permission is required)"
+    );
+  }
+
+  let user = await User.findOne({ email });
+
+  if (!user) {
+    const username = await generateUniqueUsernameFromEmail(email);
+    user = await User.create({
+      username,
+      email,
+      fullName,
+      avatar: avatarUrl || "",
+      authProvider: "facebook",
+      isEmailVerified: true,
+    });
+  } else if (user.authProvider === "email") {
+    // Email-based account: allow Facebook login but keep authProvider as "email"
+    if (!user.avatar && avatarUrl) {
+      user.avatar = avatarUrl;
+    }
+    user.isEmailVerified = true;
+    await user.save({ validateBeforeSave: false });
+  }
+
+  const { accessToken: jwtAccessToken, refreshToken } =
+    await generateAccessAndRefreshTokens(user._id);
+
+  const loggedInUser = await User.findById(user._id).select(
+    "-password -refreshToken"
+  );
+
+  const options = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+  };
+
+  return res
+    .status(200)
+    .cookie("accessToken", jwtAccessToken, options)
+    .cookie("refreshToken", refreshToken, options)
+    .json(
+      new ApiResponse(
+        200,
+        {
+          user: loggedInUser,
+          accessToken: jwtAccessToken,
+        },
+        "User authenticated with Facebook successfully"
+      )
+    );
+});
+
 const logoutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
@@ -339,7 +447,7 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
   if (user.authProvider !== "email") {
     throw new ApiError(
       400,
-      "Password change is not available for Google login accounts"
+      "Password change is not available for social login accounts"
     );
   }
 
@@ -365,7 +473,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   if (user.authProvider !== "email") {
     throw new ApiError(
       400,
-      "This account uses Google login. Password reset is not available."
+      "This account uses social login. Password reset is not available."
     );
   }
 
@@ -406,7 +514,7 @@ const resetPassword = asyncHandler(async (req, res) => {
   if (user.authProvider !== "email") {
     throw new ApiError(
       400,
-      "This account uses Google login. Password reset is not available."
+      "This account uses social login. Password reset is not available."
     );
   }
 
@@ -618,6 +726,7 @@ export {
   registerUser,
   loginUser,
   googleAuth,
+  facebookAuth,
   logoutUser,
   refreshAccessToken,
   changeCurrentPassword,

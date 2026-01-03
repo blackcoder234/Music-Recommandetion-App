@@ -28,6 +28,7 @@ import playlistRoutes from "./routes/playlist.routes.js"
 import albumRoutes from "./routes/album.routes.js"
 import playbackRoutes from "./routes/playback.routes.js"
 import recommendationRoutes from "./routes/recommendation.routes.js"
+import configRoutes from "./routes/config.routes.js"
 
 
 //Routes Declaration
@@ -39,6 +40,7 @@ app.use("/api/v1/albums", albumRoutes)
 app.use("/api/v1/playlists", playlistRoutes)
 app.use("/api/v1/playback", playbackRoutes)
 app.use("/api/v1/recommendations", recommendationRoutes)
+app.use("/api/v1/config", configRoutes)
 app.use("/", staticRoutes)
 
 //Error Handler

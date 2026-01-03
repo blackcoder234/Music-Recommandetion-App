@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/assets/css/custom_css.css" />
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- Google Sign-In is loaded dynamically by /assets/js/googleAuth.js -->
   </head>
 
   <body
@@ -155,7 +157,8 @@
       <!-- Social Buttons -->
       <div class="grid grid-cols-2 gap-3">
         <a
-          href="https://accounts.google.com/o/oauth2/v2/auth"
+          href="#"
+          id="googleLoginBtn"
           class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl py-2.5 transition-colors"
         >
           <img
@@ -165,16 +168,18 @@
           />
           <span class="text-xs font-medium">Google</span>
         </a>
-        <button
+        <a
+          href="#"
+          id="facebookLoginBtn"
           class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl py-2.5 transition-colors"
         >
           <img
-            src="assets/images/logos/apple-black-logo-svgrepo-com.svg"
-            alt="Apple logo"
+            src="assets/images/logos/facebook-brands-solid-full.svg"
+            alt="Facebook logo"
             class="w-4 h-4"
           />
-          <span class="text-xs font-medium">Apple</span>
-        </button>
+          <span class="text-xs font-medium">Facebook</span>
+        </a>
       </div>
 
       <!-- Footer -->

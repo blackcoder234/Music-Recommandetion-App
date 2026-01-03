@@ -1,16 +1,54 @@
 import Auth from '../auth.js';
 import { signupValidateInput, toggleLoader, displayMessage, showPassword } from '../utils.js';
+import { attachGoogleAuth } from '../googleAuth.js';
+import { attachFacebookAuth } from '../facebookAuth.js';
 
 const form = document.getElementById('signupForm');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const showPasswordBtn = document.getElementById('showPassword');
+const googleSignupBtn = document.getElementById('googleSignupBtn');
+const facebookSignupBtn = document.getElementById('facebookSignupBtn');
 
 // Init Show Password
 if (showPasswordBtn && passwordInput) {
     showPassword(showPasswordBtn, passwordInput);
 }
+
+// Google Sign Up
+attachGoogleAuth({
+    buttonEl: googleSignupBtn,
+    onStart: () => toggleLoader(true),
+    onFinish: () => toggleLoader(false),
+    onSuccess: (user) => {
+        Auth.broadcastAuthChange('LOGIN_SUCCESS', user);
+        displayMessage('Signed in with Google successfully!', 'success');
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 800);
+    },
+    onError: (message) => {
+        displayMessage(message || 'Google sign-in failed', 'error');
+    },
+});
+
+// Facebook Sign Up
+attachFacebookAuth({
+    buttonEl: facebookSignupBtn,
+    onStart: () => toggleLoader(true),
+    onFinish: () => toggleLoader(false),
+    onSuccess: (user) => {
+        Auth.broadcastAuthChange('LOGIN_SUCCESS', user);
+        displayMessage('Signed in with Facebook successfully!', 'success');
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 800);
+    },
+    onError: (message) => {
+        displayMessage(message || 'Facebook sign-in failed', 'error');
+    },
+});
 
 if (form) {
     form.addEventListener('submit', async (e) => {
