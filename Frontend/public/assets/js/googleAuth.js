@@ -94,6 +94,8 @@ const ensureGoogleInitialized = async (onCredential, onError) => {
     window.google.accounts.id.initialize({
         client_id: clientId,
         callback: onCredential,
+        // FedCM migration: opt-in now to keep One Tap working as browsers enforce FedCM.
+        use_fedcm_for_prompt: true,
     });
 
     googleInitialized = true;

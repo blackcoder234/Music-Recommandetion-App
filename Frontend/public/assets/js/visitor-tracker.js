@@ -1,4 +1,4 @@
-import { api } from '../api.js';
+import  api  from './api.js';
 
 /**
  * Tracks visitor information by fetching IP details and sending to backend
