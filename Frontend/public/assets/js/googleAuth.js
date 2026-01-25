@@ -1,192 +1,70 @@
 /**
- * Google Identity Services helper (custom button)
- *
- * Loads Google GIS script on demand and fetches GOOGLE_CLIENT_ID
- * from the backend public config endpoint (/api/v1/config/public).
+ * Simple Google Identity Services helper
  */
 
-let googleInitialized = false;
-let loadScriptPromise = null;
-let loadClientIdPromise = null;
+export async function initGoogleAuth({
+  containerId = "googleBtnContainer",
+  endpoint = "/api/v1/users/google",
+  onStart,
+  onFinish,
+  onSuccess,
+  onError,
+} = {}) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
 
-const loadGoogleIdentityScript = () => {
-    if (window.google?.accounts?.id) return Promise.resolve();
-    if (loadScriptPromise) return loadScriptPromise;
-
-    loadScriptPromise = new Promise((resolve, reject) => {
-        const existing = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
-        if (existing) {
-            // If it exists but hasn't initialized yet, wait a tick.
-            const check = () => {
-                if (window.google?.accounts?.id) resolve();
-                else setTimeout(check, 50);
-            };
-            check();
-            return;
-        }
-
-        const script = document.createElement('script');
-        script.src = 'https://accounts.google.com/gsi/client';
-        script.async = true;
-        script.defer = true;
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error('Failed to load Google Sign-In script'));
-        document.head.appendChild(script);
-    });
-
-    return loadScriptPromise;
-};
-
-const readClientIdFromPublicConfig = async () => {
-    // Same-origin request when frontend is served by backend
-    const res = await fetch('/api/v1/config/public', { credentials: 'include' });
-    const json = await res.json().catch(() => ({}));
-    if (!res.ok) {
-        throw new Error(json?.message || 'Failed to fetch public config');
-    }
-    // Supports both { googleClientId } and ApiResponse { data: { googleClientId } }
-    return json?.googleClientId || json?.data?.googleClientId || '';
-};
-
-const getGoogleClientId = async () => {
-    if (window.GOOGLE_CLIENT_ID) return window.GOOGLE_CLIENT_ID;
-    if (loadClientIdPromise) return loadClientIdPromise;
-
-    loadClientIdPromise = (async () => {
-        const clientId = await readClientIdFromPublicConfig();
-        if (clientId) {
-            window.GOOGLE_CLIENT_ID = clientId;
-        }
-        return clientId;
-    })();
-
-    return loadClientIdPromise;
-};
-
-const ensureGoogleInitialized = async (onCredential, onError) => {
-    if (googleInitialized) return true;
-
-    try {
-        await loadGoogleIdentityScript();
-    } catch (e) {
-        onError?.(e?.message || 'Google Sign-In script not loaded yet. Please try again.');
-        return false;
-    }
-
-    let clientId = '';
-    try {
-        clientId = await getGoogleClientId();
-    } catch (e) {
-        onError?.(e?.message || 'Google Client ID is missing');
-        return false;
-    }
+  try {
+    // 1. Fetch Client ID from public config
+    const res = await fetch("/api/v1/config/public");
+    const config = await res.json();
+    const clientId = config?.data?.googleClientId || config?.googleClientId;
 
     if (!clientId) {
-        onError?.('Google Client ID is missing. Please set it on the server.');
-        return false;
+      throw new Error("Google Client ID not found in config");
     }
 
-    if (!window.google?.accounts?.id) {
-        onError?.('Google Sign-In script not loaded yet. Please try again.');
-        return false;
-    }
-
+    // 2. Initialize Google Auth
     window.google.accounts.id.initialize({
-        client_id: clientId,
-        callback: onCredential,
-        // Disable FedCM on localhost/HTTP to avoid NetworkError
-        // In production (HTTPS), this should be true, but the current error is blocking.
-        use_fedcm_for_prompt: false, 
-        cancel_on_tap_outside: false
-    });
-
-    googleInitialized = true;
-    return true;
-};
-
-/**
- * Attach Google auth to an existing button.
- * Note: GIS One Tap (prompt) is not designed for custom buttons (it's a floating widget).
- * For a proper custom button, we should use the Authorization Code flow or renderButton.
- * However, to keep current contract, we trigger prompt() but handle 'skipped' state.
- */
-export function attachGoogleAuth({
-    buttonEl,
-    endpoint = '/api/v1/users/google',
-    onStart,
-    onFinish,
-    onSuccess,
-    onError,
-} = {}) {
-    if (!buttonEl) return;
-
-    const reportError = (message, error) => {
-        if (typeof onError === 'function') {
-            onError(message, error);
-        }
-    };
-
-    const handleGoogleCredential = async (response) => {
-        const idToken = response?.credential;
-        if (!idToken) {
-            reportError('Google authentication failed. No token received.');
-            return;
-        }
-
+      client_id: clientId,
+      callback: async (response) => {
+        onStart?.();
         try {
-            onStart?.();
+          const serverRes = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ idToken: response.credential }),
+          });
 
-            const res = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-                body: JSON.stringify({ idToken }),
-            });
+          const result = await serverRes.json();
+          if (!serverRes.ok)
+            throw new Error(result.message || "Google login failed");
 
-            const data = await res.json().catch(() => ({}));
-            if (!res.ok) {
-                throw new Error(data.message || 'Google sign-in failed');
-            }
-
-            const user = data?.data?.user || null;
-            onSuccess?.(user, data);
-        } catch (error) {
-            reportError(error.message || 'Google sign-in failed', error);
+          onSuccess?.(result.data?.user, result);
+        } catch (err) {
+          onError?.(err.message, err);
         } finally {
-            onFinish?.();
+          onFinish?.();
         }
-    };
-
-    buttonEl.addEventListener('click', async (e) => {
-        e.preventDefault();
-
-        const ok = await ensureGoogleInitialized(handleGoogleCredential, (msg) => reportError(msg));
-        if (!ok) return;
-
-        // Reset the cool-down so prompt always shows on click
-        // (This is a hack: prompt() has a cooldown if closed by user)
-        document.cookie = `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
-
-        window.google.accounts.id.prompt((notification) => {
-            if (notification.isNotDisplayed()) {
-                console.warn('Google Prompt not displayed:', notification.getNotDisplayedReason());
-                
-                // If the user closed it recently, it won't show ('opt_out_or_sliding_cool_down').
-                // We notify the user.
-                const reason = notification.getNotDisplayedReason();
-                if (reason === 'opt_out_or_sliding_cool_down') {
-                    // We actually tried to clear it above, but if it persists:
-                    reportError('Google Sign-In is temporarily on cooldown. Please wait or clear cookies.');
-                } else if (reason === 'suppressed_by_user') {
-                     reportError('Google Sign-In was suppressed. Please try again.');
-                } else if (reason === 'unregistered_origin') {
-                     reportError('Current domain (localhost/ip) is not allowed in Google Cloud Console.');
-                } else {
-                     reportError('Google Sign-In could not be displayed (' + reason + ').');
-                }
-            } else if (notification.isSkippedMoment()) {
-                console.warn('Google Prompt skipped:', notification.getSkippedReason());
-            }
-        });
+      },
+      use_fedcm_for_prompt: true,
     });
+
+    // 3. Render the standard button
+    // This is much more reliable than custom buttons
+    window.google.accounts.id.renderButton(container, {
+      theme: "outline",
+      size: "large",
+      shape: "pill",
+      width: container.offsetWidth || 300,
+      logo_alignment: "left",
+      text: "continue_with",
+    });
+
+    // Optional: Also show the One Tap prompt
+    // window.google.accounts.id.prompt();
+  } catch (error) {
+    console.error("Google Auth Init Error:", error);
+    onError?.("Failed to initialize Google Login. Please refresh.");
+  }
 }
