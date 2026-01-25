@@ -30,6 +30,7 @@ initGoogleAuth({
 });
 
 // 2. Initialize Facebook Auth
+/*
 initFacebookAuth({
     buttonId: 'facebookLoginBtn',
     onStart: () => toggleLoader(true),
@@ -43,6 +44,7 @@ initFacebookAuth({
         displayMessage(message || 'Facebook sign-in failed', 'error');
     },
 });
+*/
 
 // 3. Form Submission (Email/Password)
 if (form) {

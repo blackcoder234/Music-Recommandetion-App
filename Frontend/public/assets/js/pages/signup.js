@@ -30,6 +30,7 @@ initGoogleAuth({
 });
 
 // 3. Initialize Facebook Auth (Join)
+/*
 initFacebookAuth({
     buttonId: 'facebookSignupBtn',
     onStart: () => toggleLoader(true),
@@ -43,6 +44,7 @@ initFacebookAuth({
         displayMessage(message || 'Facebook signup failed', 'error');
     },
 });
+*/
 
 // 4. Form Submission (Email/Password)
 if (form) {
