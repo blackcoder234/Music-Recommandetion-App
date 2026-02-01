@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -45,7 +45,7 @@
         Loading...
       </h1>
       <a
-        href="/settings"
+        href="/settings.html"
         class="p-2 -mr-2 hover:bg-white/5 rounded-full text-text-main transition-colors"
       >
         <svg
@@ -154,33 +154,37 @@
       class="max-w-4xl mx-auto px-4 mt-4 animate-fade-in-up"
       style="animation-delay: 0.1s; animation-fill-mode: forwards; opacity: 0"
     >
-      <div
-        class="flex border-b border-white/10 mb-6 sticky top-16 bg-background/95 backdrop-blur-md z-30 pt-2"
-      >
-        <button
-          class="px-6 py-3 text-white border-b-2 border-primary font-medium"
-        >
+      <div class="flex border-b border-white/10 mb-6 sticky top-16 bg-background/95 backdrop-blur-md z-30 pt-2">
+        <button id="tab-playlists" onclick="window.switchProfileTab('playlists')" class="px-6 py-3 text-white border-b-2 border-primary font-medium transition-colors">
           Public Playlists
         </button>
-        <button
-          class="px-6 py-3 text-text-secondary hover:text-white transition-colors font-medium"
-        >
+        <button id="tab-recent" onclick="window.switchProfileTab('recent')" class="px-6 py-3 text-text-secondary hover:text-white transition-colors font-medium border-b-2 border-transparent">
           Recently Played
         </button>
-        <button
-          class="px-6 py-3 text-text-secondary hover:text-white transition-colors font-medium"
-        >
+        <button id="tab-following" onclick="window.switchProfileTab('following')" class="px-6 py-3 text-text-secondary hover:text-white transition-colors font-medium border-b-2 border-transparent">
           Following
         </button>
       </div>
 
-      <!-- Playlists Grid -->
-      <!-- Playlists Grid -->
-      <div
-        id="profile-playlists-grid"
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-      >
-        <!-- Content from JS -->
+      <!-- Playlists Content -->
+      <div id="content-playlists" class="profile-tab-content animate-fade-in">
+          <div id="profile-playlists-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Content from JS -->
+          </div>
+      </div>
+
+      <!-- Recently Played Content -->
+      <div id="content-recent" class="profile-tab-content hidden animate-fade-in">
+           <div id="profile-recent-grid" class="space-y-2">
+                <div class="text-text-secondary text-center py-10">No recent history</div>
+           </div>
+      </div>
+
+      <!-- Following Content -->
+      <div id="content-following" class="profile-tab-content hidden animate-fade-in">
+           <div id="profile-following-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="text-text-secondary text-center py-10 col-span-full">Not following anyone yet</div>
+           </div>
       </div>
 
       <script type="module" src="./assets/js/pages/profile.js"></script>
@@ -359,4 +363,3 @@
     <script type="module" src="./assets/js/main.js"></script>
   </body>
 </html>
-

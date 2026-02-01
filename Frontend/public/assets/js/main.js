@@ -1,7 +1,8 @@
 import Auth from './auth.js';
 import api from './api.js';
 import { displayMessage } from './utils.js';
-import { PLAYER_HTML, MOBILE_NAV_HTML } from './layout.js';
+import './playlistModal.js';
+import { PLAYER_HTML, MOBILE_NAV_HTML, SIDEBAR_HTML, RIGHT_SIDEBAR_HTML, MOBILE_HEADER_HTML } from './layout.js';
 import { trackVisitor } from './visitor-tracker.js';
 
 // Initialize Visitor Tracking (Single call per session)
@@ -18,14 +19,11 @@ window.toggleLike = async (trackId) => {
              if (typeof renderLikedTracks === 'function') {
                  renderLikedTracks();
              } else {
-                 window.location.reload();
+                 // Soft reload for SPA: just re-fetch the content
+                 navigateTo(window.location.pathname); 
              }
              displayMessage("Removed from Liked Songs", "success");
         } else {
-            // General page: Show feedback
-            // Ideally we check response to see if liked or unliked
-            // backend 'likeTrack' typically toggles. 
-            // Let's assume response.message tells us, or we just say "Success"
              displayMessage("Favorites updated", "success");
         }
     } catch (e) {
@@ -38,35 +36,94 @@ window.toggleLike = async (trackId) => {
 // Handles frontend interactions: Sidebar (Mobile/Desktop) and general UI toggles.
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Marketing Page Logic (Skip App Shell)
+    if (document.body.classList.contains('marketing-page')) {
+        const menuBtn = document.getElementById('mobile-menu-toggle');
+        const menu = document.getElementById('marketing-mobile-menu');
+        const header = document.getElementById('marketing-header');
+        
+        if (menuBtn && menu) {
+            menuBtn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                // Optional: Animate icon
+            });
+        }
+
+        if (header) {
+            window.addEventListener('scroll', () => {
+                 if (window.scrollY > 10) {
+                     header.classList.add('bg-background/95', 'backdrop-blur-md', 'shadow-lg');
+                     header.classList.remove('bg-transparent');
+                 } else {
+                     header.classList.remove('bg-background/95', 'backdrop-blur-md', 'shadow-lg');
+                     header.classList.add('bg-transparent');
+                 }
+            });
+        }
+        return; // Stop execution of App Shell logic
+    }
+
     // ==========================================
-    // GLOBAL UI INJECTION (Player)
+    // GLOBAL UI INJECTION (App Only)
     // ==========================================
+    
+    // 1. Mobile Header (Top)
+    // Only inject if not already there (though we plan to remove it from HTML)
+    if (!document.querySelector('header.md\\:hidden')) {
+         const app = document.getElementById('app') || document.body;
+         // Insert as first child of #app if possible, or body
+         if(document.getElementById('app')) {
+            document.getElementById('app').insertAdjacentHTML('afterbegin', MOBILE_HEADER_HTML);
+         } else {
+            document.body.insertAdjacentHTML('afterbegin', MOBILE_HEADER_HTML);
+         }
+    }
+
+    // 2. Right Sidebar (Mobile Menu)
+    if (!document.getElementById('right-sidebar')) {
+         // Insert after header or at start of #app
+         const app = document.getElementById('app');
+         if(app) app.insertAdjacentHTML('afterbegin', RIGHT_SIDEBAR_HTML);
+    }
+    
+    // 3. Left Sidebar (Desktop/Mobile Drawer)
+    if (!document.getElementById('sidebar')) {
+         const app = document.getElementById('app');
+         if(app) app.insertAdjacentHTML('afterbegin', SIDEBAR_HTML);
+    }
+
+    // 4. Player Bar
     if (!document.getElementById('player-bar')) {
         document.body.insertAdjacentHTML('beforeend', PLAYER_HTML);
     }
     
-    // Inject Mobile Nav if missing (simple check for nav element)
+    // 5. Mobile Nav (Bottom)
     if (!document.querySelector('nav.md\\:hidden.fixed.bottom-0')) {
          document.body.insertAdjacentHTML('beforeend', MOBILE_NAV_HTML);
     }
 
+    
     // ==========================================
-    // GLOBAL SEARCH LOGIC
+    // ROUTER & NAVIGATION
     // ==========================================
-    const globalSearchInputs = document.querySelectorAll('input[placeholder="Search..."]');
-    if (globalSearchInputs.length > 0) {
-        globalSearchInputs.forEach(input => {
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    const query = input.value.trim();
-                    if (query) {
-                        window.location.href = `/discover?search=${encodeURIComponent(query)}`;
-                    }
-                }
-            });
-        });
-    }
+    setupRouter();
+    
+    // Initial Page Load execution
+    initializePageScripts(window.location.href);
+
+    // ==========================================
+    // GLOBAL SEARCH LOGIC (Event Delegation)
+    // ==========================================
+    // Use event delegation for search inputs since they might be dynamically injected
+    document.addEventListener('keydown', (e) => {
+        if ((e.target.id === 'global-search-input') && e.key === 'Enter') {
+            e.preventDefault();
+            const query = e.target.value.trim();
+            if (query) {
+                navigateTo(`/discover?search=${encodeURIComponent(query)}`);
+            }
+        }
+    });
     
     // ==========================================
     // SIDEBAR NAVIGATION LOGIC
@@ -232,8 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const protectedRoutes = [
     '/profile',
-    '/settings',
-    '/premium'
+    '/settings'
 ];
 
 // Helper: Check if current page requires login
@@ -330,3 +386,200 @@ function updateAuthUI(user) {
 
     console.log("Auth System Initialized");
 })();
+
+window.navigateTo = navigateTo;
+
+function setupRouter() {
+    // Handle Browser Back/Forward Buttons
+    window.addEventListener('popstate', () => {
+        navigateTo(window.location.pathname + window.location.search, false);
+    });
+
+    // Intercept clicks on links
+    document.body.addEventListener('click', e => {
+        const link = e.target.closest('a');
+        
+        // Skip null, external, download, _blank links
+        if (!link || 
+            !link.href.startsWith(window.location.origin) || 
+            link.hasAttribute('download') || 
+            link.target === '_blank') {
+            return;
+        }
+
+        // STATIC PAGES LIST EXEMPTION
+        // These pages should behave like normal websites (Hard Reload)
+        const staticPages = [
+            '/about', '/about.html', 
+            '/contact', '/contact.html',
+            '/premium', '/premium.html',
+            '/support', '/support.html',
+            '/cookie', '/cookie.html', '/cookies',
+            '/login', '/login.html',
+            '/signup', '/signup.html',
+            '/404', '/404.html',
+            '/profile', '/profile.html',
+            '/create_playlist', '/create_playlist.html'
+        ];
+        
+        const path = link.getAttribute('href').split('?')[0]; // simple path check
+
+        if (staticPages.some(sp => path === sp || path.startsWith(sp + '?'))) {
+            // Allow default browser navigation (hard load)
+            return;
+        }
+
+        // If current page is NOT the main app shell (missing sidebar), do not use SPA nav
+        if (!document.getElementById('sidebar')) {
+            return;
+        }
+
+        // Prevent default SPA nav
+        e.preventDefault();
+        navigateTo(link.getAttribute('href'));
+    });
+}
+
+/**
+ * Navigate to a URL without full reload (SPA transition)
+ * @param {string} url - The URL to navigate to
+ * @param {boolean} updateHistory - Whether to push to history stack
+ */
+async function navigateTo(url, updateHistory = true) {
+    if (updateHistory) {
+        history.pushState(null, null, url);
+    }
+
+    try {
+        let newMainContent = null;
+        let pageTitle = 'Beatify'; // Default title
+        const path = new URL(url, window.location.origin).pathname;
+
+        // CLIENT-SIDE ROUTING INTERCEPTION
+        if (path.includes('/settings')) {
+             const module = await import('./pages/settings.js');
+             if (module.getHTML) {
+                 newMainContent = module.getHTML();
+                 pageTitle = 'Settings - Beatify';
+                 
+                 // Reuse existing header if present?
+                 // The header is part of the main layout, usually outside the dynamic content.
+                 // If getHTML returns only the content div, we need to ensure the header is preserved
+                 // or re-added. The current `navigateTo` replaces `currentMain.innerHTML`.
+                 // So, if `getHTML` only returns the content div, we need to prepend the header.
+                 // Assuming the header is a direct child of <main> and has a specific class.
+                 const currentHeader = document.querySelector('main > header'); // Adjust selector if needed
+                 if (currentHeader) {
+                     newMainContent = currentHeader.outerHTML + newMainContent;
+                 }
+             }
+        }
+
+        if (!newMainContent) {
+            // Fallback to Server Fetch
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("Network response was not ok");
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newMain = doc.querySelector('main');
+            if(newMain) newMainContent = newMain.innerHTML;
+            pageTitle = doc.title;
+        }
+
+        const currentMain = document.querySelector('main');
+        if (currentMain && newMainContent) {
+            // Fade out
+            currentMain.style.opacity = '0';
+            currentMain.style.transition = 'opacity 0.2s ease-out';
+            
+            setTimeout(() => {
+                currentMain.innerHTML = newMainContent;
+                
+                // Update Page Title
+                document.title = pageTitle;
+                
+                // Re-initialize Page Scripts
+                initializePageScripts(url);
+
+                // Update Active States in Sidebar
+                updateActiveNav(url);
+                
+                // Restore Opacity
+                currentMain.style.opacity = '1';
+                currentMain.scrollTop = 0; // Reset scroll position for new page
+                
+            }, 200); 
+        }
+
+    } catch (error) {
+        console.error("Navigation Error:", error);
+        window.location.href = url; // Fallback
+    }
+}
+
+function updateActiveNav(url) {
+    // Normalize URL
+    const path = new URL(url, window.location.origin).pathname;
+    
+    document.querySelectorAll('.nav-item').forEach(link => {
+        link.classList.remove('bg-primary', 'text-white', 'shadow-lg');
+        link.classList.add('text-text-secondary');
+        link.classList.add('hover:text-white', 'hover:bg-white/5');
+
+        if (link.getAttribute('href') === path || (path.includes('/settings') && link.getAttribute('href').includes('/settings'))) {
+            link.classList.add('bg-primary', 'text-white', 'shadow-lg');
+            link.classList.remove('text-text-secondary', 'hover:text-white', 'hover:bg-white/5');
+        }
+    });
+}
+
+async function initializePageScripts(url) {
+    const path = new URL(url, window.location.origin).pathname;
+
+    // Ensure Sidebar Highlight is correct
+    updateActiveNav(url);
+
+    // Check Auth State
+    if (window.checkAuthState) window.checkAuthState();
+    // Re-check Auth UI
+    if (Auth && Auth.getCurrentUser) {
+        Auth.getCurrentUser().then(user => updateAuthUI(user));
+    }
+
+    try {
+        if (path === '/discover') {
+            const module = await import('./pages/discover.js');
+            if (module.init) module.init();
+        } else if (path === '/profile') {
+            const module = await import('./pages/profile.js');
+            if (module.init) module.init();
+        } else if (path === '/library' || path === '/library.html') {
+            const module = await import('./pages/library.js');
+            if (module.init) module.init();
+        } else if (path === '/' || path === '/index.html') {
+            const module = await import('./pages/home.js');
+            if (module.init) module.init();
+        } else if (path === '/liked' || path === '/liked.html') {
+            const module = await import('./pages/liked.js');
+            if (module.init) module.init();
+        } else if (path.includes('/album')) {
+             const module = await import('./pages/album.js');
+             if (module.init) module.init();
+        } else if (path.includes('/artist')) {
+             const module = await import('./pages/artist.js');
+             if (module.init) module.init();
+        } else if (path === '/create_playlist' || path === '/create_playlist.html') {
+             const module = await import('./pages/create_playlist.js');
+             if (module.init) module.init();
+        } else if (path.includes('/playlist')) {
+             const module = await import('./pages/playlist.js');
+             if (module.init) module.init();
+        } else if (path === '/settings' || path === '/settings.html') {
+             const module = await import('./pages/settings.js');
+             if (module.init) module.init();
+        }
+    } catch (e) {
+        console.error("Failed to load page script module:", e);
+    }
+}

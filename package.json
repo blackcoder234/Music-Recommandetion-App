@@ -1,0 +1,18 @@
+{
+  "name": "music-recommendation-app-monorepo",
+  "version": "1.0.0",
+  "description": "Root orchestrator for Music App Microservices",
+  "scripts": {
+    "install:backend": "cd Backend && npm install",
+    "install:python": "cd RecommendationEngine && python -m venv venv && .\\venv\\Scripts\\pip install -r requirements.txt",
+    "start:backend": "cd Backend && npm run dev",
+    "start:python": "cd RecommendationEngine && .\\venv\\Scripts\\python main.py",
+    "dev": "npx concurrently -k -n \"BACKEND,PYTHON\" -c \"blue,yellow\" \"npm run start:backend\" \"npm run start:python\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

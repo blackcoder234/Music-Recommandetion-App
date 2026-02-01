@@ -1,51 +1,66 @@
 
 import api from '../api.js';
+import Auth from '../auth.js';
 import { displayMessage, toggleLoader } from '../utils.js';
 
-const form = document.getElementById('create-playlist-form');
+export async function init() {
+    console.log("Initializing Create Playlist...");
+    
+    // Auth Check
+    const user = await Auth.getCurrentUser();
+    if (!user) {
+        window.location.href = '/login?redirect=/create_playlist';
+        return;
+    }
 
-if (form) {
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        toggleLoader(true);
+    const form = document.getElementById('create-playlist-form');
+    if (form) {
+        // Remove old listeners by cloning
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+        
+        newForm.addEventListener('submit', handleCreatePlaylist);
+    }
+}
 
-        // Gather Form Data
-        const playListTitle = document.getElementById('playlist-title').value.trim();
-        const description = document.getElementById('playlist-desc').value.trim();
-        const isPublic = document.getElementById('is-public').checked;
+async function handleCreatePlaylist(e) {
+    e.preventDefault();
+    toggleLoader(true);
 
-        if (!playListTitle) {
-            displayMessage("Playlist title is required", "error");
-            toggleLoader(false);
-            return;
+    const playListTitle = document.getElementById('playlist-title').value.trim();
+    const description = document.getElementById('playlist-desc').value.trim();
+    const isPublic = document.getElementById('is-public').checked;
+
+    if (!playListTitle) {
+        displayMessage("Playlist title is required", "error");
+        toggleLoader(false);
+        return;
+    }
+
+    try {
+        const payload = {
+            playListTitle,
+            description,
+            isPublic,
+            tracks: []
+        };
+
+        const response = await api.request('/playlists', {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        });
+
+        if (response.data && response.data._id) {
+            displayMessage("Playlist created successfully!", "success");
+            setTimeout(() => {
+                window.location.href = `/playlist.html?id=${response.data._id}`;
+            }, 1000);
         }
 
-        try {
-            const payload = {
-                playListTitle,
-                description,
-                isPublic,
-                tracks: [] // Empty initial playlist
-            };
-
-            const response = await api.request('/playlists', {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            });
-
-            if (response.data && response.data._id) {
-                displayMessage("Playlist created successfully!", "success");
-                setTimeout(() => {
-                    window.location.href = `/playlist/${response.data._id}`;
-                }, 1000);
-            }
-
-        } catch (error) {
-            console.error("Create Playlist Error:", error);
-            // API might return standard error message
-            displayMessage(error.message || "Failed to create playlist", "error");
-        } finally {
-            toggleLoader(false);
-        }
-    });
+    } catch (error) {
+        console.error("Create Playlist Error:", error);
+        displayMessage(error.message || "Failed to create playlist", "error");
+    } finally {
+        toggleLoader(false);
+    }
 }

@@ -1,5 +1,7 @@
 
+
 import api from './api.js';
+import Auth from './auth.js';
 import { displayMessage } from './utils.js';
 
 class AudioPlayer {
@@ -7,9 +9,11 @@ class AudioPlayer {
         this.audio = new Audio();
         this.isPlaying = false;
         this.currentTrack = null;
+        this.currentPlaybackId = null; // Analytics ID
         this.queue = [];
         this.originalQueue = []; // To un-shuffle
         this.currentIndex = 0;
+// ... (rest of constructor) ...
         this.isShuffled = false;
         this.repeatMode = 'none'; // none, all, one
 
@@ -22,6 +26,66 @@ class AudioPlayer {
             document.addEventListener('DOMContentLoaded', () => { setTimeout(() => this.init(), 100); });
         } else {
             setTimeout(() => this.init(), 100);
+        }
+    }
+
+    loadTrack(track) {
+        this.currentTrack = track;
+        this.audio.src = track.trackFile || track.audioUrl; 
+        
+        // Record Playback Start (Analytics)
+        this.recordPlaybackStart(track._id || track.id);
+
+        this.updateUI(track);
+        
+        if(this.desktopPlayer) this.desktopPlayer.classList.remove('hidden');
+
+        this.play();
+    }
+
+    onTrackEnd() {
+        // Record Completion
+        this.recordPlaybackComplete();
+
+        if (this.repeatMode === 'one') {
+             this.audio.currentTime = 0;
+             this.play();
+        } else {
+            this.next();
+        }
+    }
+
+    // Analytics Methods
+    async recordPlaybackStart(trackId) {
+        // Check if user is logged in
+        const user = await Auth.getCurrentUser();
+        if (!user) return;
+
+        try {
+            const response = await api.request('/playback/start', {
+                method: 'POST',
+                body: { trackId },
+                suppressAuthRedirect: true
+            });
+            // Assuming response.data is the playback object
+            this.currentPlaybackId = response.data?._id || response.data?.id;
+        } catch (e) {
+            // Silent fail for analytics
+            console.warn("Analytics: Failed to record start", e);
+        }
+    }
+
+    async recordPlaybackComplete() {
+        if (!this.currentPlaybackId) return;
+        try {
+            await api.request(`/playback/${this.currentPlaybackId}/progress`, {
+                method: 'PATCH',
+                body: { completed: true, progress: 100 },
+                suppressAuthRedirect: true
+            });
+            this.currentPlaybackId = null;
+        } catch (e) {
+             console.warn("Analytics: Failed to record completion", e);
         }
     }
 

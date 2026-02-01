@@ -1,123 +1,201 @@
-
+import Auth from '../auth.js';
 import api from '../api.js';
-import player from '../player.js'; // Import global player instance
 import { displayMessage, toggleLoader } from '../utils.js';
+import player from '../player.js';
 
-// DOM Elements
-const heroTitle = document.getElementById('playlist-title');
-const heroDesc = document.getElementById('playlist-description');  // Use "Album" label slot or new one
-const heroOwner = document.getElementById('playlist-owner');
-const heroImage = document.getElementById('playlist-image');
-const trackListBody = document.getElementById('playlist-tracks');
-const playAllBtn = document.getElementById('play-all-btn');
-const tracksCount = document.getElementById('playlist-stats-count');
-const durationTotal = document.getElementById('playlist-stats-duration');
+let currentPlaylist = null;
+let playlistTracks = [];
+let currentUser = null;
 
-async function loadPlaylist() {
+export async function init() {
+    console.log("Initializing Playlist Page...");
+    currentUser = await Auth.getCurrentUser();
+    
+    // Check URL params
+    const query = new URLSearchParams(window.location.search);
+    const playlistId = query.get('id');
+
+    if (playlistId) {
+        loadPlaylistDetails(playlistId);
+    } else {
+        // Redirect to library if no id
+        window.location.href = '/library';
+    }
+}
+
+async function loadPlaylistDetails(id) {
     toggleLoader(true);
+    
+    // Elements
+    const imgEl = document.getElementById('playlist-image');
+    const placeholderIcon = document.getElementById('playlist-placeholder-icon');
+    const titleEl = document.getElementById('playlist-title');
+    const descEl = document.getElementById('playlist-description');
+    const statsEl = document.getElementById('hero-stats-row');
+    const tracksContainer = document.getElementById('playlist-tracks');
+    const playAllBtn = document.getElementById('play-all-btn');
+    const deleteBtn = document.getElementById('delete-playlist-btn');
+
+    if (tracksContainer) tracksContainer.innerHTML = '';
+
     try {
-        // Parse ID from URL: /playlist/123 -> 123
-        const pathParts = window.location.pathname.split('/');
-        const playlistId = pathParts[pathParts.length - 1]; // Last part
-
-        if (!playlistId) throw new Error("No Playlist ID found");
-
-        const response = await api.request(`/playlists/${playlistId}`);
-        const playlist = response.data;
-
-        if (!playlist) throw new Error("Playlist not found");
-
-        renderHero(playlist);
-        renderTracks(playlist.tracks || []); 
+        const response = await api.request(`/playlists/${id}`, { suppressAuthRedirect: true });
+        currentPlaylist = response.data;
         
-        // Update Player Queue with this playlist context
-        if (playlist.tracks && playlist.tracks.length > 0) {
-            player.setQueue(playlist.tracks);
+        // Metadata
+        if (currentPlaylist.coverImage) {
+             if(imgEl) {
+                 imgEl.src = currentPlaylist.coverImage;
+                 imgEl.classList.remove('hidden');
+             }
+             if(placeholderIcon) placeholderIcon.classList.add('hidden');
+        } else {
+             if(imgEl) imgEl.classList.add('hidden');
+             if(placeholderIcon) placeholderIcon.classList.remove('hidden');
         }
 
-        // Setup Play All
-        if(playAllBtn) {
+        if(titleEl) titleEl.textContent = currentPlaylist.name;
+        if(descEl) descEl.textContent = currentPlaylist.description || "Public Playlist";
+        
+        const ownerName = currentPlaylist.owner?.username || "Admin";
+        const trackCount = currentPlaylist.tracks ? currentPlaylist.tracks.length : 0;
+        const totalDuration = calculateTotalDuration(currentPlaylist.tracks);
+
+        if (statsEl) {
+            statsEl.innerHTML = `
+                <span class="font-semibold text-white">${ownerName}</span>
+                <span>•</span>
+                <span>${trackCount} songs, ${totalDuration}</span>
+            `;
+        }
+
+        // Show/Hide Delete Button
+        // We need robust user check. currentUser._id vs playlist.owner._id
+        if (deleteBtn && currentUser && currentPlaylist.owner && (currentUser._id === currentPlaylist.owner._id || currentUser.id === currentPlaylist.owner.id || currentUser._id === currentPlaylist.owner)) {
+            deleteBtn.classList.remove('hidden');
+            deleteBtn.onclick = () => confirmDeletePlaylist(currentPlaylist._id);
+        } else {
+            if(deleteBtn) deleteBtn.classList.add('hidden');
+        }
+
+        // Tracks
+        playlistTracks = currentPlaylist.tracks || [];
+        renderTracks(playlistTracks, tracksContainer, currentPlaylist.owner);
+        
+        // Bind Play All
+        if (playAllBtn) {
             playAllBtn.onclick = () => {
-                if (playlist.tracks && playlist.tracks.length > 0) {
-                   player.setQueue(playlist.tracks);
-                   player.playTrackById(playlist.tracks[0]._id);
+                if (playlistTracks.length > 0) {
+                     // We should map playlistTracks to pure track objects if they are populated weirdly, 
+                     // but usually they are full track objects or close to it.
+                     player.setQueue(playlistTracks);
+                     player.loadTrack(playlistTracks[0]);
                 }
             };
         }
 
     } catch (error) {
-        console.error("Load Playlist Error:", error);
-        displayMessage("Failed to load playlist", "error");
+        console.error("Failed to load playlist details", error);
+        displayMessage("Failed to load playlist.", "error");
+        if(titleEl) titleEl.textContent = "Playlist Not Found";
     } finally {
         toggleLoader(false);
     }
 }
 
-function renderHero(playlist) {
-    if (heroTitle) heroTitle.textContent = playlist.playListTitle;
-    if (heroDesc) heroDesc.textContent = playlist.playListDescription || "Playlist";
-    if (heroOwner) heroOwner.textContent = playlist.owner?.username || "Unknown";
-    
-    // Image or Gradient Fallback
-    if (heroImage) {
-        if(playlist.coverImage) {
-            heroImage.src = playlist.coverImage;
-        } else {
-             // Keep default or set generic
-             heroImage.src = 'assets/images/album/default_album.png';
-        }
-    }
-    
-    if (tracksCount) tracksCount.textContent = `${playlist.tracks?.length || 0} songs`;
-    
-    // Calculate total duration
-    if (durationTotal && playlist.tracks) {
-        const totalSeconds = playlist.tracks.reduce((acc, t) => acc + (t.duration || 0), 0);
-        const m = Math.floor(totalSeconds / 60);
-        durationTotal.textContent = `${m} min`;
-    }
-}
-
-function renderTracks(tracks) {
-    if (!trackListBody) return;
+function renderTracks(tracks, container, owner) {
+    if (!container) return;
     
     if (tracks.length === 0) {
-        trackListBody.innerHTML = '<tr><td colspan="3" class="text-center py-8 text-text-secondary">No tracks in this playlist.</td></tr>';
+        container.innerHTML = `<tr><td colspan="4" class="text-center py-8 text-text-secondary">No tracks in this playlist.</td></tr>`;
         return;
     }
 
-    trackListBody.innerHTML = tracks.map((track, index) => {
-        const duration = formatTime(track.duration || 0);
-        const artist = track.artist?.name || track.artist?.username || "Unknown";
-        
+    const isOwner = currentUser && owner && (currentUser._id === owner._id || currentUser.id === owner.id || currentUser._id === owner);
+
+    container.innerHTML = tracks.map((track, index) => {
+        const duration = formatDuration(track.duration);
+        const trackId = track._id || track.id;
+        const artist = track.artist?.name || track.artist?.username || "Unknown Artist";
+        const image = track.imageUrl || track.album?.coverImage || 'assets/images/album/default_album.png';
+
         return `
-        <tr class="group hover:bg-white/5 transition-colors cursor-pointer border-b border-white/5 border-transparent hover:border-transparent play-track-row" data-id="${track._id}">
-            <td class="px-4 py-4 text-center text-text-secondary w-12 group-hover:text-white relative">
+        <tr class="group hover:bg-white/5 transition-colors cursor-pointer play-track-btn" data-id="${trackId}">
+            <td class="px-4 py-3 text-text-secondary w-12 text-center group-hover:text-white">
                 <span class="group-hover:hidden">${index + 1}</span>
-                <button class="play-track-btn w-6 h-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden group-hover:flex items-center justify-center text-white" data-id="${track._id}">
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                </button>
+                <span class="hidden group-hover:inline-block">
+                    <svg class="w-4 h-4 text-primary fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </span>
             </td>
-            <td class="px-4 py-4">
-                <div class="font-medium text-white group-hover:text-primary transition-colors truncate max-w-[200px] md:max-w-xs">
-                    ${track.title}
-                </div>
-                <div class="text-xs text-text-secondary md:hidden truncate max-w-[150px]">
-                    ${artist}
+            <td class="px-4 py-3">
+                <div class="flex items-center gap-4">
+                     <img src="${image}" class="w-10 h-10 rounded object-cover">
+                     <div>
+                        <div class="font-medium text-white group-hover:text-primary transition-colors truncate text-base">${track.title}</div>
+                        <div class="text-xs text-text-secondary truncate">${artist}</div>
+                     </div>
                 </div>
             </td>
-            <td class="px-4 py-4 text-right text-text-secondary font-variant-numeric tabular-nums">
+            <td class="px-4 py-3 text-text-secondary text-right w-16 text-sm font-variant-numeric tabular-nums">
                 ${duration}
+            </td>
+             <td class="px-4 py-3 text-right">
+                ${ isOwner ? `
+                <button class="text-text-secondary hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-2" onclick="event.stopPropagation(); removeTrackFromPlaylist('${trackId}')" title="Remove from playlist">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                ` : ''}
             </td>
         </tr>
         `;
     }).join('');
 }
 
-function formatTime(seconds) {
+// Global helpers
+window.removeTrackFromPlaylist = async (trackId) => {
+    if (!currentPlaylist) return;
+    if (!confirm("Remove this song from playlist?")) return;
+
+    toggleLoader(true);
+    try {
+        await api.request(`/playlists/${currentPlaylist._id}/tracks/${trackId}`, { method: 'DELETE' });
+        displayMessage("Track removed", "success");
+        // Reload
+        loadPlaylistDetails(currentPlaylist._id);
+    } catch (error) {
+        console.error("Failed to remove track", error);
+        displayMessage("Failed to remove track", "error");
+        toggleLoader(false);
+    }
+};
+
+window.confirmDeletePlaylist = async (id) => {
+    if (!confirm("Are you sure you want to delete this playlist? This cannot be undone.")) return;
+
+    toggleLoader(true);
+    try {
+        await api.request(`/playlists/${id}`, { method: 'DELETE' });
+        displayMessage("Playlist deleted", "success");
+        window.location.href = '/library';
+    } catch (error) {
+        console.error("Failed to delete playlist", error);
+        displayMessage("Failed to delete playlist", "error");
+        toggleLoader(false);
+    }
+};
+
+function formatDuration(seconds) {
+    if (!seconds) return "0:00";
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
-    return `${m}:${s < 10 ? '0' : ''}${s}`;
+    return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-document.addEventListener('DOMContentLoaded', loadPlaylist);
+function calculateTotalDuration(tracks) {
+    if (!tracks || tracks.length === 0) return "0 min";
+    const totalSeconds = tracks.reduce((acc, t) => acc + (t.duration || 0), 0);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    if (h > 0) return `${h} hr ${m} min`;
+    return `${m} min`;
+}
